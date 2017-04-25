@@ -1,0 +1,77 @@
+.works__gltitle {
+  background: #efeee9;
+  text-align: center;
+  padding: 70px 0;
+}
+
+.works__description {
+  width: 420px;
+  @include centered();
+}
+
+.works__title, .works__tech {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.works__tech {
+  padding: 25px 0;
+  border-top: 1px solid rgba(0, 191, 165, 1);
+  border-bottom:1px solid rgba(0, 191, 165, 1);
+  text-align: center;
+}
+
+.works__href {
+  background: rgba(0, 191, 165, 1);
+  padding: 12px 18px;
+  text-align: center;
+  border-radius: 5px;
+  @include centered('x');
+}
+.works__link {
+  vertical-align: middle;
+  text-decoration: none;
+  color: #fff;
+
+  &:hover {
+    color: rgba(0, 191, 165, 1);;
+  }
+}
+.works__icon {
+  margin-right: 10px;
+  vertical-align: middle;
+  width:20px;
+  height: 20px;
+  fill: #fff;
+}
+
+.works__mainimage {
+  height: 525px;
+}
+.works__controls {
+  height: 225px;
+  @extend %clearfix;
+}
+
+.works__control {
+  position: relative;
+  width: 50%;
+  float: left;
+  height: 100%;
+  
+  &:after {
+    content: "";
+    background: url('/assets/img/1.png') 100% 100% no-repeat; /* Добавляем фон */
+    background-size: contain; /* Масштабируем фон */
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute; 
+  }
+}
+
+.works__arrow {
+  @include centered();
+}

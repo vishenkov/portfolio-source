@@ -1,0 +1,14 @@
+.articles__title, .articles__date {
+  margin-bottom: 30px;
+}
+
+.article__content {
+  padding-top: 70px;
+  padding-bottom: 68px;
+  border-bottom: 2px solid grey;
+
+  &:last-child {
+    border-bottom: 2px solid transparent;
+
+  }
+}

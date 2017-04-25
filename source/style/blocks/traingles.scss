@@ -1,0 +1,30 @@
+.triangle {
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  bottom: 100%;
+
+  &_fill {
+
+    &_white {
+      fill: #efeee9;
+    }
+
+    &_beige {
+      fill: #eeebdf;
+    }
+
+  }
+}
+
+.triangle__wrapper {
+  @extend %clearfix;
+}
+.traingle__left, .traingle__right {
+  width: 50%;
+  float: left;
+  position: relative;
+}
+.traingle__right {
+  float: right;
+}

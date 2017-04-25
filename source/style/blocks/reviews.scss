@@ -1,0 +1,43 @@
+.reviews__list {
+  text-align: center;
+}
+.reviews__item {
+  display: inline-block;
+  width: 360px;
+  margin-left:38px;
+  vertical-align: top;
+}
+.reviews__title {
+  padding: 70px;
+  text-align: center;
+}
+.reviews__author {
+  text-align: left;
+  vertical-align: middle;
+}
+
+.reviews__icon {
+  width: 34px;
+  height: 28px;
+  margin-bottom:30px;
+  display: block;
+}
+
+.reviews__text {
+  margin-bottom: 28px;
+}
+
+.reviews__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid aquamarine;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.reviews__info {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 25px;
+}

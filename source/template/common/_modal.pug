@@ -1,0 +1,10 @@
+block var-modal
+  - var modal_mod = '';
+
+section(class="section modal modal_"+modal_mod)
+  .modal__header
+    block modal-header
+  .modal__center
+    block modal-center
+  .modal__footer
+    block modal-footer

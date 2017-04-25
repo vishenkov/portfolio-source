@@ -1,0 +1,15 @@
+block var-user
+  - var user_mod = '';
+.user
+  div(class=(user_mod==""?"":"user__info_"+user_mod)).user__info
+    div(class=(user_mod==""?"":"user__photo_"+user_mod)).user__photo
+      block user-photo
+        img(src="/assets/img/user.jpg", alt="").user__photo-img
+    .div(class=(user_mod==""?"":"user__title_"+user_mod)).user__title
+      block user-title
+        | Кирилл Вишенков
+    div(class=(user_mod==""?"":"user__subtitle_"+user_mod)).user__subtitle
+      block user-subtitle
+        | Личный сайт веб-разработчика
+    block user-add
+block user-footer

@@ -1,0 +1,59 @@
+extends _modal
+
+block var-modal
+  - var modal_mod = 'contactme'
+
+block modal-header
+  .reviews
+    .reviews__title
+      .title.title_fz-45
+        | Что обо мне говорят
+    ul.reviews__list
+      li.reviews__item
+        svg.reviews__icon
+          use(xlink:href="/assets/img/sprite.svg#check")
+        .reviews__text
+          p.text.text_reviews Этот парень проходил обуяение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+        .reviews__author
+          .reviews__photo
+          .reviews__info
+            .reviews__name
+              .text.text_reviews.text_reviews-name
+                | Ковальчук Дмитрий
+            .reviews__subtitle
+              .text.text_reviews.text_reviews-subtitle
+                | основатель LoftSchool
+
+      li.reviews__item
+        svg.reviews__icon
+          use(xlink:href="/assets/img/sprite.svg#check")
+        .reviews__text
+          p.text.text_reviews Этот код выдержит любые испытания. Только пожалуй, не загружается на слишком старых браузерах!
+        .reviews__author
+          .reviews__photo
+          .reviews__info
+            .reviews__name
+              .text.text_reviews.text_reviews-name
+                | Сабанцев Владимир
+            .reviews__subtitle
+              .text.text_reviews.text_reviews-subtitle
+                | преподаватель
+block modal-center
+  .contactme
+    .contactme__title
+      .title.title_fz-24.title_mwid-100
+        | Связаться со мной
+    .contactme__content
+      form.contactme__form
+        .contactme__form-data
+          input(type="name" name="name" placeholder="Имя").contactme__input
+          input(type="email" name="email" placeholder="Email").contactme__input
+          textarea(name="message" rows="7" placeholder="Ваше сообщение").contactme__input
+        .contactsme__buttons
+          input(type="submit" name="submit" value="Отправить").contactme__submit
+          input(type="reset" name="reset" value="Очистить").contactme__reset
+
+block modal-footer
+  a(href="#").arrow.contactsme__arrow
+    svg.arrow__icon
+      use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")

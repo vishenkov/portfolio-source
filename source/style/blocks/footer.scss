@@ -1,0 +1,49 @@
+$footerHeight : 146px;
+
+.footer {
+  position: relative;
+  bottom: $footerHeight;
+  background: rgba(55, 62, 66, 0.85);
+  height: $footerHeight;
+  //padding: 5px 0 40px;
+  overflow: hidden;
+}
+.footer_index {
+  bottom: 30px;
+  height: 30px;
+  background: transparent;
+}
+
+.footer__menu {
+  @include centered('y');
+}
+
+.footer__socials {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+}
+
+.footer__top, .footer__bottom {
+  @extend %clearfix;
+  height: 73px;
+  position: relative;
+}
+
+.footer__top, .footer__bottom {
+  //padding: 17px 10px;
+}
+.footer__top {
+  padding: 5px 10px 8px; 
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__bottom {
+  padding: 12px 10px 0 30px;
+}
+
+.footer__bottom-left, .footer__bottom-right {
+  display: inline-block;
+  vertical-align: middle;
+  width: 49%;
+}

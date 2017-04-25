@@ -1,0 +1,13 @@
+.data-circles__item {
+  display: inline-block;
+  position: relative;
+  margin-right: 33px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.data-circles__text {
+  @include centered(both);
+}

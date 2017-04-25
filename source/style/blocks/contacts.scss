@@ -1,0 +1,33 @@
+.contacts {
+  background: rgba(252, 252, 252, 0.85);
+  padding: 35px 40px 30px;
+  border-radius: 5px;
+  width: 400px;
+
+}
+
+.contacts__title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contacts__item {
+  padding: 12px;
+  padding-left: 0;
+}
+
+.contacts__icon, .contacts__desc {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 10px;
+}
+
+@each $icon in skype, envelope, phone, map_marker {
+  .contacts__icon_#{$icon} {
+    background: url("/assets/img/icons/#{$icon}.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 25px; 
+    width: 25px;
+  }
+}

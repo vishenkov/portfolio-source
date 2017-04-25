@@ -1,0 +1,61 @@
+.text {
+  color: $main-font-color;
+  font-size: 16px;
+  text-align: left;
+  @include roboto();
+}
+
+//GB, BEM :(
+.text p {
+  margin-bottom: 22px;
+}
+
+.text_alpha-white {
+  color: rgba(255, 255, 255, .5);
+}
+
+.text_lighter {
+  font-weight: lighter;
+}
+
+.text_ta-right {
+  text-align: right;
+}
+
+.text_ta-center {
+  text-align: center;
+}
+
+.text_skills-tech {
+  font-size: 13px;
+  color: #00bfa5;
+  text-align: center;
+}
+
+.text_skills-name {
+  font-size: 28px;
+  color: #455a64
+}
+
+.text_articles-date {
+  color: #00bfa5;
+}
+
+.text_reviews {
+  font-size: 12px;
+}
+
+.text_reviews-name,  .text_reviews-subtitle {
+  font-weight: bold;
+  color: #00bfa5;
+}
+
+.text_reviews-subtitle {
+  font-weight: normal;
+}
+
+.text_footer {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+.columns__left, .columns__right {
+  width: 50%;
+  position: relative;
+}
+
+.columns__left {
+  background: #efeee9;
+}
+
+.columns__right {
+  background: #eeebdf;
+}
+
+.columns__left-blog {
+  width: 33%;
+}
+
+.columns__right-blog {
+  width: 67%;
+  background: #efeee9;
+}

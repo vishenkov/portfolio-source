@@ -1,0 +1,55 @@
+//- rad - total radius (with stroke)
+//- stroke internal rad = inner circle rad - stroke-width/2
+//- stroke external rad = inner circle rad + stroke-width/2
+include ./socials.pug
+
+mixin svgSkill (title, value, rad, strokeWidth)
+  - var rad = (rad-strokeWidth/2)  
+  - var circleLen = Math.round(2*3.14*rad)
+  - var fillValue = Math.round(circleLen*((value)/100))
+  - var svgWH = (rad+strokeWidth/2)*2
+  - var cXY = Math.round(svgWH/2)
+  //- p= fillValue
+  //- p= circleLen
+  svg(
+    width=svgWH 
+    height=svgWH 
+    viewBox="0 0 "+svgWH+" "+svgWH 
+    preserveAspectRatio="none" 
+    class="circle")
+    
+    g
+      circle(
+        r=rad
+        cx=cXY 
+        cy=cXY 
+        class="circle__bg" 
+        stroke-width=strokeWidth)
+      circle(
+        r=rad  
+        cx=cXY 
+        cy=cXY 
+        transform="rotate(-90 "+cXY+" "+cXY+")" 
+        stroke-dasharray=fillValue+" "+circleLen 
+        class="circle__fill" 
+        stroke-width=strokeWidth)
+
+  .data-circles__text
+    .text.text_skills-tech= title 
+
+mixin traingle(origin, addClass)
+  if origin == 'left'
+    svg(
+      viewbox="0 0 1000 100" 
+      preserveAspectRatio="none"
+      class="triangle "+addClass)
+      polygon(points="0,0 0,100 1000,100 1000,90")
+  if origin == 'right'
+    svg(
+      viewbox="0 0 1000 100" 
+      preserveAspectRatio="none"
+      class="triangle "+addClass)
+      polygon(points="0,90 0,100 1000,100 1000,0")
+
+mixin addModClass(className, mod)
+  - var classMod = className + "_" + mod

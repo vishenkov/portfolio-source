@@ -1,0 +1,52 @@
+.about {
+  display: flex;
+  flex-direction: row;
+}
+
+.about__left, .about__right {
+  width: 50%;
+  position: relative;
+}
+
+.about__left {
+  background: #efeee9;
+}
+
+.about__right {
+  background: #eeebdf;
+}
+
+.about__triangles {
+  position: absolute;
+  bottom: 100%;
+}
+
+.about__content {
+  padding: 0 80px 45px;
+}
+
+.about-data__subtitle {
+  padding: 0 30px 0 40px;
+}
+
+.adout-data__content {
+  padding-left: 37px;
+}
+
+.about__title, .about-user__title, .about-data__title {
+  text-align: center;
+}
+
+.about__title {
+  padding: 30px 0 10px; 
+  // padding-bottom: 60px;
+  background: url("/assets/img/about-header.png") center no-repeat;
+  z-index: 999;
+  position: relative;
+  top: -45px;
+
+}
+
+.about-user__photo, .about-user__title {
+  margin-bottom: 40px;
+}

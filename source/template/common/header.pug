@@ -1,0 +1,21 @@
+extends _modal
+
+block var-modal
+  - var modal_mod = 'header'
+
+block modal-header
+  .header__socials
+      +socials(socials,'','')
+
+  a(href="#").hamburger
+    svg.hamburger__icon
+      use(xlink:href="/assets/img/sprite.svg#hamburger")
+  img(src="/assets/img/portfolio-header.png", alt="").header__bg
+
+block modal-center
+  include user.pug
+
+block modal-footer
+  a(href="#").arrow
+    svg.arrow__icon
+      use(xlink:href="/assets/img/sprite.svg#arrow_down")

@@ -1,0 +1,39 @@
+.socials__item {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.socials__link {
+  padding: 0 13px;
+  line-height: 25px;
+  font-size: 25px;
+}
+
+.socials__icon {
+  height: 25px;
+  width: 25px;
+  fill: rgba(255, 255, 255, 0.5);
+  &:hover {
+    fill: rgba(255, 255, 255, 1);
+    transition: all 1s;
+  }
+}
+
+
+.socials__icon_footer {
+  fill: none;
+  stroke: #fff;
+  &:hover {
+    fill: #fff;
+    stroke: none;
+    transition: fill 1s;
+  }
+}
+
+.socials__link_footer {
+  padding: 0 5px;
+}
+
+.socials__icon_welcome {
+  fill: #00bfa5;
+}

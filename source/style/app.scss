@@ -1,0 +1,10 @@
+$main-font-color : #373e42;
+
+//@import "common/header";
+@import "common/setup";
+@import "common/fonts";
+
+//mixins
+@import "helpers/mixins";
+
+@import "blocks/**/*";

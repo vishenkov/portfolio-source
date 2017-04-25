@@ -1,0 +1,34 @@
+.modal{
+  overflow: hidden;
+  position: relative;
+}
+
+.modal__center {
+  @include centered();
+}
+
+
+.modal_header{
+  background: url('/assets/img/portfolio.jpg');
+  height: 620px;
+}
+
+.modal_welcome{
+  background: url('/assets/img/portfolio.jpg');
+  height: 100vh;
+  width: 100%;
+}
+
+.modal_map {
+  background: url('/assets/img/map.png');
+  background-position: top right;
+  background-repeat: no-repeat;
+  height: 974px;
+}
+
+.modal_contactme {
+  background: url('/assets/img/reviews.jpg');
+  //background-position: top right;
+  background-repeat: no-repeat;
+  height: 1285px;
+}

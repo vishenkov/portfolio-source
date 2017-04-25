@@ -1,0 +1,74 @@
+@mixin title($fz : 63px) {
+  color: $main-font-color;
+  font-size: $fz;
+  line-height: $fz;
+  @include bernier();
+  padding: 0 40px 0 40px;
+  display: inline-block;
+  max-width: 45%;
+  position: relative;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-align: center;
+ 
+  &:after, &:before {
+    content: "";
+    @include centeredTitle($fz);
+    background: rgba($main-font-color, .2);
+    width: 22px;
+    height: 5px;
+  }
+
+  &:before {
+    left: 0;
+  }
+
+  &:after {
+  right: 0;
+  }
+
+}
+
+@mixin centeredTitle($fz: 63px) {
+  position: absolute;
+  top: $fz/2;
+  transform: translateY(-2.5px); //half-height of dash
+}
+
+.title {
+  @include title(63px);
+}
+
+.title_fz-35 {
+  @include title(35px);
+}
+
+.title_fz-45 {
+  @include title(45px);
+}
+
+.title_fz-24 {
+  @include title(24px);
+}
+
+.title_mwid-100 {
+  max-width: 100%;
+}
+
+.title_mwid-75 {
+  max-width: 75%;
+}
+
+.title_mwid-50 {
+  max-width: 50%;
+}
+
+
+
+.title_articles {
+  color: $main-font-color;
+  font-size: 25px;
+  @include bernier();
+  //line-height: $fz;
+}

@@ -1,0 +1,23 @@
+section.section.footer
+  .footer__top
+   
+    .footer__menu
+      nav.menu
+        ul.menu__list
+          each item, key in menu
+            li.menu__item
+              a(href=key+".html" class="menu__link"+ (item==title?" menu__link_current":""))= item
+    
+    .footer__socials
+        +socials(socials, 'footer', '_round')
+
+  .footer__bottom
+    .footer__bottom-left
+      .footer__desc
+        .text.text_alpha-white.text_lighter
+          | Я веб-разработчик из Белгорода, и этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool
+    .footer__bottom-right
+      .footer__copyright
+        .copyright-text
+          .text.text_alpha-white.text_lighter.text_ta-right
+            | © Кирилл Вишенков | создано с любовью в LoftSchool | 2017

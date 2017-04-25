@@ -1,0 +1,40 @@
+{
+  "menu": {
+    "works": "Мои работы", 
+    "about": "Обо мне", 
+    "blog": "Блог", 
+    "index": "Авторизация"
+  },
+
+  "contacts" : {
+    "skype" : "vishkir1991",
+    "envelope" : "vishkir1991@gmail.com",
+    "phone" : "+7 999 999 99 99",
+    "map_marker" : "г. Белгород, ул. Улица, д. 00"
+  },
+
+  "socials" : {
+    "vk" : "#",
+    "github" : "#",
+    "in" : "#"
+  },
+
+  "skills" : {
+    "Frontend" : {
+      "HTML5" : 90,
+      "CSS3" : 80,
+      "JavaScript & jQuery" : 80 
+    },
+    "Backend" : {
+      "PHP" : 45,
+      "mySQL" : 55,
+      "Node.js & npm" : 40,
+      "Mondo.db" : 20
+    },
+    "WorkFlow" : {
+      "Git" : 85,
+      "Gulp" : 75,
+      "Bower" : 70
+    }
+  }
+}

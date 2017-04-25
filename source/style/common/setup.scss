@@ -1,0 +1,51 @@
+html {
+  height: 100%;
+}
+
+body {
+	height: 100%;
+	margin: 0;
+	font-family: "Roboto", Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.42;
+	-webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+	min-height: 100%;
+	position: relative;
+	overflow: hidden;
+  background: linear-gradient(#8eb1af 300px,rgb(10, 99, 117) 500px,#e4e3cf, rgb(55, 62, 66));
+}
+
+.section {
+  min-width: 768px;
+  max-width: 1200px;
+  margin: 0 auto;
+//overflow: hidden;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+ul li {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+	margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+* {
+	box-sizing: border-box;
+}

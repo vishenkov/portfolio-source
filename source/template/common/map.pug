@@ -1,0 +1,17 @@
+extends _modal
+
+block var-modal
+  - var modal_mod = 'map'
+
+block modal-center
+  .contacts
+    .contacts__title
+      .title.title_fz-35.title_mwid-100
+        | Контакты
+    .contacts__content
+      ul.contacts__list
+        each value, key in contacts
+          li.contacts__item
+            div(class="contacts__icon contacts__icon_"+key)
+            .contacts__desc
+              .text= value
