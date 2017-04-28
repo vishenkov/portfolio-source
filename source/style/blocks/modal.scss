@@ -1,14 +1,16 @@
 .modal{
   overflow: hidden;
-  position: relative;
+  //position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal__center {
-  @include centered();
+  //@include centered();
 }
 
 
-.modal_header{
+.modal_hero{
   background: url('/assets/img/portfolio.jpg');
   height: 620px;
 }
