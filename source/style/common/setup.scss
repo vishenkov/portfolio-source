@@ -9,8 +9,9 @@ body {
   font-size: 14px;
   line-height: 1.42;
   -webkit-font-smoothing: antialiased;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
 }
 
 // .wrapper {
@@ -21,7 +22,7 @@ body {
 // }
 
 .section {
-  min-width: 768px;
+  //min-width: 768px;
   max-width: 1200px;
   margin: 0 auto;
 //overflow: hidden;

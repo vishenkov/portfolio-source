@@ -3,12 +3,25 @@
   //position: relative;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.modal__header, .modal__footer {
+  flex: 0 0 5%;
 }
 
 .modal__center {
   //@include centered();
+  flex: 1 1 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.modal__header, .modal__footer {
+  flex: 0 1 20%;
+}
 
 .modal_hero{
   background: url('/assets/img/portfolio.jpg');
