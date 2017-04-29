@@ -1,21 +1,23 @@
+.menu__list {
+  display: flex;
+}
+
 .menu__item {
-  display: inline-block;
-  vertical-align: middle;
-    margin-left: -4px;
-  //line-height: 59px;
+
 }
 
 .menu__link {
+  display: block;
   color: #ffffff;
   text-decoration: none;
   font-size: 16px;
   padding: 20px;
-
+  transition: all 0.1s;
+  
   &:hover {
     background: rgba(55, 62, 66, 1);
     color: #61dac9;
-    transition-property: background, color;
-    transition-duration: 0.1s;
+    //transition-property: background, color;
   }
 }
 
@@ -24,22 +26,14 @@
   background: rgba(55, 62, 66, .7);
 }
 
-// .menu__item {
-//    float:left;
-// }
-
-
 .menu_welcome {
-   display: flex;
- flex-direction: row;
- border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
 }
 
 .menu__list_welcome {
   background: rgba(87, 218, 201, 0.9);
 }
 .menu__item_welcome{
-  line-height: 45px;
   border-right: 2px solid rgba(255, 255, 255, .8);
 
   &:last-child {
