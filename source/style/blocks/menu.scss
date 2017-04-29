@@ -1,5 +1,6 @@
 .menu__list {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .menu__item {

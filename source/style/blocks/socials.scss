@@ -1,14 +1,11 @@
 .socials {
   display: flex;
+  flex-flow: row wrap;
 }
 
 .socials__item {
-  margin: 0 8px;
+  margin-right: 16px;
   
-  &:first-child {
-    margin-left: 0; 
-  }
-
   &:last-child {
     margin-right: 0;
   }
