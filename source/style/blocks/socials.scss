@@ -1,21 +1,33 @@
+.socials {
+  display: flex;
+}
+
 .socials__item {
-  display: inline-block;
-  vertical-align: middle;
+  margin: 0 8px;
+  
+  &:first-child {
+    margin-left: 0; 
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .socials__link {
-  padding: 0 13px;
-  line-height: 25px;
-  font-size: 25px;
+  padding: 5px;
+  display: block;
+
+
 }
 
 .socials__icon {
   height: 25px;
   width: 25px;
   fill: rgba(255, 255, 255, 0.5);
+  transition: all .8s;
   &:hover {
     fill: rgba(255, 255, 255, 1);
-    transition: all 1s;
   }
 }
 
@@ -26,12 +38,11 @@
   &:hover {
     fill: #fff;
     stroke: none;
-    transition: fill 1s;
   }
 }
 
 .socials__link_footer {
-  padding: 0 5px;
+  padding: 5px;
 }
 
 .socials__icon_welcome {
