@@ -18,6 +18,17 @@
 
 .modal__header, .modal__footer {
   flex: 0 1 20%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+}
+
+.modal__header {
+  justify-content: space-between;
+}
+
+.modal__footer {
+  justify-content: center;
 }
 
 .modal_hero{

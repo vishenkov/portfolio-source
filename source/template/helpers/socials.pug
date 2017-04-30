@@ -1,7 +1,7 @@
 mixin socials (object, mod, img_mod)
   ul.socials
     each item, key in object
-      li.socials__item
+      li(class="socials__item" +(mod==""?"":" socials__item_"+mod))
         a(href=item class="socials__link "+(mod==""?"":"socials__link_"+mod))
           svg(class="socials__icon "+(mod==""?"":"socials__icon_"+mod))
             use(xlink:href="/assets/img/sprite.svg#"+key+img_mod)

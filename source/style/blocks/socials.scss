@@ -5,7 +5,7 @@
 
 .socials__item {
   margin-right: 16px;
-  
+
   &:last-child {
     margin-right: 0;
   }
@@ -37,7 +37,13 @@
     stroke: none;
   }
 }
+.socials__item_footer {
+  margin-right: 8px;
 
+  &:last-child {
+    margin-right: 0;
+  }
+}
 .socials__link_footer {
   padding: 5px;
 }
