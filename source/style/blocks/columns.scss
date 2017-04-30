@@ -16,11 +16,14 @@
   background: #eeebdf;
 }
 
-.columns__left-blog {
-  width: 33%;
+.columns__left_blog {
+  width: 30%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
 }
 
-.columns__right-blog {
-  width: 67%;
+.columns__right_blog {
+  width: 70%;
   background: #efeee9;
 }

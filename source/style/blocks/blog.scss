@@ -5,7 +5,5 @@
 
 .blog-menu {
   padding: 70px 5px 0 0; 
-  width: 265px;
-  float: right;
-  @extend %clearfix;
+  max-width: 270px;
 }
