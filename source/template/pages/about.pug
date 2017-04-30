@@ -6,52 +6,47 @@ block variables
 block header
   include ../common/hero
 
-//- block traingle-left
-//-   +traingle('left', 'triangle_fill_white')
-//- block traingle-right
-//-   +traingle('right', 'triangle_fill_beige')
-//- block column-left
-//-   .about__title
-//-     .title
-//-       | Обо мне
-//-   .about__content
-//-     .about-user
-//-       .about-user__photo
-//-         img(src="/assets/img/about.jpg", alt="").about-user__img
-//-       .about-user__info
-//-         .about-user__title
-//-           .title_fz-35
-//-             | Кто я
-//-         .about-user__text
-//-           .text
-//-             p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
-//-             p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+block traingle-left
+  +traingle('left', 'triangle_fill_white')
+block traingle-right
+  +traingle('right', 'triangle_fill_beige')
+block column-left
+  .about
+    .about__block
+      +title("Обо мне", true, "about-header.png", "fz-63")
+    .about__block.about__block_centred-content
+      img(src="/assets/img/about.jpg", alt="").about__img
+    .about__block
+      +title("Кто я", true, "", "")
+    .about__block
+      .text
+        p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+        p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
 
 
-//- block column-right
-//-   .about-data
-//-   .about-data__title
-//-     .title.title_fz-35.title_mwid-50
-//-       | Чем я могу быть Вам полезен
-//-   .about-data__subtitle
-//-     .text
-//-       p Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать несложные задачи на Backend. Но давайте по порядку,
-//-   .adout-data__content
-//-     .skills
-//-       ul.skills__list
-//-         each skill, key in skills
-//-           li.skills__item
-//-             .skills__title
-//-               .text.text_skills-name= key
-//-             .data-circles
-//-               ul.data-circles__list
-//-                 each level, name in skill
-//-                   li.data-circles__item
-//-                     .data-circles__circle
-//-                       +svgSkill (name, level, 55, 20)
+block column-right
+  .about
+    .about__block.about__block_right
+      +title("Чем я могу быть Вам полезен", true, "", "")
+    .about__block.about__block_right
+      .text
+        p Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать несложные задачи на Backend. Но давайте по порядку.
+    .about__block.about__block_right
+      .skills
+        ul.skills__list
+          each skill, key in skills
+            li.skills__item
+              .skills__title
+                .text.text_skills-name= key
+              .data-circles
+                ul.data-circles__list
+                  each level, name in skill
+                    li.data-circles__item
+                      .data-circles__circle
+                        +svgSkill (name, level, 55, 20)
 
-//- block dialog
-//-   include ../common/map.pug
+block dialog
+  include ../common/map.pug
 
 block footer
   include ../common/footer

@@ -1,52 +1,27 @@
 .about {
   display: flex;
-  flex-direction: row;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-content: center;
 }
 
-.about__left, .about__right {
-  width: 50%;
-  position: relative;
+.about__block {
+  flex: 1 1 100%;
+  margin-left: 80px;
+  margin-right: 80px;
 }
 
-.about__left {
-  background: #efeee9;
+.about__block_centred-content {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
 }
 
-.about__right {
-  background: #eeebdf;
+.about__img {
+  display: block;
 }
 
-.about__triangles {
-  position: absolute;
-  bottom: 100%;
-}
-
-.about__content {
-  padding: 0 80px 45px;
-}
-
-.about-data__subtitle {
-  padding: 0 30px 0 40px;
-}
-
-.adout-data__content {
-  padding-left: 37px;
-}
-
-.about__title, .about-user__title, .about-data__title {
-  text-align: center;
-}
-
-.about__title {
-  padding: 30px 0 10px; 
-  // padding-bottom: 60px;
-  background: url("/assets/img/about-header.png") center no-repeat;
-  z-index: 999;
-  position: relative;
-  top: -45px;
-
-}
-
-.about-user__photo, .about-user__title {
-  margin-bottom: 40px;
+.about__block_right {
+  margin-left: 40px;
+  margin-right: 5px; 
 }

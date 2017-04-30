@@ -52,5 +52,14 @@ mixin traingle(origin, addClass)
       class="triangle "+addClass)
       polygon(points="0,90 0,100 1000,100 1000,0")
 
+mixin title(text, dashed, bgName, mod)
+  -var bgStyle=""
+  if bgName!=""
+    -bgStyle= "background: url('/assets/img/"+bgName+"') center no-repeat;background-size: contain;"
+
+  div(class="title" + (mod!=""?" title_"+mod:"") + (dashed?" title_dashed":"") style=bgStyle)
+    div(
+      class="title__text" + (dashed?" title__text_dashed":"") + (mod!=""?" title__text"+mod:""))=text
+
 mixin addModClass(className, mod)
-  - var classMod = className + "_" + mod
+  -var classMod = className + "_" + mod

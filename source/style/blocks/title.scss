@@ -1,47 +1,112 @@
-@mixin title($fz : 63px) {
+// @mixin title($fz : 63px) {
+//   color: $main-font-color;
+//   font-size: $fz;
+//   line-height: $fz;
+//   @include bernier();
+//   padding: 0 40px 0 40px;
+//   display: inline-block;
+//   max-width: 45%;
+//   position: relative;
+//   background-size: contain;
+//   background-position: center center;
+//   background-repeat: no-repeat;
+//   text-align: center;
+ 
+//   &:after, &:before {
+//     content: "";
+//     @include centeredTitle($fz);
+//     background: rgba($main-font-color, .2);
+//     width: 22px;
+//     height: 5px;
+//   }
+
+//   &:before {
+//     left: 0;
+//   }
+
+//   &:after {
+//     right: 0;
+//   }
+// }
+
+// @mixin centeredTitle($fz: 63px) {
+//   position: absolute;
+//   top: $fz/2;
+//   transform: translateY(-2.5px); //half-height of dash
+// }
+
+// .title {
+//   @include title(63px);
+// }
+
+
+
+
+
+// .title_articles {
+//   color: $main-font-color;
+//   font-size: 25px;
+//   @include bernier();
+// }
+
+$paddingTextDashed: 30px;
+
+@mixin title_dashed($fz: 63px, $paddingTextDashed: 30px) {
+
+  $dashMargin: 15px;
+
+  &:after, &:before {
+    $dashWidth: 22px;
+    $dashHeight: 5px;
+
+    content: "";
+    display: block;
+    background: rgba($main-font-color, .2);
+    width: $dashWidth;
+    height: $dashHeight;
+    flex: 0 0 $dashWidth;
+    position: relative;
+    top: $fz/2 + $paddingTextDashed;
+    transform: translateY(-$dashHeight/2);
+  }
+  &:after {
+    left: $dashMargin;
+  }
+  &:before {
+    right: $dashMargin;
+  }
+}
+
+
+@mixin title($fz:35px) {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: center;
+  @include bernier();
+  text-align: center;
   color: $main-font-color;
   font-size: $fz;
   line-height: $fz;
-  @include bernier();
-  padding: 0 40px 0 40px;
-  display: inline-block;
-  max-width: 45%;
-  position: relative;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  text-align: center;
- 
-  &:after, &:before {
-    content: "";
-    @include centeredTitle($fz);
-    background: rgba($main-font-color, .2);
-    width: 22px;
-    height: 5px;
+
+  &_dashed {
+    @include title_dashed(35px, $paddingTextDashed);
   }
-
-  &:before {
-    left: 0;
-  }
-
-  &:after {
-  right: 0;
-  }
-
-}
-
-@mixin centeredTitle($fz: 63px) {
-  position: absolute;
-  top: $fz/2;
-  transform: translateY(-2.5px); //half-height of dash
 }
 
 .title {
-  @include title(63px);
+  @include title(35px);
 }
 
-.title_fz-35 {
-  @include title(35px);
+.title__text_dashed {
+  flex: 0 0 auto;
+  max-width: 40%;
+  //font-size: 35px;
+  padding: $paddingTextDashed 0;
+}
+
+.title_fz-63 {
+  @include title(63px);
 }
 
 .title_fz-45 {
@@ -62,13 +127,4 @@
 
 .title_mwid-50 {
   max-width: 50%;
-}
-
-
-
-.title_articles {
-  color: $main-font-color;
-  font-size: 25px;
-  @include bernier();
-  //line-height: $fz;
 }
