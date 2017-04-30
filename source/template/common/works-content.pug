@@ -1,0 +1,28 @@
++title("Мои работы", true, "works.png", "fz-63")
+  
+section.works
+  .works__description
+    .works__title
+      .title
+        | Сайт школы онлайн образования
+    .works__tech
+      //-TODO: review text styles
+      .text.text_reviews.text_reviews-subtitle.text_ta-center 
+        | HTML, CSS, JAVASCRIPT
+    .works__href
+      svg.works__icon
+          use(xlink:href="/assets/img/sprite.svg#link")
+      a(href="").works__link.text Посмотреть сайт
+
+
+  .works__mainimage
+    img(src="/assets/img/1.png")
+  .works__controls
+    .works__control
+      a(href="#").arrow.works__arrow
+        svg.arrow__icon
+          use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")
+    .works__control
+      a(href="#").arrow.works__arrow
+        svg.arrow__icon
+          use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")
