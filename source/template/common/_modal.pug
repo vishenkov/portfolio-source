@@ -2,9 +2,9 @@ block var-modal
   - var modal_mod = '';
 
 section(class="section modal modal_"+modal_mod)
-  .modal__header
+  div(class="modal__header modal__header_"+modal_mod)
     block modal-header
-  .modal__center
+  div(class="modal__center modal__center_"+modal_mod)
     block modal-center
-  .modal__footer
+  div(class="modal__footer modal__footer_"+modal_mod)
     block modal-footer

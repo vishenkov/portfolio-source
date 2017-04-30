@@ -3,10 +3,6 @@
   flex-flow: row wrap;
 }
 
-.menu__item {
-
-}
-
 .menu__link {
   display: block;
   color: #ffffff;
@@ -18,7 +14,6 @@
   &:hover {
     background: rgba(55, 62, 66, 1);
     color: #61dac9;
-    //transition-property: background, color;
   }
 }
 
@@ -27,40 +22,38 @@
   background: rgba(55, 62, 66, .7);
 }
 
-.menu_welcome {
+.menu__list_welcome {
+  background: rgba(0, 191, 165, 0.9);
   border-radius: 0 0 5px 5px;
 }
 
-.menu__list_welcome {
-  background: rgba(87, 218, 201, 0.9);
-}
 .menu__item_welcome{
-  border-right: 2px solid rgba(255, 255, 255, .8);
-
-  &:last-child {
-    border-right:2px solid transparent;
-  }
+  border-right: 2px solid rgba(222, 227, 231, .5);
+  flex: 1;
+  
   &:first-child {
-    margin-left: 0;
-    
+    flex: 1.3;
   }
-
-  &:hover {
-    background: rgba(44, 158, 141, 0.4);
-    color: #fff;
-    transition-property: background, color;
-    transition-duration: 0.1s;
+  &:last-child {
+    border-right: none;
   }
 }
 
 .menu__link_welcome {
-  padding: 10px 31px;
-  
+  transition: all 0.3;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 500;
+
   &:hover {
-    background: rgba(44, 158, 141, 0.4);
+    background: rgba(0, 150, 136, 0.9);
     color: #fff;
-    transition-property: background, color;
-    transition-duration: 0.1s;
+
+    &:first-child {
+      border-bottom-left-radius: 5px;
+    }
+    &:last-child {
+      border-bottom-right-radius: 5px;
+    }
   }
-  
 }

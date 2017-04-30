@@ -1,16 +1,4 @@
-// .works__gltitle {
-//   background: #efeee9;
-//   text-align: center;
-//   padding: 70px 0;
-// }
-
-// .works__description {
-//   width: 420px;
-//   @include centered();
-// }
-
 .works {
-  //max-width: 1800px;
   display: flex;
   flex-flow: column wrap;
   height: 750px;
@@ -59,8 +47,8 @@
   padding: 12px 18px;
   text-align: center;
   border-radius: 5px;
-  //@include centered('x');
 }
+
 .works__link {
   vertical-align: middle;
   text-decoration: none;
@@ -70,6 +58,7 @@
     color: rgba(0, 191, 165, 1);;
   }
 }
+
 .works__icon {
   margin-right: 10px;
   vertical-align: middle;
@@ -81,13 +70,13 @@
 .works__mainimage {
   height: 525px;
 }
+
 .works__controls {
   display: flex;
   flex-flow: row nowrap;
 }
 
 .works__control {
-
   flex: 0 1 50%;
   position: relative;
   height: 100%;

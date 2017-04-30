@@ -1,0 +1,15 @@
+.button__link {
+  padding: 14px 29px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  transition: all 0.3;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+
+  &:hover {
+    color: rgba(0, 191, 165, 1);
+    background: #fff;
+  }
+}

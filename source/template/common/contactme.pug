@@ -4,40 +4,8 @@ block var-modal
   - var modal_mod = 'contactme'
 
 block modal-header
-  .reviews
-    .reviews__title
-      .title.title_fz-45
-        | Что обо мне говорят
-    ul.reviews__list
-      li.reviews__item
-        svg.reviews__icon
-          use(xlink:href="/assets/img/sprite.svg#check")
-        .reviews__text
-          p.text.text_reviews Этот парень проходил обуяение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-        .reviews__author
-          .reviews__photo
-          .reviews__info
-            .reviews__name
-              .text.text_reviews.text_reviews-name
-                | Ковальчук Дмитрий
-            .reviews__subtitle
-              .text.text_reviews.text_reviews-subtitle
-                | основатель LoftSchool
+  include ../common/reviews
 
-      li.reviews__item
-        svg.reviews__icon
-          use(xlink:href="/assets/img/sprite.svg#check")
-        .reviews__text
-          p.text.text_reviews Этот код выдержит любые испытания. Только пожалуй, не загружается на слишком старых браузерах!
-        .reviews__author
-          .reviews__photo
-          .reviews__info
-            .reviews__name
-              .text.text_reviews.text_reviews-name
-                | Сабанцев Владимир
-            .reviews__subtitle
-              .text.text_reviews.text_reviews-subtitle
-                | преподаватель
 block modal-center
   .contactme
     .contactme__title
@@ -54,6 +22,6 @@ block modal-center
           input(type="reset" name="reset" value="Очистить").contactme__reset
 
 block modal-footer
-  a(href="#").arrow.contactsme__arrow
+  a(href="#").arrow
     svg.arrow__icon
       use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")

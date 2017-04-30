@@ -1,0 +1,20 @@
+-var reviews= [{"text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!","name": "Ковальчук Дмитрий","subtitle": "основатель LoftSchool"},{"text": "Этот код выдержит любые испытания. Только пожалуй, не загружается на слишком старых браузерах!","name": "Сабанцев Владимир","subtitle": "преподаватель"}]
+
+.reviews
+    .reviews__title
+      .title
+        | Что обо мне говорят
+    ul.reviews__list
+      each review in reviews
+        li.reviews__item
+          svg.reviews__icon
+            use(xlink:href="/assets/img/sprite.svg#login")
+          .reviews__text
+            p.text.text_reviews=review["text"]
+          .reviews__author
+            .reviews__photo
+            .reviews__info
+              .reviews__name
+                .text.text_reviews.text_reviews-name=review["name"]
+              .reviews__subtitle
+                .text.text_reviews.text_reviews-subtitle=review["subtitle"]

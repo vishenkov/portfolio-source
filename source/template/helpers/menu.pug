@@ -10,4 +10,5 @@ mixin menu(menuList, itemsCount, highlightCurrent, mod)
           li(class="menu__item"+(mod==""?"":" menu__item_"+mod))
             if highlightCurrent==true
               -highlightCurrentMod = (item==title?" menu__link_current":"")
-            a(href=key+".html" class="menu__link"+ highlightCurrentMod + linkMod)= item
+            a(href=key+".html" class="menu__link"+ highlightCurrentMod + linkMod)
+              span(class="menu__text"+(mod==""?"":" menu__text_"+mod))= item

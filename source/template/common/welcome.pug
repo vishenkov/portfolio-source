@@ -4,10 +4,15 @@ block var-modal
   - var modal_mod = 'welcome'
 
 block modal-header
-
+  .welcome__button
+    .button
+      .button__link
+        | Авторизоваться
 
 block modal-center
   .welcome
     include user-welcome.pug
 
 block modal-footer
+  footer.footer.footer_index.text.text_footer
+    | © Кирилл Вишенков | создано с любовью в LoftSchool | 2017

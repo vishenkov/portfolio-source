@@ -1,6 +1,5 @@
 .modal{
   overflow: hidden;
-  //position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -9,7 +8,6 @@
 
 
 .modal__center {
-  //@include centered();
   flex: 1 1 60%;
   display: flex;
   justify-content: center;
@@ -54,4 +52,13 @@
   //background-position: top right;
   background-repeat: no-repeat;
   height: 1285px;
+}
+
+.modal__header_welcome {
+  justify-content: flex-end;
+}
+
+.modal__footer_welcome {
+  align-items: flex-end;
+  padding-bottom: 40px;
 }
