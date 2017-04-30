@@ -1,0 +1,35 @@
+section.section.columns
+  .columns__left
+    .about
+      .about__block
+        +title("Обо мне", true, "about-header.png", "fz-63")
+      .about__block.about__block_centred-content
+        img(src="/assets/img/about.jpg", alt="").about__img
+      .about__block
+        +title("Кто я", true, "", "")
+      .about__block
+        .text
+          p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+          p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+
+
+  .columns__right
+    .about
+      .about__block.about__block_right
+        +title("Чем я могу быть Вам полезен", true, "", "")
+      .about__block.about__block_right
+        .text
+          p Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать несложные задачи на Backend. Но давайте по порядку.
+      .about__block.about__block_right
+        .skills
+          ul.skills__list
+            each skill, key in skills
+              li.skills__item
+                .skills__title
+                  .text.text_skills-name= key
+                .data-circles
+                  ul.data-circles__list
+                    each level, name in skill
+                      li.data-circles__item
+                        .data-circles__circle
+                          +svgSkill (name, level, 55, 20)

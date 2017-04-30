@@ -11,39 +11,35 @@ block traingle-left
 block traingle-right
   +traingle('right', 'triangle_fill_white')
 
+block page-content
+  +title("Мои работы", true, "works.png", "fz-63")
+  
+  section.works
+    .works__description
+      .works__title
+        .title.title_fz-24.title_mwid-75
+          | Сайт школы онлайн образования
+      .works__tech
+        //-TODO: review text styles
+        .text.text_reviews.text_reviews-subtitle.text_ta-center 
+          | HTML, CSS, JAVASCRIPT
+      .works__href
+        svg.works__icon
+            use(xlink:href="/assets/img/sprite.svg#link")
+        a(href="").works__link.text Посмотреть сайт
 
-block content-header
-  .works__gltitle
-    .title.title_fz-45
-      | Мои работы
 
-block column-left
-  .works__description
-    .works__title
-      .title.title_fz-24.title_mwid-75
-        | Сайт школы онлайн образования
-    .works__tech
-      //-TODO: reviw text styles
-      .text.text_reviews.text_reviews-subtitle.text_ta-center 
-        | HTML, CSS, JAVASCRIPT
-    .works__href
-      svg.works__icon
-          use(xlink:href="/assets/img/sprite.svg#link")
-      a(href="").works__link.text Посмотреть сайт
-
-block column-right
-  .works__mainimage
-    img(src="/assets/img/1.png")
-  .works__controls
-    .works__control
-      a(href="#").arrow.works__arrow
-        svg.arrow__icon
-          use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")
-
-    .works__control
-      a(href="#").arrow.works__arrow
-        svg.arrow__icon
-          use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")
+    .works__mainimage
+      img(src="/assets/img/1.png")
+    .works__controls
+      .works__control
+        a(href="#").arrow.works__arrow
+          svg.arrow__icon
+            use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")
+      .works__control
+        a(href="#").arrow.works__arrow
+          svg.arrow__icon
+            use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")
     
 
 block dialog

@@ -4,52 +4,15 @@ block variables
   - var title = 'Блог'
 
 block header
-  include ../common/header_blog
+  include ../common/header-blog
 
 block traingle-left
   +traingle('left', 'triangle_fill_white')
 block traingle-right
   +traingle('right', 'triangle_fill_white')
-block columns
-  aside.columns__left.columns__left-blog
-    .blog__menu
-      .blog-menu
-        ul.blog-menu__list
-          li.blog-menu__item
-            a(href="#").blog-menu__link Самое важное в SASS
-          li.blog-menu__item
-            a(href="#").blog-menu__link Приемы в верстке, без которых не обходится ни один сайт
-          li.blog-menu__item
-            a(href="#").blog-menu__link Самый необходимый набор Gulp плагинов
-          li.blog-menu__item
-            a(href="#").blog-menu__link Почему я выбрал pug?!
 
-  .columns__right.columns__right-blog
-    .blog
-      .articles
-        article.article__content
-          .articles__title
-            .title_articles
-              | Lorem
-          .articles__date
-            .text.text_articles-date.text_lighter 
-              | 25 декабря 2020
-          .articles__text
-            .text
-              p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quam saepe aliquam eum, velit! Distinctio commodi voluptate veritatis ducimus est suscipit, veniam ad tempore possimus, alias rerum, perferendis nostrum at.
-              p  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Вскоре, последний. Предупреждал речью то строчка которое! Использовало даже сих реторический вскоре это до жизни подпоясал вдали моей? Свое, текстов.
-        article.article__content
-          .articles__title
-            .title_articles
-              | Лорем
-          .articles__date
-            .text.text_articles-date.text_lighter 
-              | 25 декабря 2020
-          .articles__text
-            .text
-              p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quam saepe aliquam eum, velit! Distinctio commodi voluptate veritatis ducimus est suscipit, veniam ad tempore possimus, alias rerum, perferendis nostrum at.
-              p  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Вскоре, последний. Предупреждал речью то строчка которое! Использовало даже сих реторический вскоре это до жизни подпоясал вдали моей? Свое, текстов.
-              p  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. За ведущими родного власти города реторический заманивший что путь своего коварных своих текстов, осталось океана приставка своего моей взобравшись рукописи.
+block page-content
+  include ../common/blog-content
 
 block footer
   include ../common/footer
