@@ -7,15 +7,17 @@ block modal-header
   .hero__socials
       +socials(socials,'','')
 
-  a(href="#").hamburger
-    svg.hamburger__icon
-      use(xlink:href="/assets/img/sprite.svg#hamburger")
-  //img(src="/assets/img/portfolio-header.png", alt="").header__bg
+  .hero__hamburger
+    a(href="#").hamburger
+      svg.hamburger__icon
+        use(xlink:href="/assets/img/sprite.svg#hamburger")
 
 block modal-center
+  .hero__bg
   include user.pug
 
 block modal-footer
-  a(href="#").arrow
-    svg.arrow__icon
-      use(xlink:href="/assets/img/sprite.svg#arrow_down")
+  .hero__arrow
+    a(href="#").arrow
+      svg.arrow__icon
+        use(xlink:href="/assets/img/sprite.svg#arrow_down")

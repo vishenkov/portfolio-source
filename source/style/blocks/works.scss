@@ -69,6 +69,13 @@
 
 .works__mainimage {
   height: 525px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.works__image {
+  width: 100%;
 }
 
 .works__controls {
@@ -83,7 +90,7 @@
   
   &:after {
     content: "";
-    background: url('/assets/img/1.png') 100% 100% no-repeat; /* Добавляем фон */
+    background: url('/assets/img/1.png') center/contain no-repeat; /* Добавляем фон */
     background-size: contain; /* Масштабируем фон */
     opacity: 0.5;
     top: 0;

@@ -37,8 +37,13 @@
   color: #455a64
 }
 
+.text_articles {
+  text-align: justify;
+}
+
 .text_articles-date {
   color: #00bfa5;
+  opacity: 0.7;
 }
 
 .text_reviews {
@@ -57,5 +62,5 @@
 .text_footer {
   color: rgba(255, 255, 255, 1);
   font-size: 16px;
-  font-weight: 100;
+  font-weight: lighter;
 }

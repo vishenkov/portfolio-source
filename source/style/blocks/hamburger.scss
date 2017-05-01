@@ -1,11 +1,11 @@
-.hamburger{
-  // position: absolute;
-  // right: 30px;
-  // top: 30px;
-}
-
 .hamburger__icon {
   height: 35px;
   width: 40px;
-  fill: white;
+  fill: #fff;
+  cursor: pointer;
+
+  transition: all 0.2s;
+  &:hover {
+    fill: rgba(255, 255, 255, 0.5);
+  }
 }

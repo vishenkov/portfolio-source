@@ -1,8 +1,7 @@
 .modal{
   overflow: hidden;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: column nowrap;
   justify-content: space-between;
 }
 
@@ -31,6 +30,7 @@
 
 .modal_hero{
   background: url('/assets/img/portfolio.jpg');
+  position: relative;
   height: 620px;
 }
 
@@ -52,6 +52,14 @@
   //background-position: top right;
   background-repeat: no-repeat;
   height: 1285px;
+}
+.modal__header_contactme,.modal__center_contactme, .modal__footer_contactme {
+ // height: auto;
+  flex: 0 1 auto;
+}
+.modal__header_hero {
+  margin: 28px 30px 0;
+
 }
 
 .modal__header_welcome {

@@ -5,10 +5,10 @@
 .article__content {
   padding-top: 70px;
   padding-bottom: 68px;
-  border-bottom: 2px solid grey;
+  border-bottom: 5px solid rgba(55, 62, 66, 0.07);
 
   &:last-child {
-    border-bottom: 2px solid transparent;
+    border-bottom: none;
 
   }
 }
