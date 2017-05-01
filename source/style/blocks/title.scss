@@ -1,130 +1,82 @@
-// @mixin title($fz : 63px) {
-//   color: $main-font-color;
-//   font-size: $fz;
-//   line-height: $fz;
-//   @include bernier();
-//   padding: 0 40px 0 40px;
-//   display: inline-block;
-//   max-width: 45%;
-//   position: relative;
-//   background-size: contain;
-//   background-position: center center;
-//   background-repeat: no-repeat;
-//   text-align: center;
- 
-//   &:after, &:before {
-//     content: "";
-//     @include centeredTitle($fz);
-//     background: rgba($main-font-color, .2);
-//     width: 22px;
-//     height: 5px;
-//   }
+$padding-main: 70px;
+$padding-sub: 40px;
 
-//   &:before {
-//     left: 0;
-//   }
-
-//   &:after {
-//     right: 0;
-//   }
-// }
-
-// @mixin centeredTitle($fz: 63px) {
-//   position: absolute;
-//   top: $fz/2;
-//   transform: translateY(-2.5px); //half-height of dash
-// }
-
-// .title {
-//   @include title(63px);
-// }
-
-
-
-
-
-// .title_articles {
-//   color: $main-font-color;
-//   font-size: 25px;
-//   @include bernier();
-// }
-
-$paddingTextDashed: 30px;
-
-@mixin title_dashed($fz: 63px, $paddingTextDashed: 30px) {
-
-  $dashMargin: 15px;
+@mixin title_dashed($fz:35px, $padding:$padding-sub) {
+  $dWidth: 22px;
+  $dHeight: 5px;
+  $margin: 20px;
 
   &:after, &:before {
-    $dashWidth: 22px;
-    $dashHeight: 5px;
-
     content: "";
-    display: block;
     background: rgba($main-font-color, .2);
-    width: $dashWidth;
-    height: $dashHeight;
-    flex: 0 0 $dashWidth;
-    position: relative;
-    top: $fz/2 + $paddingTextDashed;
-    transform: translateY(-$dashHeight/2);
-  }
-  &:after {
-    left: $dashMargin;
+    width: $dWidth;
+    height: $dHeight;
+    display: inline-block;
+    position: absolute;
+    top: $padding + $fz*$line-height/2;
+    transform: translateY(-$dHeight/2);
   }
   &:before {
-    right: $dashMargin;
+    // left: -$dWidth -$margin;
+    margin-left: -($margin+$dWidth);
   }
-}
-
-
-@mixin title($fz:35px) {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: flex-start;
-  justify-content: center;
-  @include bernier();
-  text-align: center;
-  color: $main-font-color;
-  font-size: $fz;
-  line-height: $fz;
-
-  &_dashed {
-    @include title_dashed(35px, $paddingTextDashed);
+  &:after {
+    //right: -$margin;
+    margin-left: $margin;
   }
 }
 
 .title {
-  @include title(35px);
+  @include bernier();
+  color: $main-font-color;
+  position: relative;
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.title__text_dashed {
-  flex: 0 0 auto;
-  max-width: 40%;
-  //font-size: 35px;
-  padding: $paddingTextDashed 0;
+.title_bg-about {
+  background-image: url('/assets/img/about-header.png');
 }
 
-.title_fz-63 {
-  @include title(63px);
+.title_bg-works {
+  background-image: url('/assets/img/works-header.png');
 }
 
-.title_fz-45 {
-  @include title(45px);
+.title_bg-blog {
+  background-image: url('/assets/img/blog-header.png');
+  position: absolute;
+  width: 100%;
+  top: -$padding-main;
 }
 
-.title_fz-24 {
-  @include title(24px);
+.title__text_sub {
+  $fz: 35px;
+  font-size: $fz;
+  @include title_dashed($fz, 0);
+  padding-bottom: $padding-sub;
 }
 
-.title_mwid-100 {
-  max-width: 100%;
+.title__text_main {
+  $fz: 63px;
+  font-size: $fz;
+  @include title_dashed($fz, $padding-main);
+  padding: $padding-main 0;
+  color: $font-color2;
 }
 
-.title_mwid-75 {
-  max-width: 75%;
+.title__text_dashed-false {
+  &:after, &:before {
+    display: none;
+  }
 }
 
-.title_mwid-50 {
-  max-width: 50%;
+.title__text_color-white {
+  color: #fff;
 }
+

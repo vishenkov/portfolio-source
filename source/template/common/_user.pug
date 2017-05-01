@@ -1,5 +1,9 @@
 block var-user
-  - var user_mod = '';
+  - var user_mod = ''
+
+- var name = 'Кирилл Вишенков'
+- var subtitle = 'Личный сайт веб-разработчика'
+
 .user
   div(class="user__info"+(user_mod==""?"":" user__info_"+user_mod))
     div(class="user__photo"+(user_mod==""?"":" user__photo_"+user_mod))
@@ -7,9 +11,9 @@ block var-user
         img(src="/assets/img/user.jpg", alt="").user__photo-img
     div(class="user__title"+(user_mod==""?"":" user__title_"+user_mod))
       block user-title
-        | Кирилл Вишенков
+        .text.text_fz-35.text_fw-medium.text_color-white.text_ta-center= name
     div(class="user__subtitle"+(user_mod==""?"":" user__subtitle_"+user_mod))
       block user-subtitle
-        | Личный сайт веб-разработчика
+        .text.text_fw-lighter.text_color-white.text_opacity-80= subtitle
     block user-add
   block user-footer

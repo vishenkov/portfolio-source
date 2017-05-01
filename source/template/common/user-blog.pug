@@ -1,7 +1,7 @@
 extends _user.pug
 
 block user-title
-  .title.title_fz-45
-    | Блог
+  +title("Блог", "bg-blog", ["main", "color-white"])
 block user-subtitle
-  | Статьи, которые я написал
+  .text.text_color-white
+    | Статьи, которые я написал

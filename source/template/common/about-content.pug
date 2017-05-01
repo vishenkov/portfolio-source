@@ -2,11 +2,11 @@ section.section.columns
   .columns__left
     .about
       .about__block
-        +title("Обо мне", true, "about-header.png", "fz-63")
+        +title("Обо мне","bg-about", ["main"])
       .about__block.about__block_centred-content
         img(src="/assets/img/about.jpg", alt="").about__img
       .about__block
-        +title("Кто я", true, "", "")
+        +title("Кто я","", ["sub"])
       .about__block
         .text
           p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
@@ -16,7 +16,7 @@ section.section.columns
   .columns__right
     .about
       .about__block.about__block_right
-        +title("Чем я могу быть Вам полезен", true, "", "")
+        +title("Чем я могу быть Вам полезен","", ["sub"])
       .about__block.about__block_right
         .text
           p Больше всего меня привлекает Frontend разработка, но я также знаком и могу решать несложные задачи на Backend. Но давайте по порядку.
@@ -26,7 +26,7 @@ section.section.columns
             each skill, key in skills
               li.skills__item
                 .skills__title
-                  .text.text_skills-name= key
+                  .text.text_fz-29.text_fw-medium= key
                 .data-circles
                   ul.data-circles__list
                     each level, name in skill

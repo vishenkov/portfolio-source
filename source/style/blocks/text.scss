@@ -1,7 +1,7 @@
 .text {
   color: $main-font-color;
   font-size: 16px;
-  text-align: left;
+  text-align: start;
   @include roboto();
 }
 
@@ -10,12 +10,32 @@
   margin-bottom: 22px;
 }
 
-.text_alpha-white {
-  color: rgba(255, 255, 255, .5);
+.text_fz-14 {
+  font-size: 14px;
 }
 
-.text_lighter {
+.text_fz-29 {
+  font-size: 29px;
+}
+
+.text_fz-28 {
+  font-size: 28px;
+}
+
+.text_fz-35 {
+  font-size: 35px;
+}
+
+.text_fw-lighter {
   font-weight: lighter;
+}
+
+.text_fw-bold {
+  font-weight: bold;
+}
+
+.text_fw-medium {
+  font-weight: 400;
 }
 
 .text_ta-right {
@@ -26,41 +46,30 @@
   text-align: center;
 }
 
-.text_skills-tech {
-  font-size: 13px;
-  color: #00bfa5;
-  text-align: center;
-}
-
-.text_skills-name {
-  font-size: 28px;
-  color: #455a64
-}
-
-.text_articles {
-  text-align: justify;
-}
-
-.text_articles-date {
-  color: #00bfa5;
-  opacity: 0.7;
-}
-
-.text_reviews {
-  font-size: 12px;
-}
-
-.text_reviews-name,  .text_reviews-subtitle {
-  font-weight: bold;
-  color: #00bfa5;
-}
-
-.text_reviews-subtitle {
-  font-weight: normal;
-}
-
-.text_footer {
+.text_color-white {
   color: rgba(255, 255, 255, 1);
-  font-size: 16px;
-  font-weight: lighter;
+}
+
+.text_color-theme {
+  color: $theme-color1;
+}
+
+.text_color-input {
+  color: #556266;
+}
+
+.text_color-tech {
+  color: #20b5a1;
+}
+
+.text_opacity-50 {
+  opacity: .5;
+}
+
+.text_opacity-70 {
+  opacity: .7;
+}
+
+.text_opacity-80 {
+  opacity: .8;
 }

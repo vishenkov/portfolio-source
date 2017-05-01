@@ -3,6 +3,12 @@ extend _user
 block var-user
   - var user_mod = 'welcome';
 
+block user-title
+  .text.text_fz-28.text_fw-medium.text_ta-center= name
+block user-subtitle
+  .text.text_fw-lighter.text_ta-center.text_opacity-80= subtitle
+
+
 block user-add
   .welcome__socials
     +socials(socials,'welcome','')

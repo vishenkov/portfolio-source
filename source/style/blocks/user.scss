@@ -3,6 +3,7 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
+  min-width: 50%;
 }
 
 .user__info {
@@ -26,16 +27,10 @@
 }
 
 .user__title {
+  width: 100%;
   margin-bottom: 10px;
-  color: #ffffff;
-  font-size: 35px;
-  font-weight: 500;
-}
-
-.user__subtitle {
-  font-size: 16px;
-  font-weight: lighter;
-  color: #fff;
+  flex: 1 0 90px;
+  position: relative;
 }
 
 .user__info_welcome {
@@ -43,15 +38,4 @@
   border-radius: 5px 5px 0 0;
   width: 380px;
   padding-top: 40px;
-}
-
-.user__title_welcome {
-  color: rgba(69, 90, 100, 1);
-  font-size: 28px;
-  font-weight: 500;
-}
-
-.user__subtitle_welcome {
-  color: rgba(69, 90, 100, 0.8);
-  margin-bottom: 35px;
 }

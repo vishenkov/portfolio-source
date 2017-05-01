@@ -1,13 +1,11 @@
-+title("Мои работы", true, "works.png", "fz-63")
++title("Мои работы", "bg-works", ["main"])
   
 section.works
   .works__description
     .works__title
-      .title
-        | Сайт школы онлайн образования
+      +title("Сайт школы онлайн образования", "", ["sub"])
     .works__tech
-      //-TODO: review text styles
-      .text.text_reviews.text_reviews-subtitle.text_ta-center 
+      .text.text_ta-center.text_fw-medium.text_color-tech
         | HTML, CSS, JAVASCRIPT
     .works__href
       svg.works__icon

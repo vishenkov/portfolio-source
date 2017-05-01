@@ -36,7 +36,7 @@ mixin svgSkill (title, value, rad, strokeWidth)
         stroke-width=strokeWidth)
 
   .data-circles__text
-    .text.text_skills-tech= title 
+    .text.text_color-theme.text_fz-14.text_fw-medium.text_ta-center= title 
 
 mixin traingle(origin, addClass)
   if origin == 'left'
@@ -52,14 +52,18 @@ mixin traingle(origin, addClass)
       class="triangle "+addClass)
       polygon(points="0,90 0,100 1000,100 1000,0")
 
-mixin title(text, dashed, bgName, mod)
-  -var bgStyle=""
-  if bgName!=""
-    -bgStyle= "background: url('/assets/img/"+bgName+"') center no-repeat;background-size: contain;"
+mixin title(text, bg, modsArray)
+  - var modString = ''
+  - for (var i = 0; i < modsArray.length; i++)
+    -modString += addMod("title__text", modsArray[i])
+  
+  div(class="title" + addMod("title", bg))
+    div(class="title__text" + modString)= text
 
-  div(class="title" + (mod!=""?" title_"+mod:"") + (dashed?" title_dashed":"") style=bgStyle)
-    div(
-      class="title__text" + (dashed?" title__text_dashed":"") + (mod!=""?" title__text"+mod:""))=text
 
-mixin addModClass(className, mod)
-  -var classMod = className + "_" + mod
+-
+  function addMod (className, modificator) {
+    if ((className!='') && (modificator!=''))
+      return ' ' + className + '_' + modificator;
+    return '';
+  }

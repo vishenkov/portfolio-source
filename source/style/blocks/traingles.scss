@@ -6,25 +6,21 @@
 
   &_fill {
 
-    &_white {
+    &-white {
       fill: #efeee9;
     }
 
-    &_beige {
+    &-beige {
       fill: #eeebdf;
     }
-
   }
 }
 
 .triangle__wrapper {
-  @extend %clearfix;
+  display: flex;
+  flex-flow: row nowrap;
 }
 .traingle__left, .traingle__right {
-  width: 50%;
-  float: left;
+  flex: 0 0 50%;
   position: relative;
-}
-.traingle__right {
-  float: right;
 }
