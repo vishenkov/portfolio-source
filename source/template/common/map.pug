@@ -5,7 +5,8 @@ block var-modal
 
 block modal-center
   .contacts
-    +title("Контакты", "", ["sub"])
+    .contacts__title
+      +title("Контакты", "width-100", ["sub"])
     .contacts__content
       ul.contacts__list
         each value, key in contacts

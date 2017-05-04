@@ -15,13 +15,26 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
+  overflow: hidden;
 }
 
 .about__img {
   display: block;
+  height: auto;
+  max-width: 100%;
+  align-self: center;
 }
 
 .about__block_right {
   margin-left: 40px;
   margin-right: 5px; 
+}
+
+.about__block_right , .about__block {
+  @include tablets {
+    margin: 0 148px;
+  }
+  @include phones {
+    margin: 0 2%;
+  }
 }

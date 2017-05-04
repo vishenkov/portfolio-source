@@ -13,6 +13,19 @@
     &-beige {
       fill: #eeebdf;
     }
+    &-work {
+      fill: #faf8f0;
+    }
+    &-blog {
+      fill: #fff;
+    }
+  }
+
+  @include tablets {
+    height: 70px;
+  }
+  @include phones {
+    height: 30px;
   }
 }
 

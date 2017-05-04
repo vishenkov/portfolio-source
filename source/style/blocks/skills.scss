@@ -1,6 +1,14 @@
 .skills__item {
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
   margin-bottom: 40px;
+
+  @include tablets {
+    align-items: center;
+  }
+  @include phones {
+    align-items: center;
+  }
 }
  
 .skills__title {

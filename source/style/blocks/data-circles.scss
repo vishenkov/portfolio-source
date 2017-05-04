@@ -1,12 +1,22 @@
-.data-circles__item {
-  display: inline-block;
-  position: relative;
-  margin-right: 33px;
-  margin-top: 33px;
-  
-  &:last-child {
-    margin-right: 0;
+.data-circles {
+  align-self: stretch;
+}
+.data-circles__list {
+  display: flex;
+  flex-flow: row wrap;
+
+  @include tablets {
+    justify-content: center;
   }
+  @include phones {
+    justify-content: center;
+  }
+}
+
+.data-circles__item {
+  position: relative;
+  margin-top: 33px;
+  margin-right: 33px;
 }
 
 .data-circles__text {

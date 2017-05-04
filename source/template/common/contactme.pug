@@ -8,16 +8,18 @@ block modal-header
 
 block modal-center
   .contactme
-    +title("Связаться со мной", "", ["sub"])
+    .blur
+    .contactme__title
+      +title("Связаться со мной", "width-100", ["sub"])
     .contactme__content
-      form.contactme__form
-        .contactme__form-data
-          input(type="name" name="name" placeholder="Имя").contactme__input.text.text_color-input
-          input(type="email" name="email" placeholder="Email").contactme__input.text.text_color-input
-          textarea(name="message" rows="7" placeholder="Ваше сообщение").contactme__input.text.text_color-input
-        .contactsme__buttons
-          input(type="submit" name="submit" value="Отправить").contactme__submit
-          input(type="reset" name="reset" value="Очистить").contactme__reset
+      form.form
+        .form__data
+          input(type="name" name="name" placeholder="Имя").form__input
+          input(type="email" name="email" placeholder="Email").form__input
+          textarea(name="message" rows="7" placeholder="Ваше сообщение").form__input
+        .form__buttons
+          input(type="submit" name="submit" value="Отправить").form__button
+          input(type="reset" name="reset" value="Очистить").form__button
 
 block modal-footer
   a(href="#").arrow

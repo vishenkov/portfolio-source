@@ -1,5 +1,8 @@
 extends _user.pug
 
+block var-user
+  - var user_mod = 'blog'
+
 block user-title
   +title("Блог", "bg-blog", ["main", "color-white"])
 block user-subtitle

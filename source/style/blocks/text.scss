@@ -3,6 +3,12 @@
   font-size: 16px;
   text-align: start;
   @include roboto();
+  @include tablets {
+  font-size: 14px;
+  }
+  @include phones {
+    font-size: 14px;
+  }
 }
 
 //GB, BEM :(
@@ -12,18 +18,30 @@
 
 .text_fz-14 {
   font-size: 14px;
+  @include phones {
+    font-size: 13px;
+  }
 }
 
 .text_fz-29 {
   font-size: 29px;
+  @include phones {
+    font-size: 21px;
+  }
 }
 
 .text_fz-28 {
   font-size: 28px;
+  @include phones {
+    font-size: 21px;
+  }
 }
 
 .text_fz-35 {
   font-size: 35px;
+  @include phones {
+    font-size: 21px;
+  }
 }
 
 .text_fw-lighter {
@@ -72,4 +90,22 @@
 
 .text_opacity-80 {
   opacity: .8;
+}
+.text_review {
+  @include tablets {
+    font-size: 14px;
+  }
+  @include phones {
+    font-size: 14px;
+  }
+}
+
+.text_footer{
+  @include tablets {
+    text-align: center;
+  }
+  @include phones {
+    font-size: 13px;
+    text-align: center;
+  }
 }

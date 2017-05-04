@@ -11,13 +11,14 @@ block modal-header
     a(href="#").hamburger
       svg.hamburger__icon
         use(xlink:href="/assets/img/sprite.svg#hamburger")
-
+block modal-bg
+  .parallax-scroll.parallax-scroll_hero.parallax-scroll_1
 block modal-center
-  .hero__bg
+  .hero__bg.parallax-scroll.parallax-scroll_2
   include user.pug
 
 block modal-footer
-  .hero__arrow
+  .hero__arrow.parallax-scroll.parallax-scroll_3
     a(href="#").arrow
       svg.arrow__icon
         use(xlink:href="/assets/img/sprite.svg#arrow_down")

@@ -1,30 +1,76 @@
 .columns {
   display: flex;
   flex-direction: row;
+  height: auto;
+}
+
+.columns_about {
+
+  @include tablets {
+    flex-flow: column nowrap;
+  }
+  @include phones {
+    flex-flow: column nowrap;
+  }
 }
 
 .columns__left, .columns__right {
   width: 50%;
   position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  height: auto;
+  
 }
 
 .columns__left {
-  background: #efeee9;
+  background: #fff;
+  border: 4px dashed grey;
 }
 
 .columns__right {
+  background: #fff;
+  border: 4px dashed aqua;
+}
+
+.columns__left_about, .columns__right_about {
+  @include tablets {
+    width: 100%;
+  }
+  @include phones {
+    width: 100%;
+  }
+}
+.columns__left_about {
+  background: #efeee9;
+}
+
+.columns__right_about {
   background: #eeebdf;
 }
 
+
 .columns__left_blog {
   width: 30%;
-  display: flex;
-  flex-flow: column nowrap;
+  // display: flex;
+  // flex-flow: column nowrap;
   align-items: flex-end;
   background: #fff;
+  @include tablets {
+    display: none;
+  }
+  @include phones {
+    display: none;
+  }
 }
 
 .columns__right_blog {
   width: 70%;
   background: #fff;
+  @include tablets {
+    width: 100%;
+  }
+  @include phones {
+    width: 100%;
+  }
 }

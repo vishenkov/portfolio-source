@@ -1,7 +1,10 @@
 $padding-main: 70px;
 $padding-sub: 40px;
+$fz-main: 63px;
+$fz-sub: 35px;
 
-@mixin title_dashed($fz:35px, $padding:$padding-sub) {
+
+@mixin title_dashed($fz:$fz-sub, $padding:$padding-sub) {
   $dWidth: 22px;
   $dHeight: 5px;
   $margin: 20px;
@@ -11,17 +14,15 @@ $padding-sub: 40px;
     background: rgba($main-font-color, .2);
     width: $dWidth;
     height: $dHeight;
-    display: inline-block;
-    position: absolute;
-    top: $padding + $fz*$line-height/2;
+    display: block;
+    position: relative;
+    top: $fz*$line-height/2;
     transform: translateY(-$dHeight/2);
   }
   &:before {
-    // left: -$dWidth -$margin;
-    margin-left: -($margin+$dWidth);
+    margin-right: $margin;
   }
   &:after {
-    //right: -$margin;
     margin-left: $margin;
   }
 }
@@ -38,36 +39,106 @@ $padding-sub: 40px;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
+  @include tablets {
+    max-width: 100%;
+  }
+  @include phones {
+    max-width: 100%;
+  }
+  
+}
+
+.title__text {
+  display: flex;
+  flex-flow:row nowrap;
+  justify-content: center;
+  text-align: center;
 }
 
 .title_bg-about {
   background-image: url('/assets/img/about-header.png');
+  @include tablets {
+    width: auto;
+  }
+  @include phones {
+    width: auto;
+  }
 }
 
 .title_bg-works {
   background-image: url('/assets/img/works-header.png');
+  @include tablets {
+    width: auto;
+  }
+  @include phones {
+    width: auto;
+  }
 }
 
 .title_bg-blog {
   background-image: url('/assets/img/blog-header.png');
   position: absolute;
+  max-width: 100%;
   width: 100%;
   top: -$padding-main;
 }
 
+.title_width-100 {
+  max-width: 100%;
+  width: 100%;
+}
+
+.title_article {
+  max-width: 100%;
+  justify-content: flex-start;
+  flex: 1 0 100%;
+}
+
 .title__text_sub {
-  $fz: 35px;
-  font-size: $fz;
-  @include title_dashed($fz, 0);
+  font-size: $fz-sub;
+  @include title_dashed($fz-sub, 0);
   padding-bottom: $padding-sub;
+  max-width: 80%;
+
+  @include tablets {
+    $fz-sub: $fz-sub/1.2;
+    font-size: $fz-sub;
+    @include title_dashed($fz-sub, 0);
+    padding-bottom: $padding-sub;
+    max-width: 100%;
+  }
+  @include phones {
+    $fz-sub: $fz-sub/1.6;
+    font-size: $fz-sub;
+    @include title_dashed($fz-sub, 0);
+    padding-bottom: $padding-sub;
+    max-width: 100%;
+  }
 }
 
 .title__text_main {
-  $fz: 63px;
-  font-size: $fz;
-  @include title_dashed($fz, $padding-main);
+  font-size: $fz-main;
+  @include title_dashed($fz-main, $padding-main);
   padding: $padding-main 0;
   color: $font-color2;
+  max-width: 80%;
+  
+  @include tablets {
+    $fz-main: $fz-main/1.3;
+    font-size: $fz-main;
+    @include title_dashed($fz-main, $padding-main);
+    padding: $padding-main 0;
+    color: $font-color2;
+    max-width: 100%;
+  }
+  @include phones {
+    $fz-main: $fz-main/1.8;
+    font-size: $fz-main;
+    @include title_dashed($fz-main, $padding-main);
+    padding: $padding-main 0;
+    color: $font-color2;
+    max-width: 100%;
+  }
 }
 
 .title__text_dashed-false {
@@ -79,4 +150,10 @@ $padding-sub: 40px;
 .title__text_color-white {
   color: #fff;
 }
+.title__text_ta-left {
+  text-align: left;
+}
 
+.title__text_padbot-0 {
+  padding-bottom: 0;
+}

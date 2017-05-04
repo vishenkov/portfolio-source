@@ -1,9 +1,13 @@
-.articles__title, .articles__date {
-  margin-bottom: 30px;
+.articles__date {
+  margin-bottom: 25px;
+}
+
+.articles__title {
+ margin-bottom: 20px; 
 }
 
 .article__content {
-  padding-top: 70px;
+  padding-top: 60px;
   padding-bottom: 68px;
   border-bottom: 5px solid rgba(55, 62, 66, 0.07);
 

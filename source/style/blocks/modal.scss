@@ -1,4 +1,4 @@
-.modal{
+.modal {
   overflow: hidden;
   display: flex;
   flex-flow: column nowrap;
@@ -28,45 +28,95 @@
   justify-content: center;
 }
 
-.modal_hero{
-  background: url('/assets/img/portfolio.jpg');
-  position: relative;
-  height: 620px;
-}
-
-.modal_welcome{
-  background: url('/assets/img/portfolio.jpg');
-  height: 100vh;
-  width: 100%;
-}
 
 .modal_map {
   background: url('/assets/img/map.png');
   background-position: top right;
   background-repeat: no-repeat;
   height: 974px;
+  @include phones {
+    justify-content: flex-start;
+  }
+}
+
+.modal__header_map, .modal__center_map {
+  @include phones {
+    flex: 0 1 auto;
+  }
 }
 
 .modal_contactme {
-  background: url('/assets/img/reviews.jpg');
-  //background-position: top right;
+  background: url('/assets/img/reviews.png');
   background-repeat: no-repeat;
-  height: 1285px;
+  background-position: bottom;
+  background-size: contain;
+  min-height: 1285px;
 }
+
 .modal__header_contactme,.modal__center_contactme, .modal__footer_contactme {
  // height: auto;
-  flex: 0 1 auto;
+  flex: 1 1 auto;
 }
+.modal__footer_contactme {
+  height: 100px;
+  align-items: center;
+}
+
+.modal_hero {
+  height: 620px;
+  position: relative;
+  @include tablets {
+     height: 505px;
+  }
+  @include phones {
+     height: 555px;
+  }
+}
+
+
 .modal__header_hero {
   margin: 28px 30px 0;
+  @include tablets {
+    margin: 24px 24px 0;
+  }
+  @include phones {
+    margin: 10px 10px 0;
+  }
 
+}
+
+
+.modal_welcome {
+  //background: url('/assets/img/portfolio.jpg');
+  height: 100vh;
+  width: 100%;
 }
 
 .modal__header_welcome {
   justify-content: flex-end;
+  margin: 28px 30px 0;
+  @include tablets {
+    margin: 0;
+    margin-top: 10px;
+  }
+  @include phones {
+    margin: 0;
+    margin-top: 10px;
+  }
 }
 
 .modal__footer_welcome {
   align-items: flex-end;
   padding-bottom: 40px;
+}
+
+.modal__header_welcome, .modal__footer_welcome {
+  @include tablets {
+    justify-content: center;
+    flex-basis: initial;
+  }
+  @include phones {
+    justify-content: center;
+    flex-basis: initial;
+  }
 }

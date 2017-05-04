@@ -3,10 +3,23 @@ extends _modal
 block var-modal
   - var modal_mod = 'welcome'
 
+block modal-bg
+  ul.parallax
+    li(data-depth=0.9).layer.layer__1
+    li(data-depth=0.5).layer.layer__2
+    li(data-depth=0.6).layer.layer__3
+    li(data-depth=0.7).layer.layer__4
+    li(data-depth=0.5).layer.layer__5
+    li(data-depth=0.3).layer.layer__6
+    li(data-depth=0.25).layer.layer__7
+    li(data-depth=0.1).layer.layer__8
+    li(data-depth=0.1).layer.layer__9
+    li(data-depth=0).layer.layer__10
+
 block modal-header
   .welcome__button
     .button
-      .button__link
+      button.button__link
         | Авторизоваться
 
 block modal-center

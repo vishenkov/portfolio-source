@@ -52,14 +52,13 @@ mixin traingle(origin, addClass)
       class="triangle "+addClass)
       polygon(points="0,90 0,100 1000,100 1000,0")
 
-mixin title(text, bg, modsArray)
+mixin title(text, titleMod, modsArray)
   - var modString = ''
   - for (var i = 0; i < modsArray.length; i++)
     -modString += addMod("title__text", modsArray[i])
   
-  div(class="title" + addMod("title", bg))
+  div(class="title" + addMod("title", titleMod))
     div(class="title__text" + modString)= text
-
 
 -
   function addMod (className, modificator) {

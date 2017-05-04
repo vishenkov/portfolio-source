@@ -1,9 +1,15 @@
 .blog {
   padding: 0 100px 147px 100px;
+  @include tablets {
+    padding: 0 2%;
+  }
+  @include phones {
+    padding: 0 2%;
+  }
 
 }
 
 .blog-menu {
-  padding: 70px 5px 0 0; 
+  padding: 60px 5px 0 0; 
   max-width: 270px;
 }

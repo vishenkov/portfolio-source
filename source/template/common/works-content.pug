@@ -1,4 +1,5 @@
-+title("Мои работы", "bg-works", ["main"])
+.works__title.works__title_main
+  +title("Мои работы", "bg-works", ["main"])
   
 section.works
   .works__description
@@ -8,9 +9,10 @@ section.works
       .text.text_ta-center.text_fw-medium.text_color-tech
         | HTML, CSS, JAVASCRIPT
     .works__href
-      svg.works__icon
+      a(href="#").works__link.text
+        svg.works__icon
           use(xlink:href="/assets/img/sprite.svg#link")
-      a(href="").works__link.text Посмотреть сайт
+        | Посмотреть сайт
 
 
   .works__mainimage

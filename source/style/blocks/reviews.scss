@@ -1,6 +1,13 @@
 .reviews {
   display: flex;
   flex-flow: column nowrap;
+  margin-bottom: 40px;
+}
+
+.reviews__title {
+  display: flex;
+  justify-content: center;
+  
 }
 
 .reviews__list {
@@ -8,16 +15,45 @@
   flex: row wrap;
   justify-content: center;
   align-items: flex-start;
+  
+  @include tablets {
+     align-items: space-around;
+  }
+   @include phones {
+     flex-flow: column nowrap;
+     align-items: stretch;
+  }
 }
 
 .reviews__item {
   width: 40%;
   margin-left:38px;
+  display: flex;
+  flex-flow: column nowrap;
+  
+  @include tablets {
+     width: 49%;
+     margin-left: 0;
+     padding: 0 2%;
+  }
+   @include phones {
+     width: 100%;
+     margin-left: 0;
+     padding: 0 2%;
+     margin-bottom: 30px;
+
+  }
 }
 
 .reviews__title {
   padding: 70px;
   text-align: center;
+  @include tablets {
+    padding: 25px 2%;
+  }
+  @include phones {
+    padding: 25px 2%;
+  }
 }
 
 .reviews__icon {
@@ -26,6 +62,10 @@
   margin-bottom:30px;
   display: block;
   fill: #ccc;
+
+   @include phones {
+     align-self: center;
+  }
 }
 
 .reviews__text {

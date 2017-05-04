@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.form__data {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 20px;
+  padding-top: 0;
+}
+
+.form__input {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;;
+  border: 2px solid rgba(139, 141, 141, .1);
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  resize: none;
+  
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include placeholder {
+    color: #556266;
+    opacity: .5;
+  }
+
+  &:focus {
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid $theme-color1;
+  }
+}
+
+.form__buttons {
+  display: flex;
+  flex-flow: row nowrap;
+  border-radius: 0 0 5px 5px;
+}
+
+.form__button {
+  flex: 0 1 50%;
+  cursor: pointer;
+  border: none;
+  border-right: 2px solid rgba(222, 227, 231, .5);
+  font-size: 16px;
+  &:last-child {
+    border-right: none;
+  }
+
+  transition: all 0.3;
+  text-align: center;
+  padding: 15px 0;
+  font-weight: 500;
+  color: #fff;
+  background: $theme-color1;
+
+  &:hover {
+    background: rgba(0, 191, 166, 0.3);;
+  }
+
+  &:first-child {
+    border-bottom-left-radius: 5px;
+  }
+  &:last-child {
+    border-bottom-right-radius: 5px;
+  }
+}

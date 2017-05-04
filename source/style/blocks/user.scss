@@ -29,8 +29,11 @@
 .user__title {
   width: 100%;
   margin-bottom: 10px;
-  flex: 1 0 90px;
   position: relative;
+}
+
+.user__subtitle {
+  margin-bottom: 40px;
 }
 
 .user__info_welcome {
@@ -38,4 +41,17 @@
   border-radius: 5px 5px 0 0;
   width: 380px;
   padding-top: 40px;
+
+  @include tablets {
+    width: 348px;
+  }
+  @include phones {
+    width: 300px;
+  }
+}
+
+.user__title_blog {
+  flex: 1 0 90px;
+  display: flex;
+  justify-content: center;
 }

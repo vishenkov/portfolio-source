@@ -13,13 +13,22 @@
   
   &:hover {
     background: rgba(55, 62, 66, 1);
-    color: #61dac9;
+    color: $theme-color1;
+  }
+  @include tablets {
+    padding: 10px;
+  }
+  @include phones {
+    padding: 5px;
   }
 }
-
+.menu__text {
+  @include phones {
+    font-size: 13px;
+  }
+}
 .menu__link_current {
-  color: #61dac9;
-  background: rgba(55, 62, 66, .7);
+  color: $theme-color2;
 }
 
 .menu__list_welcome {

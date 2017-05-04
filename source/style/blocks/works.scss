@@ -1,14 +1,28 @@
 .works {
   display: flex;
   flex-flow: column wrap;
-  height: 750px;
+  height: 750px; 
+
+   @include tablets {
+    height: auto;
+  }
+   @include phones {
+    height: auto;
+  }
 }
 
 .works__description, .works__mainimage, .works__controls {
   width: 50%;
+  @include tablets {
+     width: 100%;
+  }
+   @include phones {
+     width: 100%;
+  }
 }
 
 .works__description {
+  background: #f0efe9;
   flex: 0 1 100%;
   
   display: flex;
@@ -17,45 +31,68 @@
   align-items: center;
 
   padding: 0 10%;
-}
-
-.works__controls {
-  height: 225px;
-  flex: 0 1 30%;
+  @include tablets {
+     padding: 10%;
+     order: 2;
+  }
+   @include phones {
+     padding: 30px 1%;
+     order: 2;
+  }
 }
 
 .works__mainimage {
   height: 525px;
   flex: 0 1 70%;
+  background: #efebe0;
+  
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  @include tablets {
+     order: 1;
+  }
+   @include phones {
+     order: 1;
+     height: 255px;
+  }
 }
 
-.works__title, .works__tech {
-  margin-bottom: 40px;
-  text-align: center;
+.works__title {
+  display: flex;
+  justify-content: center;
+}
+
+.works__title_main {
+  background: #faf8f0;
 }
 
 .works__tech {
   padding: 25px 0;
   border-top: 1px solid rgba(0, 191, 165, 1);
   border-bottom:1px solid rgba(0, 191, 165, 1);
+  margin-bottom: 40px;
   text-align: center;
   align-self: stretch;
 }
 
-.works__href {
+
+.works__link {
   background: rgba(0, 191, 165, 1);
   padding: 12px 18px;
   text-align: center;
   border-radius: 5px;
-}
-
-.works__link {
   vertical-align: middle;
   text-decoration: none;
   color: #fff;
+  transition: all 0.4s;
 
   &:hover {
-    color: rgba(0, 191, 165, 1);;
+    background: $theme-color2;
+    font-weight: 500;
   }
 }
 
@@ -67,20 +104,24 @@
   fill: #fff;
 }
 
-.works__mainimage {
-  height: 525px;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-}
 .works__image {
-  width: 100%;
+  max-width: 100%;
 }
 
 .works__controls {
   display: flex;
   flex-flow: row nowrap;
+
+  height: 225px;
+  flex: 0 1 30%;
+  background: #b5b4b0;
+  @include tablets {
+     order: 3;
+  }
+   @include phones {
+     order: 3;
+     height: 90px;
+  }
 }
 
 .works__control {

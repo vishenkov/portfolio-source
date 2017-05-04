@@ -36,6 +36,16 @@
     fill: #fff;
     stroke: none;
   }
+
+  @include tablets {
+    height: 35px;
+    width: 35px;
+  }
+  @include phones {
+    height: 35px;
+    width: 35px;
+  }
+
 }
 .socials__item_footer {
   margin-right: 8px;
