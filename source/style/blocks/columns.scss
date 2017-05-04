@@ -25,15 +25,16 @@
 
 .columns__left {
   background: #fff;
-  border: 4px dashed grey;
+  // border: 4px dashed grey;
 }
 
 .columns__right {
   background: #fff;
-  border: 4px dashed aqua;
+  // border: 4px dashed aqua;
 }
 
 .columns__left_about, .columns__right_about {
+  padding-bottom: 40px;
   @include tablets {
     width: 100%;
   }

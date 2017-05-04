@@ -47,14 +47,10 @@
         if (blur!=null) {
           var
             posLeft = -contactme.offsetLeft,
-            offsetTop = (contactme.offsetTop-modal.offsetTop),
-            bgImageHeight = 1699/(2000/modal.offsetWidth),
-            posTop= ((modal.offsetHeight - bgImageHeight)-offsetTop);
-          
-          // picture dimmentions: 2000x1699
-          blur.style.backgroundSize = modal.offsetWidth+'px'+' '+'auto';
+            offsetTop = -(contactme.offsetTop-modal.offsetTop - parseInt(getComputedStyle(modal).backgroundPositionY, 10));
+
           blur.style.backgroundPositionX = posLeft + 'px';
-          blur.style.backgroundPositionY = posTop + 'px';
+          blur.style.backgroundPositionY = offsetTop + 'px';
         }
       }
     }
