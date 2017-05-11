@@ -5,7 +5,15 @@ footer.footer
       +menu(menu, menu.length, true, '')
     .footer__item.footer__item-right.footer__item-socials
       //-obj socials, modificator, svg # modificator 
-      +socials(socials, 'footer', '_round')
+      //-+socials(socials, 'footer', '_round')
+      ul.socials
+        each item, key in socials
+          li(class="socials__item socials__item_footer")
+            a(href=item class="socials__link socials__link_footer")
+              svg(class="socials__icon socials__icon_footer")
+                use(xlink:href="/assets/img/sprite.svg#"+key+"_round")
+              svg(class="socials__icon socials__icon_footer-hover")
+                use(xlink:href="/assets/img/sprite.svg#"+key+"_round-filled")
 
   .footer__section
     .footer__item.footer__item-left

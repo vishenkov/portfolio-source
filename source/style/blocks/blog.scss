@@ -1,5 +1,6 @@
 .blog {
   padding: 0 100px 147px 100px;
+  max-width: $content-width*0.7;
   @include tablets {
     padding: 0 2%;
   }
@@ -11,5 +12,5 @@
 
 .blog-menu {
   padding: 60px 5px 0 0; 
-  max-width: 270px;
+  max-width: $content-width*0.3;
 }

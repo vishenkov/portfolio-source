@@ -1,7 +1,10 @@
 .footer {
   background: rgba(55, 62, 66, 0.85);
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
+  align-items: center;
+  // position: absolute;
+  // bottom: 0;
   
 
   &_index {
@@ -24,6 +27,7 @@
   align-items: center;
   width: 100%;
   padding: 5px;
+  max-width: $content-width;
   
   &:first-child {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);

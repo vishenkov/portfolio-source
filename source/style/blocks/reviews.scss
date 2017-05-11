@@ -46,13 +46,16 @@
 }
 
 .reviews__title {
-  padding: 70px;
-  text-align: center;
+  max-width: 25%;
+  align-self: center;
+  @include pc {
+    max-width: 40%;
+  }
   @include tablets {
-    padding: 25px 2%;
+    max-width: 45%;
   }
   @include phones {
-    padding: 25px 2%;
+    max-width: 55%;
   }
 }
 
@@ -62,6 +65,7 @@
   margin-bottom:30px;
   display: block;
   fill: #ccc;
+  fill-opacity: 0.8;
 
    @include phones {
      align-self: center;
@@ -82,8 +86,11 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 10px solid aquamarine;
   flex: 0 0 auto;
+}
+.reviews__img {
+  width: 100%;
+  display: block;
 }
 
 .reviews__info {

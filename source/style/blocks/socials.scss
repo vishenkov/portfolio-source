@@ -1,6 +1,7 @@
 .socials {
   display: flex;
   flex-flow: row wrap;
+  align-items: flex-start;
 }
 
 .socials__item {
@@ -12,7 +13,7 @@
 }
 
 .socials__link {
-  padding: 5px;
+  //padding: 5px;
   display: block;
 
 
@@ -28,14 +29,21 @@
   }
 }
 
-
-.socials__icon_footer {
-  fill: none;
-  stroke: #fff;
+.socials__link_footer {
   &:hover {
-    fill: #fff;
-    stroke: none;
+    .socials__icon_footer {
+      display: none;
+    }
+    .socials__icon_footer-hover {
+      display: block;
+      fill: #fff;
+    }
   }
+}
+
+.socials__icon_footer, .socials__icon_footer-hover {
+  fill: #fff;
+  stroke: none;
 
   @include tablets {
     height: 35px;
@@ -45,17 +53,18 @@
     height: 35px;
     width: 35px;
   }
-
 }
+
+.socials__icon_footer-hover {
+  display: none;
+}
+
 .socials__item_footer {
   margin-right: 8px;
 
   &:last-child {
     margin-right: 0;
   }
-}
-.socials__link_footer {
-  padding: 5px;
 }
 
 .socials__icon_welcome {

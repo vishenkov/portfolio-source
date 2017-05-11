@@ -58,7 +58,7 @@ mixin title(text, titleMod, modsArray)
     -modString += addMod("title__text", modsArray[i])
   
   div(class="title" + addMod("title", titleMod))
-    div(class="title__text" + modString)= text
+    h2(class="title__text" + modString)= text
 
 -
   function addMod (className, modificator) {

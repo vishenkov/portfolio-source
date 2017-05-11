@@ -1,28 +1,29 @@
 .works__title.works__title_main
   +title("Мои работы", "bg-works", ["main"])
   
-section.works
-  .works__description
-    .works__title
-      +title("Сайт школы онлайн образования", "", ["sub"])
-    .works__tech
-      .text.text_ta-center.text_fw-medium.text_color-tech
-        | HTML, CSS, JAVASCRIPT
-    .works__href
-      a(href="#").works__link.text
-        svg.works__icon
-          use(xlink:href="/assets/img/sprite.svg#link")
-        | Посмотреть сайт
+.works__wrapper
+  section.works
+    .works__description
+      .works__title
+        +title("Сайт школы онлайн образования", "", ["sub"])
+      .works__tech
+        .text.text_ta-center.text_fw-medium.text_color-tech
+          | HTML, CSS, JAVASCRIPT
+      .works__href
+        a(href="#").works__link.text
+          svg.works__icon
+            use(xlink:href="/assets/img/sprite.svg#link")
+          | Посмотреть сайт
 
 
-  .works__mainimage
-    img(src="/assets/img/1.png").works__image
-  .works__controls
-    .works__control
-      a(href="#").arrow.works__arrow
-        svg.arrow__icon
-          use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")
-    .works__control
-      a(href="#").arrow.works__arrow
-        svg.arrow__icon
-          use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")
+    .works__mainimage
+      img(src="/assets/img/1.png").works__image
+    .works__controls
+      .works__control
+        a(href="#").arrow.works__arrow
+          svg.arrow__icon
+            use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")
+      .works__control
+        a(href="#").arrow.works__arrow
+          svg.arrow__icon
+            use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")

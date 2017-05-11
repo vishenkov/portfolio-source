@@ -28,7 +28,8 @@
   }
 
   window.onscroll= function (e) {
-    var bg = document.getElementsByClassName('parallax-scroll')
+    var bg = document.getElementsByClassName('parallax-scroll');
+    //console.log(window.pageYOffset);
       if (bg.length>0) {
         //console.log(window.pageYOffset);
         for (var i = 0; i < bg.length; i++) {
@@ -61,5 +62,5 @@
   window.onresize = function () {
     blur.set();
   }
-  
+
 })();

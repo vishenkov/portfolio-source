@@ -2,6 +2,7 @@ html {
   // height: 100vh;
 }
 
+$content-width: 2000px;
 $line-height: 1.42;
 
 body {
@@ -17,7 +18,7 @@ body {
 
 .section {
   flex: 1 1 auto;
-
+  position: relative;
 }
 
 ul {

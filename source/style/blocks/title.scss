@@ -1,7 +1,8 @@
-$padding-main: 70px;
+$padding-main: 65px;
 $padding-sub: 40px;
 $fz-main: 63px;
 $fz-sub: 35px;
+$title-line-height: 1.05;
 
 
 @mixin title_dashed($fz:$fz-sub, $padding:$padding-sub) {
@@ -16,7 +17,7 @@ $fz-sub: 35px;
     height: $dHeight;
     display: block;
     position: relative;
-    top: $fz*$line-height/2;
+    top: $fz*$title-line-height/2;
     transform: translateY(-$dHeight/2);
   }
   &:before {
@@ -31,10 +32,12 @@ $fz-sub: 35px;
   @include bernier();
   color: $main-font-color;
   position: relative;
+  line-height: $title-line-height;
 
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
+  align-self: center;
 
   background-position: center center;
   background-repeat: no-repeat;
@@ -57,6 +60,9 @@ $fz-sub: 35px;
 
 .title_bg-about {
   background-image: url('/assets/img/about-header.png');
+  $offset: 20px;
+  padding: $offset 0;
+  margin-top: -$offset;
   @include tablets {
     width: auto;
   }
@@ -67,6 +73,9 @@ $fz-sub: 35px;
 
 .title_bg-works {
   background-image: url('/assets/img/works-header.png');
+  $offset: 20px;
+  padding: $offset;
+  margin-top: -$offset;
   @include tablets {
     width: auto;
   }
@@ -98,7 +107,7 @@ $fz-sub: 35px;
   font-size: $fz-sub;
   @include title_dashed($fz-sub, 0);
   padding-bottom: $padding-sub;
-  max-width: 80%;
+ // max-width: 80%;
 
   @include tablets {
     $fz-sub: $fz-sub/1.2;
@@ -121,7 +130,7 @@ $fz-sub: 35px;
   @include title_dashed($fz-main, $padding-main);
   padding: $padding-main 0;
   color: $font-color2;
-  max-width: 80%;
+  //max-width: 80%;
   
   @include tablets {
     $fz-main: $fz-main/1.3;
@@ -139,6 +148,10 @@ $fz-sub: 35px;
     color: $font-color2;
     max-width: 100%;
   }
+}
+
+.title__text_padding-0 {
+  padding: 0;
 }
 
 .title__text_dashed-false {

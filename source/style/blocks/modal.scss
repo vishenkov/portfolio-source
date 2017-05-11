@@ -3,21 +3,26 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-items: center;
 }
 
 
 .modal__center {
-  flex: 1 1 60%;
+  flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  max-width: $content-width;
 }
 
 .modal__header, .modal__footer {
-  flex: 0 1 20%;
+  flex: 1 1 auto;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
+  width: 100%;
+  max-width: $content-width;
 }
 
 .modal__header {
@@ -48,13 +53,12 @@
 .modal_contactme {
   background: url('/assets/img/reviews.png');
   background-repeat: no-repeat;
-  background-position: bottom;
   background-position: 0 200px;
+  background-size: cover;
   min-height: 1285px;
 }
 
 .modal__header_contactme,.modal__center_contactme, .modal__footer_contactme {
- // height: auto;
   flex: 1 1 auto;
 }
 .modal__footer_contactme {
@@ -75,33 +79,32 @@
 
 
 .modal__header_hero {
-  margin: 28px 30px 0;
+  padding: 28px 30px 0;
   @include tablets {
-    margin: 24px 24px 0;
+    padding: 24px 24px 0;
   }
   @include phones {
-    margin: 10px 10px 0;
+    padding: 10px 10px 0;
   }
 
 }
 
 
 .modal_welcome {
-  //background: url('/assets/img/portfolio.jpg');
   height: 100vh;
   width: 100%;
 }
 
 .modal__header_welcome {
   justify-content: flex-end;
-  margin: 28px 30px 0;
+  padding: 28px 30px 0;
   @include tablets {
-    margin: 0;
-    margin-top: 10px;
+    padding: 0;
+    padding-top: 10px;
   }
   @include phones {
-    margin: 0;
-    margin-top: 10px;
+    padding: 0;
+    padding-top: 10px;
   }
 }
 

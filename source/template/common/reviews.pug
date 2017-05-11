@@ -1,4 +1,4 @@
--var reviews= [{"text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!","name": "Ковальчук Дмитрий","subtitle": "основатель LoftSchool"},{"text": "Этот код выдержит любые испытания. Только пожалуй, не загружается на слишком старых браузерах!","name": "Сабанцев Владимир","subtitle": "преподаватель"}]
+-var reviews= [{"text": "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!","name": "Ковальчук Дмитрий","subtitle": "основатель LoftSchool","photo":"/assets/img/reviews/review-user1.png"},{"text": "Этот код выдержит любые испытания. Только пожалуй, не загружается на слишком старых браузерах!","name": "Сабанцев Владимир","subtitle": "преподаватель","photo":"/assets/img/reviews/review-user2.png"}]
 
 .reviews
   .reviews__title
@@ -7,11 +7,12 @@
     each review in reviews
       li.reviews__item
         svg.reviews__icon
-          use(xlink:href="/assets/img/sprite.svg#login")
+          use(xlink:href="/assets/img/sprite.svg#quote")
         .reviews__text
           p.text.text_review=review["text"]
         .reviews__author
           .reviews__photo
+            img(src=review["photo"]).reviews__img
           .reviews__info
             .reviews__name
               .text.text_fw-bold.text_color-tech.text_review=review["name"]

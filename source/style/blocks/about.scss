@@ -3,12 +3,52 @@
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-content: center;
+  max-width: $content-width/2;
 }
 
 .about__block {
   flex: 1 1 100%;
   margin-left: 80px;
   margin-right: 80px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.about_2col {
+  @include fullhd {
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+  }
+}
+.about__block_column-left {
+  @include fullhd {
+    margin: 0;
+  }
+}
+.about__block_column-right {
+  @include fullhd {
+    margin: 0 20px 0 0;
+    padding-top: 20px;
+  }
+}
+
+.about__block_title {
+  max-width: 45%;
+  align-self: center;
+  @include fullhd {
+    max-width: 30%;
+  }
+  @include pc {
+    max-width: 50%;
+  }
+  @include tablets {
+    max-width: 40%;
+    padding-top: 50px;
+  }
+  @include phones {
+    max-width: 50%;
+    padding-top: 30px;
+  }
 }
 
 .about__block_centred-content {
@@ -23,6 +63,7 @@
   height: auto;
   max-width: 100%;
   align-self: center;
+  margin-bottom: 40px;
 }
 
 .about__block_right {
@@ -32,7 +73,7 @@
 
 .about__block_right , .about__block {
   @include tablets {
-    margin: 0 148px;
+    margin: 0 20%;
   }
   @include phones {
     margin: 0 2%;

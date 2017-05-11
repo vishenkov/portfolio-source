@@ -1,7 +1,15 @@
+.works__wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  background: #faf8f0;
+  align-items: center;
+}
 .works {
   display: flex;
   flex-flow: column wrap;
-  height: 750px; 
+  height: 750px;
+  width: 100%; 
+  max-width: $content-width;
 
    @include tablets {
     height: auto;
@@ -77,6 +85,12 @@
   margin-bottom: 40px;
   text-align: center;
   align-self: stretch;
+  @include tablets {
+     padding: 20px 0;
+  }
+   @include phones {
+     padding: 10px 0;
+  }
 }
 
 
