@@ -170,3 +170,27 @@ $title-line-height: 1.05;
 .title__text_padbot-0 {
   padding-bottom: 0;
 }
+
+.title__text_pad-0 {
+  padding: 0;
+}
+
+
+.title__text_dash-white {
+  &:after,&:before {
+    background: rgba(255, 255, 255, 1);
+    opacity: 0.3;
+  }
+}
+
+.title__text_link {
+  opacity: 0.8;
+  transition: all 0.4;
+  &:hover {
+    opacity: 1;
+    &:after,&:before {
+      opacity: 1;
+    }
+  }
+}
+

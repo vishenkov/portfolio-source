@@ -63,11 +63,11 @@
   }
   
   @include tablets {
-    flex: 1 1 50%;
+    flex: 1 1 auto;
     text-align: center;
   }
   @include phones {
-    flex: 1 1 50%;
+    flex: 1 1 auto;
   }
 
 }

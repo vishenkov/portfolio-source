@@ -24,6 +24,12 @@
 }
 
 //--------------@MEDIA--------------//
+@mixin imac() {
+  @media screen and (min-width: 3800px) {
+    @content;
+  }
+}
+
 @mixin fullhd() {
   @media screen and (min-width: 1800px) {
     @content;

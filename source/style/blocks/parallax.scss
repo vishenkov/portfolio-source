@@ -10,8 +10,9 @@
 @for $i from 1 through 10 {
   .layer__#{$i} { 
     position: absolute;
+    background-image: url('/assets/img/parallax/layer_'+$i+'@0,5x.png');
     
-    @include fullhd {
+    @include imac {
       background-image: url('/assets/img/parallax/layer_'+$i+'.png');
     }
     @include pc {
@@ -30,6 +31,7 @@
     left: -5%;
     bottom: -5%;
     z-index: -$i;
+    transition: all 0.1s;
     // border: 10px dashed aquamarine;
   }
 }

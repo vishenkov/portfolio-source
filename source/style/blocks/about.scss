@@ -7,11 +7,14 @@
 }
 
 .about__block {
-  flex: 1 1 100%;
+  flex: 0 1 auto;
   margin-left: 80px;
   margin-right: 80px;
   display: flex;
   flex-flow: column nowrap;
+  @include fullhd {
+    flex: 0 1 100%;
+  }
 }
 
 .about_2col {
@@ -36,7 +39,7 @@
   max-width: 45%;
   align-self: center;
   @include fullhd {
-    max-width: 30%;
+    max-width: 40%;
   }
   @include pc {
     max-width: 50%;
@@ -46,7 +49,7 @@
     padding-top: 50px;
   }
   @include phones {
-    max-width: 50%;
+    max-width: 55%;
     padding-top: 30px;
   }
 }

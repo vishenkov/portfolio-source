@@ -38,7 +38,45 @@
       }
   }
 
-  var blur = (function (){
+  var preloader = (function(){
+    var preloader = document.querySelector('.preloader');
+    var totalLoaded = 0;
+
+    var incLoaded = () => totalLoaded++;
+    var checkLoads = (total) => {
+      if (totalLoaded === total) {
+        preloader.style.display = 'none';
+      }
+      preloader.innerHTML = Math.round(100*totalLoaded/total)+"%";
+    }
+
+    return {
+      set : function(imagesArray) {
+        if ((preloader == null) || (imagesArray == null)) return;
+        
+        for (var i = 0; i < imagesArray.length; i++) {
+          var img = new Image();
+          
+          img.onload = function() {
+            incLoaded();
+            checkLoads(imagesArray.length);
+            console.log("loaded");
+          }
+
+          var 
+            style = imagesArray[i].currentStyle || window.getComputedStyle(imagesArray[i], false),
+            src = style.backgroundImage.slice(4, -1);
+          src = src.substring(src.indexOf("/assets"), src.length - 1);
+          img.src = src;
+        }
+      }
+    }
+
+  }());
+
+  preloader.set(document.getElementsByClassName("layer"));
+
+  var blur = (function () {
     var blur = document.querySelector('.blur'),
         contactme = document.querySelector('.contactme'),
         modal = document.querySelector('.modal_contactme');

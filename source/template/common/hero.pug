@@ -8,9 +8,20 @@ block modal-header
       +socials(socials,'','')
 
   .hero__hamburger
-    a(href="#").hamburger
-      svg.hamburger__icon
-        use(xlink:href="/assets/img/sprite.svg#hamburger")
+    input(type="checkbox" id="hamburgerToggler" class="hamburger__input")
+    label(for="hamburgerToggler" class="hamburger__icon")
+      span.hamburger__line
+      span.hamburger__line
+      span.hamburger__line
+
+    .hamburger__menu
+      ul.hamburger__list
+         each item in menu
+          each value, key in item
+            li.hamburger__item
+              a(href=key+".html").hamburger__link.title
+                .title__text.title__text_main.title__text_dash-white.title__text_color-white.title__text_pad-0.title__text_link= value
+
 block modal-bg
   .parallax-scroll.parallax-scroll_hero.parallax-scroll_1
 block modal-center

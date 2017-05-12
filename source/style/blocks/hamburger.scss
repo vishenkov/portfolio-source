@@ -1,13 +1,16 @@
-.hamburger__icon {
-  height: 35px;
-  width: 40px;
-  fill: #fff;
-  cursor: pointer;
+.hamburger__input {
+  display: none;
+}
 
-  transition: all 0.2s;
-  &:hover {
-    fill: rgba(255, 255, 255, 0.5);
-  }
+.hamburger__icon {
+  display: block;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 28px;
+  right: 30px;
+  cursor: pointer;
+  z-index: 9999;
 
   @include tablets {
     height: 25px;
@@ -18,3 +21,78 @@
     width: 25px;
   }
 }
+.hamburger__line {
+  height: calc(40px / 5);
+  background: #fff;
+  border-radius: 3px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition-property: transform, opacity;
+  transition-duration: .5s, .25s;
+  transition-delay: 0s, .5s;
+}
+
+.hamburger__line:nth-child(2) {
+  top: calc(40px / 5 * 2);
+}
+
+.hamburger__line:nth-child(3) {
+  top: calc(40px / 5 * 4);
+}
+
+.hamburger__input:checked ~ .hamburger__icon .hamburger__line {
+  transition-delay: .25s, 0s;
+}
+
+.hamburger__input:checked ~ .hamburger__icon .hamburger__line:nth-child(1) {
+  transform: translateY(calc(40px / 5 * 2)) rotate(45deg);
+}
+
+.hamburger__input:checked ~ .hamburger__icon .hamburger__line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger__input:checked ~ .hamburger__icon .hamburger__line:nth-child(3) {
+  transform: translateY(calc(40px / 5 * -2)) rotate(-45deg);
+}
+
+
+.hamburger__input:checked ~ .hamburger__menu {
+  opacity: .9;
+  transform: translateX(0);
+  background-position: 0 0;
+}
+
+.hamburger__menu {
+  width: 100%;
+  transform: translateX(100%);
+  background: linear-gradient(to bottom right, $theme-color1, #fff);
+  background-size: 400% 400%;
+  background-position: 90% 90%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  opacity: .5;
+  transition: transform .4s, background-position 1s .4s;
+  z-index: 9998;
+}
+.hamburger__list{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.hamburger__link {
+  text-decoration: none;
+  margin-bottom: 70px;
+}
+
+// .hamburger__link:hover,
+// .hamburger__link:focus,
+// .hamburger__link:active {
+//   color: Gold;
+// }

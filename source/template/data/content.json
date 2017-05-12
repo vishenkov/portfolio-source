@@ -29,7 +29,7 @@
       "PHP" : 45,
       "mySQL" : 55,
       "Node.js & npm" : 40,
-      "Mondo.db" : 20
+      "Mongo.db" : 20
     },
     "WorkFlow" : {
       "Git" : 85,
