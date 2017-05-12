@@ -48,8 +48,28 @@
         if (blur!=null) {
           var
             posLeft = -contactme.offsetLeft,
-            offsetTop = -(contactme.offsetTop-modal.offsetTop - parseInt(getComputedStyle(modal).backgroundPositionY, 10));
+            offsetTop = -(contactme.offsetTop-parseInt(getComputedStyle(modal).backgroundPositionY, 10));
 
+          //TODO: get img dementions from bg url
+          var imgWidth = 2000,
+              imgHeight = 1699,
+              modalWidth = modal.clientWidth,
+              modalHeight = modal.clientHeight,
+              imgRatio = (imgHeight / imgWidth),
+              modalRatio = (modalHeight / modalWidth),
+              bgCoverWidth = 0,
+              bgCoverHeight = 0;
+          
+          if (modalRatio > imgRatio) {
+              bgCoverHeight = modalHeight;
+              bgCoverWidth = (modalHeight / imgRatio);
+          } 
+          else {
+              bgCoverWidth = modalWidth;
+              bgCoverHeight = (modalWidth * imgRatio);
+          }
+          
+          blur.style.backgroundSize = bgCoverWidth + 'px ' + bgCoverHeight + 'px';
           blur.style.backgroundPositionX = posLeft + 'px';
           blur.style.backgroundPositionY = offsetTop + 'px';
         }

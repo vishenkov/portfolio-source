@@ -1,3 +1,5 @@
+-var works = [{"name": "Сайт школы онлайн образования", "tech": "HTML, CSS, JQUERY", "href":"#", "img":"/assets/img/works/work-1.png"},{"name":"itLoft", "tech":"PUG/HTML, SCSS, NODE.JS", "href": "#", "img":"/assets/img/works/work-2.png"}, {"name":"Портал видеоуроков и IT сообщество", "tech":"HTML, ES6, CSS3.0", "href": "#", "img":"/assets/img/works/work-3.png"},{"name":"ATMA YOGA","tech": "HTML, ANGULAR.JS, SCSS, PHP", "href": "#", "img":"/assets/img/works/work-4.png"}]
+
 .works__title.works__title_main
   +title("Мои работы", "bg-works", ["main"])
   
@@ -17,13 +19,13 @@
 
 
     .works__mainimage
-      img(src="/assets/img/1.png").works__image
+      img(src="/assets/img/works/work-2.png").works__image
     .works__controls
-      .works__control
+      .works__control.works__control_up
         a(href="#").arrow.works__arrow
           svg.arrow__icon
             use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")
-      .works__control
+      .works__control.works__control_down
         a(href="#").arrow.works__arrow
           svg.arrow__icon
             use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")

@@ -120,6 +120,7 @@
 
 .works__image {
   max-width: 100%;
+  height: 100%;
 }
 
 .works__controls {
@@ -145,7 +146,7 @@
   
   &:after {
     content: "";
-    background: url('/assets/img/1.png') center/contain no-repeat; /* Добавляем фон */
+    background: url('/assets/img/works/work-1.png') center/contain no-repeat; /* Добавляем фон */
     background-size: contain; /* Масштабируем фон */
     opacity: 0.5;
     top: 0;

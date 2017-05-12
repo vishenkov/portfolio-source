@@ -10,7 +10,19 @@
 @for $i from 1 through 10 {
   .layer__#{$i} { 
     position: absolute;
-    background-image: url('/assets/img/parallax/layer_'+$i+'.png');
+    
+    @include fullhd {
+      background-image: url('/assets/img/parallax/layer_'+$i+'.png');
+    }
+    @include pc {
+      background-image: url('/assets/img/parallax/layer_'+$i+'@0,5x.png');
+    }
+    @include tablets {
+      background-image: url('/assets/img/parallax/layer_'+$i+'@0,3x.png');
+    }
+    @include phones {
+      background-image: url('/assets/img/parallax/layer_'+$i+'@0,25x.png');
+    }
     width: 110%;
     height: 110%;
     background-size: cover;
