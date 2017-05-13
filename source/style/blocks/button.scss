@@ -10,7 +10,15 @@
   background-color: transparent;
 
   &:hover {
-    color: rgba(0, 191, 165, 1);
+    color: $theme-color1;
     background: #fff;
   }
+   &:focus {
+    outline-color: $theme-color2;
+  }
+}
+
+.button__link_active {
+  color: $theme-color1;
+  background: #fff;
 }

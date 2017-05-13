@@ -23,12 +23,16 @@ block modal-bg
 block modal-header
   .welcome__button
     .button
-      button.button__link
+      button.button__link.button__link_flipper
         | Авторизоваться
 
 block modal-center
   .welcome
-    include user-welcome.pug
+    .flipper
+      .flipper__side.flipper__side_front.flipper__side_active
+        include user-welcome.pug
+      .flipper__side.flipper__side_back
+        include login-welcome.pug
 
 block modal-footer
   footer.footer.footer_index.text.text_color-white.text_opacity-50.text_fw-lighter

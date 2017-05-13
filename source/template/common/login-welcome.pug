@@ -1,0 +1,28 @@
+.user
+  .user__info_welcome.welcome__login
+    .welcome__title
+      +title("Авторизуйтесь", "", ["sub"])
+    .welcome__content
+      form.form
+        .form__data
+          input(type="text" name="login" placeholder="Логин").form__input
+          input(type="password" name="password" placeholder="Пароль").form__input
+          
+          .form__section
+            .form__section
+              input(type="checkbox" name="human" id="human").form__input_checkbox
+              label(for="human").text.form__label.form__label_checkbox
+                | Я человек
+            
+            .form__section.text.text_fw-bold
+              | Вы точно не робот?
+            .form__section.form__section_row
+              input(type="radio" name="capthca" value="yes" id="captcha_yes").form__input_radio
+              label(for="captcha_yes").form__label.form__label_radio.text
+                | Да
+              input(type="radio" name="capthca" value="no" id="captcha_no").form__input_radio
+              label(for="captcha_no").form__label.form__label_radio.text
+                | Не уверен
+  .form__buttons
+    input(type="button" value="На главную").form__button.form__button_flip
+    input(type="submit" name="submit" value="Войти" form="form").form__button

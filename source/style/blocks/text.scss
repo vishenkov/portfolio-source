@@ -9,11 +9,19 @@
   @include phones {
     font-size: 14px;
   }
+  &::selection {
+    background: $theme-color1;
+    color: #fff;
+  }
 }
 
 //GB, BEM :(
 .text p {
   margin-bottom: 22px;
+   &::selection {
+    background: $theme-color1;
+    color: #fff;
+  }
 }
 
 .text_fz-14 {
