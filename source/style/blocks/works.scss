@@ -69,6 +69,14 @@
   }
 }
 
+.works__mainimage-item {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .works__title {
   display: flex;
   justify-content: center;
@@ -143,19 +151,30 @@
   position: relative;
   height: 100%;
   
-  &:after {
-    content: "";
-    background: url('/assets/img/works/work-1.png') center/contain no-repeat; /* Добавляем фон */
-    background-size: contain; /* Масштабируем фон */
-    opacity: 0.5;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute; 
-  }
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+.works__control_up {
+  // background: url('/assets/img/works/work-2.png') center/contain no-repeat;
+}
+
+.works__control_down {
+  // background: url('/assets/img/works/work-4.png') center/contain no-repeat;
 }
 
 .works__arrow {
   @include centered();
+}
+
+.works__title-item, .works__tech-item, .works__href-item, .works__mainimage-item {
+  position: absolute;
+  left: -9999px;
+}
+
+.works__current {
+  position: relative;
+  left: 0;
 }

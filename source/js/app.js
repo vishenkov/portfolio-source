@@ -124,9 +124,11 @@
   window.onresize = function () {
     blur.set();
   }
+  
+  var flip = (function () {
+    var flipper = document.querySelector('.flipper');
 
-  var setFlipperDimentions = () => {
-      var flipper = document.querySelector('.flipper');
+    var setFlipperDimentions = () => {
       var 
         front = getComputedStyle(flipper.querySelector('.flipper__side').firstElementChild),
         back = getComputedStyle(flipper.querySelector('.flipper__side').lastElementChild);
@@ -135,13 +137,115 @@
         console.log( Math.max(parseInt(front.width, 10), parseInt(back.width, 10)) + " "+ Math.max(parseInt(front.height, 10), parseInt(back.height, 10)));
         flipper.style.height = Math.max(parseInt(front.height, 10), parseInt(back.height, 10))+ 'px';
     };
-    setFlipperDimentions();
-
-  document.querySelector('.button__link_flipper').onclick = function(e){
-    var flipper = document.querySelector('.flipper');
-    flipper.classList.toggle('flipper_flip');
-    this.classList.toggle('button__link_active');
+    var doFlip = () => {
+      flipper.classList.toggle('flipper_flip');
+    }
     
-  };
+    return {
+      init: () => {
+        if (flipper != null) {
+          setFlipperDimentions();
+          document.querySelector('.button__link_flipper').onclick = function(e) {
+            doFlip();
+            this.classList.toggle('button__link_active');
+          };
+           document.querySelector('.form__button_flip').onclick = function(e) {
+            doFlip();
+          };
+        }
+      }
+    }
+  })();
 
+  flip.init();
+
+
+
+  var gallery = (function () {
+    var
+      titles = document.querySelectorAll('.works__title-item'),
+      techs = document.querySelectorAll('.works__tech-item'),
+      hrefs = document.querySelectorAll('.works__href-item'),
+      mainImages = document.querySelectorAll('.works__mainimage-item'),
+      controlUp = document.querySelector('.works__control_up'),
+      controlDown = document.querySelector('.works__control_down'),
+      imgUrls = [],
+      currentItem = 0;
+
+    var galleryInit = () => {
+
+      updateView(0);
+
+      for (var i = 0; i < mainImages.length; i++) {
+        imgUrls[i] = mainImages[i].firstElementChild.getAttribute('src');
+        // console.log(imgUrls[i]);
+      }
+
+      controlUp.style.backgroundImage = "url(\"" + imgUrls[1] + "\")";
+      controlDown.style.backgroundImage = "url(\"" + imgUrls[imgUrls.length - 1]+ "\")";
+
+      // console.log(controlUp);
+    }
+
+    var galleryFlip = (diretion) => {
+
+      updateView(currentItem);
+
+      if (diretion === 'up') {
+        updateControlDown(imgUrls[currentItem]);
+        currentItem++;
+        if (currentItem > mainImages.length - 1) {
+          currentItem = 0;
+        }
+        var computedUrl = ((currentItem + 1) === imgUrls.length) ? imgUrls[0]:imgUrls[currentItem + 1];
+        updateControlUp(computedUrl);
+      } else {
+        updateControlUp(imgUrls[currentItem]);
+        currentItem--;
+        if (currentItem < 0) {
+          currentItem = mainImages.length - 1;
+        }
+        var computedUrl = ((currentItem - 1) < 0) ? imgUrls[imgUrls.length - 1]:imgUrls[currentItem - 1];
+        updateControlDown(computedUrl);
+      }
+      updateView(currentItem);
+    }
+
+    var updateView = (counter) => {
+      titles[counter].classList.toggle('works__current');
+      techs[counter].classList.toggle('works__current');
+      hrefs[counter].classList.toggle('works__current');
+      mainImages[counter].classList.toggle('works__current');
+    }
+
+    var updateControlUp = (url) => {
+      controlUp.style.backgroundImage = "url(\"" + url + "\")";
+    }
+
+    var updateControlDown = (url) => {
+      controlDown.style.backgroundImage = "url(\"" + url + "\")";
+    }
+
+    return {
+
+      init: () => {
+        if (document.querySelector('.works') != null) {
+          galleryInit();
+          document.querySelector('.works__arrow_down').onclick = function(e) {
+            e.preventDefault();
+            // console.log("arrow down");
+            galleryFlip('down');
+          };
+
+          document.querySelector('.works__arrow_up').onclick = function(e) {
+            e.preventDefault();
+            // console.log("arrow up");
+            galleryFlip('up');
+          };
+        }
+      }
+    }
+  })();
+  
+  gallery.init();
 })();
