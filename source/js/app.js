@@ -140,12 +140,6 @@
   document.querySelector('.button__link_flipper').onclick = function(e){
     var flipper = document.querySelector('.flipper');
     flipper.classList.toggle('flipper_flip');
-    setTimeout(function(){
-      flipper.querySelector('.flipper__side_front').classList.toggle('flipper__side_active');
-    flipper.querySelector('.flipper__side_back').classList.toggle('flipper__side_active');
-    },600);
-    // flipper.querySelector('.flipper__side_front').classList.toggle('flipper__side_active');
-    // flipper.querySelector('.flipper__side_back').classList.toggle('flipper__side_active');
     this.classList.toggle('button__link_active');
     
   };
