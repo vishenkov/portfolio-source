@@ -32,12 +32,12 @@
 }
 
 .menu__list_welcome {
-  background: rgba(0, 191, 165, 0.9);
+  
   border-radius: 0 0 5px 5px;
 }
 
 .menu__item_welcome{
-  border-right: 2px solid rgba(222, 227, 231, .5);
+  border-right: 2px solid rgba(255, 255, 255, .6);
   flex: 1;
   
   &:first-child {
@@ -53,9 +53,10 @@
   text-align: center;
   padding: 10px 0;
   font-weight: 500;
+  background: rgba(0, 191, 165, 0.9);
 
   &:hover {
-    background: rgba(0, 150, 136, 0.9);
+    background: rgba(0, 191, 166, 0.3);
     color: #fff;
 
     &:first-child {

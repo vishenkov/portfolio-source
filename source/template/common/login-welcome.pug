@@ -5,8 +5,16 @@
     .welcome__content
       form.form
         .form__data
-          input(type="text" name="login" placeholder="Логин").form__input
-          input(type="password" name="password" placeholder="Пароль").form__input
+          .form__section.form__section_row
+            .form__icon-container
+              svg.form__icon
+                use(xlink:href="/assets/img/sprite.svg#login")
+            input(type="text" name="login" placeholder="Логин").form__input
+          .form__section.form__section_row
+            .form__icon-container          
+              svg.form__icon
+                  use(xlink:href="/assets/img/sprite.svg#password")
+            input(type="password" name="password" placeholder="Пароль").form__input
           
           .form__section
             .form__section

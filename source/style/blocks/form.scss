@@ -14,7 +14,7 @@
   display: block;
   width: 100%;
   border-radius: 5px;
-  font-size: 16px;;
+  font-size: 16px;
   border: 2px solid rgba(139, 141, 141, .1);
   padding: 15px 20px;
   margin-bottom: 20px;
@@ -61,7 +61,7 @@
   background: $theme-color1;
 
   &:hover {
-    background: rgba(0, 191, 166, 0.3);;
+    background: rgba(0, 191, 166, 0.3);
   }
 
   &:first-child {
@@ -91,6 +91,29 @@
   flex-flow: row nowrap;
   align-items: flex-start;
   justify-content: center;
+}
+.form__icon-container {
+  height: 52px;
+  width: 52px;
+  background-color: #f0ede9;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &+ .form__input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.form__icon {
+  width: 50%;
+  height: 50%;
+  fill: $main-font-color;
+  opacity: 0.4;
+
 }
 
 .form__label {
@@ -133,7 +156,7 @@
 
 .form__input_checkbox {
   &:checked {
-    &~ .form__label_checkbox {
+    &+ .form__label_checkbox {
       color: $theme-color1;
       &:before {
         background: url("/assets/img/check-symbol.png");
@@ -149,7 +172,7 @@
 
 .form__input_radio{
   &:checked {
-    &~ .form__label_radio {
+    &+ .form__label_radio {
       position: relative;
       color: $theme-color1;
       &:after {
