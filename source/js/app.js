@@ -1,9 +1,8 @@
 (function() {
 
-  window.onmousemove= function (e) {
-    var
-      parallax = document.querySelector('.parallax');
-    if (parallax!=null) {
+  var mouseParallax = (function (){
+    var parallax = document.querySelector('.parallax');
+    var mouseMove = (e) => {
       var
         layers =  parallax.getElementsByClassName('layer'),
         computedStyle = getComputedStyle(parallax),
@@ -25,18 +24,35 @@
         layer.style.webkitTransform = transform;
       }
     }
-  }
 
-  window.onscroll= function (e) {
-    var bg = document.getElementsByClassName('parallax-scroll');
-    //console.log(window.pageYOffset);
+
+    return {
+      init: () => {
+        if (parallax != null) {
+          window.addEventListener('mousemove', mouseMove);
+        }
+      }
+    }
+  })();
+
+  var scrollParallax = (function (){
+     var bg = document.getElementsByClassName('parallax-scroll');
+     var scrollFunction = (e) => {
       if (bg.length>0) {
-        //console.log(window.pageYOffset);
         for (var i = 0; i < bg.length; i++) {
           bg[i].style.transform = "translate3d(0,"+window.pageYOffset/((i+1)*2)+"px,"+ "0)";
         }
       }
-  }
+     }
+
+    return {
+      init: () => {
+        if (bg != null) {
+          window.addEventListener('scroll', scrollFunction);
+        }
+      }
+    }
+  })();
 
   var preloader = (function(){
     var preloader = document.querySelector('.preloader');
@@ -78,8 +94,6 @@
 
   }());
 
-  preloader.set(document.getElementsByClassName("layer"));
-
   var blur = (function () {
     var blur = document.querySelector('.blur'),
         contactme = document.querySelector('.contactme'),
@@ -119,11 +133,6 @@
     }
   }());
 
-  blur.set();
-
-  window.onresize = function () {
-    blur.set();
-  }
   
   var flip = (function () {
     var flipper = document.querySelector('.flipper');
@@ -156,10 +165,6 @@
       }
     }
   })();
-
-  flip.init();
-
-
 
   var gallery = (function () {
     var
@@ -247,5 +252,18 @@
     }
   })();
   
-  gallery.init();
+
+  function ready() {
+    mouseParallax.init();
+    scrollParallax.init();
+    gallery.init();
+    flip.init();
+    blur.set();
+    preloader.set(document.getElementsByClassName("layer"));
+
+    window.addEventListener('resize', (e) =>{
+      blur.set();
+    });
+  }
+  document.addEventListener("DOMContentLoaded", ready);
 })();
