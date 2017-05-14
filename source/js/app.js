@@ -62,6 +62,7 @@
     var checkLoads = (total) => {
       if (totalLoaded === total) {
         preloader.style.display = 'none';
+        window.dispatchEvent(new Event('resize'));
       }
       preloader.innerHTML = Math.round(100*totalLoaded/total)+"%";
     }
@@ -78,15 +79,17 @@
             checkLoads(imagesArray.length);
             console.log("loaded");
           }
+          img.onerror = function() {
+            incLoaded();
+            checkLoads(imagesArray.length);
+            console.log("load error");
+          }
 
           var 
             style = imagesArray[i].currentStyle || window.getComputedStyle(imagesArray[i], false),
             src = style.backgroundImage.slice(4, -1);
-          // console.log("before: "+src);
-          // src = src.substring(src.indexOf("/assets"), src.length - 1);
-          // console.log("after: "+src);
+          
           src = src.replace(/('|")/g,'');
-          //preloader.innerHTML += src;
           img.src = src;
         }
       }
@@ -263,6 +266,8 @@
 
     window.addEventListener('resize', (e) =>{
       blur.set();
+      flip.init();
+      preloader.set(document.getElementsByClassName("layer"));
     });
   }
   document.addEventListener("DOMContentLoaded", ready);
