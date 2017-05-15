@@ -10,7 +10,11 @@
 
 }
 
-.blog-menu {
+.blog__menu {
   padding: 60px 5px 0 0; 
   max-width: $content-width*0.3;
+}
+.blog__menu_sticky {
+  position: fixed;
+  top: 0px;
 }

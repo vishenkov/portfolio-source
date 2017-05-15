@@ -1,41 +1,20 @@
+-var blogs = [{"header":"Установка сборки","date":"25 декабрь 2016","content":"<h2>Исходные файлы сайта-портфолио</h2><blockquote><p>Сборка работает на gulp версии 4.0.</p></blockquote><h4>Автор: Вишенков Кирилл</h4><h4>Для начала работы</h4><ol><li><code>clone this repo</code></li><li><code>cd path/to/...</code></li><li><code>npm install gulpjs/gulp-cli -g</code></li></ol><blockquote><p>Установка последней версии Gulp CLI tools глобально (подробнее - <a href='https://github.com/gulpjs/gulp/blob/4.0/docs/getting-started.md'>GitHub</a> )</p></blockquote><ol start='4'><li><code>npm install</code></li><li><code>run gulp</code></li></ol>"},{"header":"Markdown example","date":"26 декабрь 2016","content":"<h2>Structured documents</h2><p>Sometimes it’s useful to have different levels of headings to structure your documents. Start lines with a <code>#</code> to create headings. Multiple <code>##</code> in a row denote smaller heading sizes.</p><h3>This is a third-tier heading</h3><p>You can use one <code>#</code> all the way up to <code>######</code> six for different heading sizes.</p><p>If you’d like to quote someone, use the &gt; character before the line:</p><blockquote><p>Coffee. The finest organic suspension ever devised… I beat the Borg with it.</p><ul><li>Captain Janeway</li></ul></blockquote>"},{"header":"Установка gulp-CLI","date":"25 января 2017","content":"<h2>Getting Started</h2><h4>1. Install gulp globally:</h4><p><strong>If you have previously installed a version of gulp globally, please run <code>npm rm --global gulp</code>to make sure your old version doesn’t collide with gulp-cli.</strong></p><pre class='hljs language-sh'><code>$ npm install --global gulp-cli</code></pre><h4>2. Install gulp in your project devDependencies:</h4><pre class='hljs language-sh'><code>$ npm install --save-dev gulp</code></pre><h4>3. Create a <code>gulpfile.js</code> at the root of your project:</h4><pre class='hljs language-js'><code><span class='hljs-keyword'>var</span> gulp = <span class='hljs-built_in'>require</span>(<span class='hljs-string'>'gulp'</span>);\ngulp.task(<span class='hljs-string'>'default'</span>, defaultTask);\n<span class='hljs-function'><span class='hljs-keyword'>function</span> <span class='hljs-title'>defaultTask</span>(<span class='hljs-params'>done</span>) </span>\n{<span class='hljs-comment'>\n// place code for your default task here</span>done();\n}</code></pre><h4>4. Run gulp:</h4><pre class='hljs language-sh'><code>$ gulp</code></pre><p>The default task will run and do nothing.</p><p>To run individual tasks, use <code>gulp &lt;task&gt; &lt;othertask&gt;</code>.</p><h2>Where do I go now?</h2><p>You have an empty gulpfile and everything is installed. How do you REALLY get started? Check out the <a href='recipes'>recipes</a> and the <a href='README.md#articles'>list of articles</a> for more information.</p><h2>.src, .watch, .dest, .parallel, .series, CLI args - How do I use these things?</h2><p>For API specific documentation you can check out the <a href='API.md'>documentation for that</a>.</p><h2>Available Plugins</h2><p>The gulp community is growing, with new plugins being added daily. See the <a href='http://gulpjs.com/plugins/'>main website</a> for a complete list.</p>"}]
 section.section.columns
   aside.columns__left.columns__left_blog
     .blog__menu
       .blog-menu
         ul.blog-menu__list
-          li.blog-menu__item
-            a(href="#").blog-menu__link Самое важное в SСSS
-          li.blog-menu__item
-            a(href="#").blog-menu__link Приемы в верстке, без которых не обходится ни один сайт
-          li.blog-menu__item
-            a(href="#").blog-menu__link Самый необходимый набор Gulp плагинов
-          li.blog-menu__item
-            a(href="#").blog-menu__link Почему я выбрал pug?!
+          each blog in blogs
+            li.blog-menu__item
+              a(href="#").blog-menu__link= blog["header"]
 
   .columns__right.columns__right_blog
     .blog
       .articles
-        article.article__content
-          .articles__title
-            +title("Самое важное в SСSS", "article", ["sub", "dashed-false", "padbot-0", "ta-left"])
-          .articles__date
-            .text.text_color-theme.text_opacity-70
-              | 25 декабря 2020
-          .articles__text
-            .text
-              p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quam saepe aliquam eum, velit! Distinctio commodi voluptate veritatis ducimus est suscipit, veniam ad tempore possimus, alias rerum, perferendis nostrum at.
-              p  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Вскоре, последний. Предупреждал речью то строчка которое! Использовало даже сих реторический вскоре это до жизни подпоясал вдали моей? Свое, текстов.
-              p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quam saepe aliquam eum, velit! Distinctio commodi voluptate veritatis ducimus est suscipit, veniam ad tempore possimus, alias rerum, perferendis nostrum at.
-              p  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Вскоре, последний. Предупреждал речью то строчка которое! Использовало даже сих реторический вскоре это до жизни подпоясал вдали моей? Свое, текстов.
-
-        article.article__content
-          .articles__title
-            +title("Лорем", "article", ["sub", "dashed-false", "padbot-0", "ta-left"])
-          .articles__date
-            .text.text_color-theme.text_opacity-70
-              | 25 декабря 2020
-          .articles__text
-            .text
-              p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione quam saepe aliquam eum, velit! Distinctio commodi voluptate veritatis ducimus est suscipit, veniam ad tempore possimus, alias rerum, perferendis nostrum at.
-              p  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Вскоре, последний. Предупреждал речью то строчка которое! Использовало даже сих реторический вскоре это до жизни подпоясал вдали моей? Свое, текстов.
-              p  Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. За ведущими родного власти города реторический заманивший что путь своего коварных своих текстов, осталось океана приставка своего моей взобравшись рукописи.
+        each blog in blogs
+          article.article__content
+            .articles__title
+              +title(blog["header"], "article", ["sub", "dashed-false", "padbot-0", "ta-left"])
+            .articles__date
+              .text.text_color-theme.text_opacity-70= blog["date"]
+            .articles__text.markdown-body!= blog["content"]

@@ -64,7 +64,7 @@
      
         if (totalLoaded === (total-1)) {
           preloader.style.display = 'none';
-          window.dispatchEvent(new Event('resize'));
+          //window.dispatchEvent(new Event('resize'));
         }
         preloader.innerHTML = Math.round(100*totalLoaded/total)+"%";
       }
@@ -368,6 +368,26 @@
       }
     })();
     
+    var blogToC = (function () {
+      var 
+        toc = document.querySelector('.blog__menu');
+        var tocScroll = (e) => {
+          if (document.querySelector('.content').offsetTop < window.scrollY) {
+            toc.classList.add('blog__menu_sticky');
+            // toc.style.top = (window.scrollY - document.querySelector('.content').offsetTop + 20) +'px';
+          } else {
+            toc.classList.remove('blog__menu_sticky');
+          }
+        }
+
+      return {
+        init: () => {
+          if (toc == null) return;
+          console.log(toc.offsetTop);
+          window.addEventListener('scroll', tocScroll);
+        }
+      }
+    })();
     
     mouseParallax.init();
     scrollParallax.init();
@@ -375,11 +395,13 @@
     flip.init();
     blur.set();
     preloader.set(document.getElementsByClassName("layer"));
+    blogToC.init();
 
     window.addEventListener('resize', (e) =>{
       blur.set();
       flip.init();
       preloader.set(document.getElementsByClassName("layer"));
+      blogToC.init();
     });
   }
   window.addEventListener("load", ready);
