@@ -53,6 +53,8 @@
   height: 525px;
   flex: 0 1 70%;
   background: #efebe0;
+  position: relative;
+  overflow: hidden;
   
 
   display: flex;
@@ -133,6 +135,7 @@
 .works__controls {
   display: flex;
   flex-flow: row nowrap;
+  overflow: hidden;
 
   height: 225px;
   flex: 0 1 30%;
@@ -146,10 +149,17 @@
   }
 }
 
-.works__control {
+.works__control-item {
   flex: 0 1 50%;
   position: relative;
   height: 100%;
+}
+
+.works__control {
+  position: absolute;
+  left: -9999px;
+  height: 100%;
+  width: 100%;
   
   background-size: contain;
   background-position: center;
@@ -159,6 +169,10 @@
 
 .works__control_up {
   // background: url('/assets/img/works/work-2.png') center/contain no-repeat;
+  // animation-name: backgroundSlide;
+  // animation-duration: 0.5s;
+  // animation-timing-function: ease;
+  // animation-iteration-count: infinite;
 }
 
 .works__control_down {
@@ -167,14 +181,111 @@
 
 .works__arrow {
   @include centered();
+  padding: 25px;
+  &:hover svg {
+    fill-opacity: 1;
+  }
 }
 
 .works__title-item, .works__tech-item, .works__href-item, .works__mainimage-item {
   position: absolute;
   left: -9999px;
+  
 }
+
+
+$duration-typing: 300ms;
+$delay-unit: 100ms;
+
+.works__tech-item, .title__inner {
+    span {
+      font-style: normal;
+    }
+    &.works__text_animate {
+      > span > i {
+        animation: typewriter $duration-typing forwards;
+      }
+    }
+    > span > i {
+      font-style: normal;
+      opacity: 0;
+      @for $i from 1 through 30 {
+        &:nth-of-type(#{$i}) {
+          animation-delay: $i*$delay-unit;
+        }
+      }
+    }
+}
+$images_animation_duration: 0.3s;
+.works__mainimage_animate {
+  animation-name: typewriter;
+  animation-duration: $images_animation_duration;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+.works_animation-slideup {
+  animation-name: slideUp;
+  animation-duration: $images_animation_duration;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.works_animation-slideupbottom {
+  animation-name: slideUpFromBottom;
+  animation-duration: $images_animation_duration;
+  animation-delay: $images_animation_duration/2;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.works_animation-slidedown {
+  animation-name: slideDown;
+  animation-duration: $images_animation_duration;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.works_animation-slidedowntop {
+  animation-name: slideDownFromTop;
+  animation-duration: $images_animation_duration;
+  animation-delay: $images_animation_duration/2;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 
 .works__current {
   position: relative;
   left: 0;
+}
+
+@keyframes mainimage {
+  0%  { top:100%; }
+  100% { top:0;}
+}
+
+@keyframes slideUp {
+  0%  { top: 0; left:0; }
+  100% { top: -100%; left: 0; }
+}
+@keyframes slideUpFromBottom {
+  0%  { top: 100%;left:0; }
+  100% { top: 0;left:0; }
+}
+
+@keyframes slideDown {
+  0%  { top: 0;left:0; }
+  100% { top: 100%;left:0; }
+}
+
+@keyframes slideDownFromTop {
+  0%  { top: -100%;left:0; }
+  100% { top: 0;left:0; }
+}
+
+@keyframes typewriter {
+  0% { opacity: 0;}
+  100% { opacity: 1; }
 }

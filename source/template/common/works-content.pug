@@ -9,7 +9,11 @@
       ul.works__title
         each work, key in works
           li.works__title-item
-            +title(work["name"], "", ["sub"])
+            //-+title(work["name"], "", ["sub"])
+            .title
+              .title__text.title__text_sub
+                .title__inner= work["name"]
+
       ul.works__tech
         each work, key in works
           li.works__tech-item.text.text_ta-center.text_fw-medium.text_color-tech= work["tech"]
@@ -27,11 +31,15 @@
         li.works__mainimage-item
           img(src=work["img"]).works__image
     .works__controls
-      .works__control.works__control_down
+      .works__control-item
+        each work, key in works
+          div(style="background-image:url('"+work["img"]+"');").works__control.works__control_down
         a(href="#").arrow.works__arrow.works__arrow_down
           svg.arrow__icon
             use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")
-      .works__control.works__control_up
+      .works__control-item
+        each work, key in works
+          div(style="background-image:url('"+work["img"]+"');").works__control.works__control_up
         a(href="#").arrow.works__arrow.works__arrow_up
           svg.arrow__icon
             use(xlink:href="/assets/img/sprite.svg#portf_arrow_up")
