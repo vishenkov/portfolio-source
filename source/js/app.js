@@ -57,11 +57,12 @@
     var preloader = (function(){
       var preloader = document.querySelector('.preloader');
       var totalLoaded = 0;
+      var total = 0;
 
       var incLoaded = () => {
         totalLoaded++;
      
-        if (totalLoaded === imagesArray.length) {
+        if (totalLoaded === (total-1)) {
           preloader.style.display = 'none';
           window.dispatchEvent(new Event('resize'));
         }
@@ -71,8 +72,10 @@
       return {
         set : function(imagesArray) {
           if ((preloader == null) || (imagesArray == null)) return;
+
+          total = imagesArray.length;
           
-          for (var i = 0; i < imagesArray.length; i++) {
+          for (var i = 0; i < total; i++) {
             var img = new Image();
             
             img.onload = function() {
