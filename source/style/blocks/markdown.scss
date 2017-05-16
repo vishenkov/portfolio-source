@@ -204,3 +204,28 @@
     padding: 0;
     background-color: transparent;
     border: none; }
+
+    .markdown-body .hljs-keyword {
+      font-weight: 600;
+    }
+
+    .markdown-body .hljs-function {
+      color: $theme-color1;
+    }
+    .markdown-body .hljs-title {
+      font-style: italic;
+      color: #000;
+    }
+    .markdown-body .hljs-comment {
+      font-style: italic;
+      color: #ccc;
+    }
+
+    .markdown-body .hljs-string {
+      font-style: italic;
+      color: $link-color;
+    }
+
+    .markdown-body .hljs-built_in {
+      color: $theme-color2;
+    }

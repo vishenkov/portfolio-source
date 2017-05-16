@@ -4,21 +4,21 @@ block var-modal
   - var modal_mod = 'welcome'
 
 block modal-bg
-  .preloader
-    svg.preloader__spinner
-      use(xlink:href="/assets/img/preloader/preloader_round.svg")
+  //- .preloader
+  //-   svg.preloader__spinner
+  //-     use(xlink:href="/assets/img/preloader/preloader_round.svg")
 
   ul.parallax
-    li(data-depth=0.9).layer.layer__1
-    li(data-depth=0.5).layer.layer__2
-    li(data-depth=0.6).layer.layer__3
-    li(data-depth=0.7).layer.layer__4
-    li(data-depth=0.5).layer.layer__5
-    li(data-depth=0.3).layer.layer__6
-    li(data-depth=0.25).layer.layer__7
-    li(data-depth=0.1).layer.layer__8
-    li(data-depth=0.1).layer.layer__9
-    li(data-depth=0).layer.layer__10
+    li(data-depth=0.9).layer.layer__1.preload
+    li(data-depth=0.5).layer.layer__2.preload
+    li(data-depth=0.6).layer.layer__3.preload
+    li(data-depth=0.7).layer.layer__4.preload
+    li(data-depth=0.5).layer.layer__5.preload
+    li(data-depth=0.3).layer.layer__6.preload
+    li(data-depth=0.25).layer.layer__7.preload
+    li(data-depth=0.1).layer.layer__8.preload
+    li(data-depth=0.1).layer.layer__9.preload
+    li(data-depth=0).layer.layer__10.preload
 
 block modal-header
   .welcome__button

@@ -2,6 +2,12 @@
   text-align: right;
 }
 
+.blog-menu__link_selected {
+  color: rgba(0, 191, 165, 1);
+  font-weight: 500;
+  border-right: 3px solid rgba(0, 191, 165, 1); 
+}
+
 .blog-menu__link {
   text-decoration: none;
   color: rgba(69, 90, 100, 1);
@@ -17,8 +23,12 @@
   transition: border 0.2s;
   transition-delay: 0.05s;
   &:hover {
-    color: rgba(0, 191, 165, 1);
-    font-weight: 500;
-    border-right: 3px solid rgba(0, 191, 165, 1); 
+    @extend .blog-menu__link_selected;
   }
+}
+
+.blog-menu__link_selected {
+  color: rgba(0, 191, 165, 1);
+  font-weight: 500;
+  border-right: 3px solid rgba(0, 191, 165, 1); 
 }

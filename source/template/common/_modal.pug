@@ -2,7 +2,7 @@ block var-modal
   - var modal_mod = ''
 
 
-section(class="section modal modal_"+modal_mod)
+section(class="section modal modal_"+modal_mod).preload
   block modal-bg
   div(class="modal__header modal__header_"+modal_mod)
     block modal-header

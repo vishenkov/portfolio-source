@@ -52,6 +52,7 @@ $title-line-height: 1.05;
 }
 
 .title__text {
+  
   display: flex;
   flex-flow:row nowrap;
   justify-content: center;
@@ -198,3 +199,17 @@ $title-line-height: 1.05;
   }
 }
 
+.title__text_link-article {
+  @include bernier();
+  color: $main-font-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: $main-font-color;
+  }
+  &:focus {
+    outline:none;
+  }
+}

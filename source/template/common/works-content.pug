@@ -33,7 +33,7 @@
     .works__controls
       .works__control-item
         each work, key in works
-          div(style="background-image:url('"+work["img"]+"');").works__control.works__control_down
+          div(style="background-image:url('"+work["img"]+"');").works__control.works__control_down.preload
         a(href="#").arrow.works__arrow.works__arrow_down
           svg.arrow__icon
             use(xlink:href="/assets/img/sprite.svg#portf_arrow_down")

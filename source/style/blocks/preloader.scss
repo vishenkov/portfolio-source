@@ -1,15 +1,14 @@
 .preloader {
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   left: 0;
-  height: 100vh;
-
   background: url('/assets/img/preloader/bg.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 9999;
+  background-color: $theme-color1;
 
   display: flex;
   flex-flow: row nowrap;
@@ -18,7 +17,56 @@
 }
 
 .preloader__spinner {
-  // width: 50px;
-  // height: 50px;
-  fill: #fff;
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.preloader__percents {
+  position: absolute;
+  color:#fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+.preloader__animation {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #fff
+  }
+
+  &:before {
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    animation: spin 2s linear infinite;
+  }
+
+  &:after {
+    top: 15px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    animation: spin 3s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); } 
 }

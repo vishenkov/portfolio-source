@@ -54,50 +54,7 @@
       }
     })();
 
-    var preloader = (function(){
-      var preloader = document.querySelector('.preloader');
-      var totalLoaded = 0;
-      var total = 0;
-
-      var incLoaded = () => {
-        totalLoaded++;
-     
-        if (totalLoaded === (total-1)) {
-          preloader.style.display = 'none';
-          //window.dispatchEvent(new Event('resize'));
-        }
-        preloader.innerHTML = Math.round(100*totalLoaded/total)+"%";
-      }
-
-      return {
-        set : function(imagesArray) {
-          if ((preloader == null) || (imagesArray == null)) return;
-
-          total = imagesArray.length;
-          
-          for (var i = 0; i < total; i++) {
-            var img = new Image();
-            
-            img.onload = function() {
-              incLoaded();
-              console.log("loaded");
-            }
-            img.onerror = function() {
-              incLoaded();
-              console.log("load error");
-            }
-
-            var 
-              style = imagesArray[i].currentStyle || window.getComputedStyle(imagesArray[i], false),
-              src = style.backgroundImage.slice(4, -1);
-            
-            src = src.replace(/('|")/g,'');
-            img.src = src;
-          }
-        }
-      }
-
-    }());
+    
 
     var blur = (function () {
       var blur = document.querySelector('.blur'),
@@ -165,6 +122,7 @@
             };
             document.querySelector('.form__button_flip').onclick = function(e) {
               doFlip();
+              document.querySelector('.button__link_flipper').classList.toggle('button__link_active');
             };
           }
         }
@@ -370,11 +328,24 @@
     
     var blogToC = (function () {
       var 
-        toc = document.querySelector('.blog__menu');
+        toc = document.querySelector('.blog__menu'),
+        links = document.querySelectorAll('.blog-menu__link'),
+        offsetContent = 0,
+        articlesHeights = [],
+        offsetArticles = [],
+        offsetMargin = 60;
+
         var tocScroll = (e) => {
-          if (document.querySelector('.content').offsetTop < window.scrollY) {
+          if (offsetContent < window.scrollY) {
             toc.classList.add('blog__menu_sticky');
-            // toc.style.top = (window.scrollY - document.querySelector('.content').offsetTop + 20) +'px';
+            offsetArticles.forEach((offset, index) => {
+              // console.log("scrollY: "+window.scrollY+" offset: "+offset+ " articlesHeights[index]: "+articlesHeights[index]);
+              if ((window.scrollY > offset- offsetMargin) && ((offset + articlesHeights[index]-offsetMargin) > window.scrollY)) {
+                links[index].classList.add('blog-menu__link_selected');
+              } else {
+                links[index].classList.remove('blog-menu__link_selected');
+              }
+            });
           } else {
             toc.classList.remove('blog__menu_sticky');
           }
@@ -383,7 +354,15 @@
       return {
         init: () => {
           if (toc == null) return;
-          console.log(toc.offsetTop);
+          offsetContent = document.querySelector('.content').offsetTop;
+          document.querySelectorAll('.article__content').forEach((article, index) => {
+            offsetArticles.push(offsetContent + article.offsetTop);
+            articlesHeights.push(article.offsetHeight);
+          });
+          links[0].classList.add('blog-menu__link_selected');
+          toc = document.querySelector('.blog__menu');
+          links = toc.querySelectorAll('.blog-menu__link');
+
           window.addEventListener('scroll', tocScroll);
         }
       }
@@ -394,15 +373,98 @@
     gallery.init();
     flip.init();
     blur.set();
-    preloader.set(document.getElementsByClassName("layer"));
     blogToC.init();
 
     window.addEventListener('resize', (e) =>{
       blur.set();
       flip.init();
-      preloader.set(document.getElementsByClassName("layer"));
+      //preloader.init();
       blogToC.init();
     });
   }
+  function DOMReady () {
+    var preloader = (function() {
+      var preloads = document.querySelectorAll('.preload');
+      var preloader = null;
+      var percentText = null;
+      var totalLoaded = 0;
+      var total = 0;
+
+      var incLoaded = () => {
+        totalLoaded++;
+     
+        if (totalLoaded === (total)) {
+          destroyPreloader();
+        }
+        if (percentText != null) {
+          percentText.innerHTML = Math.round(100*totalLoaded/total)+"%";
+        // console.log(Math.round(100*totalLoaded/total)+"%")
+        }
+      }
+
+      var createPreloader = () => {
+        preloader = document.createElement('div');
+        preloader.className = 'preloader';
+
+        let spinner = document.createElement('div');
+        spinner.className = 'preloader__spinner';
+        preloader.appendChild(spinner);
+
+        let anim = document.createElement('div');
+        anim.className = 'preloader__animation';
+        spinner.appendChild(anim);
+
+        percentText = document.createElement('div');
+        percentText.className = 'preloader__percents';
+        spinner.appendChild(percentText);
+
+        document.body.appendChild(preloader);
+      }
+
+      var destroyPreloader = () => {
+        let allPreloaders = document.querySelectorAll('.preloader');
+        if (allPreloaders == null) return;
+        allPreloaders.forEach((item) => {
+          item.parentNode.removeChild(item);
+        });
+      }
+
+      return {
+        init : () => {
+          if (preloads.length === 0) return;
+          console.log(preloads);
+          total = preloads.length;
+          createPreloader();
+          percentText.innerHTML = "0%";
+          totalLoaded = 0;
+
+          for (var i = 0; i < total; i++) {
+            var img = new Image();
+            
+            img.onload = function() {
+              incLoaded();
+              console.log("loaded");
+            }
+            img.onerror = function() {
+              incLoaded();
+              console.log("load error");
+            }
+
+            var 
+              style = preloads[i].currentStyle || window.getComputedStyle(preloads[i], false),
+              src = style.backgroundImage.slice(4, -1);
+            
+            src = src.replace(/('|")/g,'');
+            img.src = src;
+          }
+        }
+      }
+
+    }());
+
+    preloader.init();
+
+  }
   window.addEventListener("load", ready);
+  window.addEventListener("DOMContentLoaded", DOMReady);  
 })();
