@@ -1,16 +1,18 @@
 (function() {
+  function DOMReady () {
   function ready() {
     var mouseParallax = (function (){
       var parallax = document.querySelector('.parallax');
-      var mouseMove = (e) => {
-        var
-          layers =  parallax.getElementsByClassName('layer'),
-          computedStyle = getComputedStyle(parallax),
-          width = parseInt(computedStyle.width, 10),
-          height = parseInt(computedStyle.height, 10),
+      var
+          layers =  [],
+          computedStyle = null,
+          width =0,
+          height = 0,
           parallaxPercent = 5,
-          maxOffsetX = parallaxPercent*width/100,
-          maxOffsetY = parallaxPercent*height/100;
+          maxOffsetX = 0,
+          maxOffsetY = 0;
+
+      var mouseMove = (e) => {
 
         for (var i = 0; i < layers.length; i++) {
           var
@@ -29,6 +31,12 @@
       return {
         init: () => {
           if (parallax != null) {
+            layers =  parallax.getElementsByClassName('layer');
+            computedStyle = getComputedStyle(parallax);
+            width = parseInt(computedStyle.width, 10);
+            height = parseInt(computedStyle.height, 10);
+            maxOffsetX = parallaxPercent*width/100;
+            maxOffsetY = parallaxPercent*height/100;
             window.addEventListener('mousemove', mouseMove);
           }
         }
@@ -36,11 +44,12 @@
     })();
 
     var scrollParallax = (function (){
-      var bg = document.getElementsByClassName('parallax-scroll');
+      var bg = document.querySelectorAll('.parallax-scroll');
+      
       var scrollFunction = (e) => {
         if (bg.length>0) {
           for (var i = 0; i < bg.length; i++) {
-            bg[i].style.transform = "translate3d(0,"+window.pageYOffset/((i+1)*2)+"px,"+ "0)";
+            bg[i].style.transform = "translate3d(0,"+(window.scrollY/((i+1)*1.5))+"px,"+ "0)";
           }
         }
       }
@@ -53,8 +62,6 @@
         }
       }
     })();
-
-    
 
     var blur = (function () {
       var blur = document.querySelector('.blur'),
@@ -95,39 +102,6 @@
       }
     }());
 
-    
-    var flip = (function () {
-      var flipper = document.querySelector('.flipper');
-
-      var setFlipperDimentions = () => {
-        var 
-          front = getComputedStyle(flipper.querySelector('.flipper__side').firstElementChild),
-          back = getComputedStyle(flipper.querySelector('.flipper__side').lastElementChild);
-
-          flipper.style.width = Math.max(parseInt(front.width, 10), parseInt(back.width, 10)) + 'px';
-          console.log( Math.max(parseInt(front.width, 10), parseInt(back.width, 10)) + " "+ Math.max(parseInt(front.height, 10), parseInt(back.height, 10)));
-          flipper.style.height = Math.max(parseInt(front.height, 10), parseInt(back.height, 10))+ 'px';
-      };
-      var doFlip = () => {
-        flipper.classList.toggle('flipper_flip');
-      }
-      
-      return {
-        init: () => {
-          if (flipper != null) {
-            setFlipperDimentions();
-            document.querySelector('.button__link_flipper').onclick = function(e) {
-              doFlip();
-              this.classList.toggle('button__link_active');
-            };
-            document.querySelector('.form__button_flip').onclick = function(e) {
-              doFlip();
-              document.querySelector('.button__link_flipper').classList.toggle('button__link_active');
-            };
-          }
-        }
-      }
-    })();
 
     var gallery = (function () {
       var
@@ -420,6 +394,9 @@
           if (btn.offsetLeft > 0) {
             btn.click();
           }
+          //TODO: somthing to do with this Oo
+          btn.click();
+          btn.click();
           menu = document.querySelector('.columns__left_blog');
           btn.addEventListener('click', btnclick);
           window.addEventListener('scroll', btnscroll);
@@ -428,14 +405,182 @@
       }
     })();
 
+    var formsValidation = (function (){
+      var formLogin = null,
+          formContactme = null;
+
+      var showError = (container, msg) => {
+        let error = document.createElement('div');
+        error.className = 'form__error';
+        error.innerText=msg;
+        container.appendChild(error);
+        container.classList.add('form__section_row-inputerror');
+      }
+
+      var resetMsg = (container) => {
+        if (container.lastChild.className == "form__error" ) {
+          container.removeChild(container.lastChild);
+          container.classList.remove('form__section_row-inputerror');
+        }
+        container.classList.remove('form__section_row-inputsuccess');
+      }
+
+      var successMsg= (container, msg) => {
+        let success = document.createElement('div');
+        success.className = 'form__success';
+        success.innerText=msg;
+        container.appendChild(success);
+        setTimeout(()=>{
+          container.removeChild(success);
+        },2000);
+      }
+
+      var validateLogin = (e) => {
+        let elements = formLogin.elements;
+        let errors = 0;
+        
+        resetMsg(elements.login.parentNode);
+        if (!elements.login.value) {
+          errors++;
+          showError(elements.login.parentNode, "Вы не ввели логин");
+          elements.login.addEventListener('click', (e)=>{
+            resetMsg(elements.login.parentNode);
+          });
+        } else {
+          elements.login.parentNode.classList.add('form__section_row-inputsuccess');
+        }
+
+        resetMsg(elements.password.parentNode);
+        if (!elements.password.value) {
+          errors++;
+          showError(elements.password.parentNode, "Вы не ввели пароль");
+          elements.password.addEventListener('click', (e)=>{
+            resetMsg(elements.password.parentNode);
+          });
+        } else {
+          elements.password.parentNode.classList.add('form__section_row-inputsuccess');
+        }
+
+        resetMsg(elements.human.parentNode);
+        if (!elements.human.checked) {
+          errors++;
+          showError(elements.human.parentNode, "Вы не человек?");
+          elements.human.parentNode.addEventListener('click', (e)=>{
+            resetMsg(elements.human.parentNode);
+          });
+        } else {
+          elements.human.parentNode.classList.add('form__section_row-inputsuccess');
+        }
+
+        resetMsg(elements.capthca[0].parentNode);
+        if (!elements.capthca[0].checked) {
+          errors++;
+          showError(elements.capthca[0].parentNode, "Вы не не робот?");
+          elements.capthca[0].parentNode.addEventListener('click', (e)=>{
+            resetMsg(elements.capthca[0].parentNode);
+          });
+        } else {
+          elements.capthca[0].parentNode.classList.add('form__section_row-inputsuccess');
+        }
+
+        if (!errors) {
+          successMsg(formLogin.parentNode, "Добро пожаловать!");
+        }
+
+      }
+
+      var validateContactme = (e) => {
+        let elements = formContactme.elements;
+        let errors = 0;
+
+        resetMsg(elements.name.parentNode);
+        if (!elements.name.value) {
+          errors++;
+          showError(elements.name.parentNode, "Вы не ввели имя");
+          elements.name.addEventListener('click', (e)=>{
+            resetMsg(elements.name.parentNode);
+          });
+        } else {
+          elements.name.parentNode.classList.add('form__section_row-inputsuccess');
+        }
+
+        resetMsg(elements.email.parentNode);
+        if (!elements.email.value) {
+          errors++;
+          showError(elements.email.parentNode, "Вы не ввели email");
+          elements.email.addEventListener('click', (e)=>{
+            resetMsg(elements.email.parentNode);
+          });
+        } else {
+            if (!validateEmail(elements.email.value)) {
+              errors++;
+              showError(elements.email.parentNode, "Некорректный email");
+              elements.email.addEventListener('click', (e)=>{
+                resetMsg(elements.email.parentNode);
+              });
+            } else {
+              elements.email.parentNode.classList.add('form__section_row-inputsuccess');
+            }
+        }
+
+        resetMsg(elements.message.parentNode);
+        if (!elements.message.value) {
+          errors++;
+          showError(elements.message.parentNode, "Вы не ввели сообщение?");
+          elements.message.parentNode.addEventListener('click', (e)=>{
+            resetMsg(elements.message.parentNode);
+          });
+        } else {
+          elements.message.parentNode.classList.add('form__section_row-inputsuccess');
+        }
+
+        if (!errors) {
+          successMsg(formContactme.parentNode.parentNode, "Спасибо!\nВаше сообщение отправлено.");
+        }
+      }
+
+      var resetForm = () => {
+        let elements = formContactme.elements;
+        for (var i = 0; i < elements.length; i++) {
+          resetMsg(elements[i].parentNode);
+          elements[i].value = '';
+        }
+      }
+
+      function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+      }
+
+      return {
+        initLogin: () => {
+          var btn = document.querySelector('.form__button_submit');
+          if (btn == null) return;
+          formLogin = document.querySelector('.form_login');
+          if (formLogin == null) return;
+          btn.addEventListener('click', validateLogin);
+        },
+        initContactme: () => {
+          var btn = document.querySelector('.form__button_submit');
+          if (btn == null) return;
+          formContactme = document.querySelector('.form_contactme');
+          if (formContactme == null) return;
+          btn.addEventListener('click', validateContactme);
+          document.querySelector('.form__button_reset').addEventListener('click', resetForm);
+        }
+      }
+    })();
+
     initMap();
     mouseParallax.init();
     scrollParallax.init();
     gallery.init();
-    flip.init();
+ 
     blur.set();
     blogToC.init();
     blogSwipeMenu.init();
+    formsValidation.initLogin();
+    formsValidation.initContactme();
 
     window.addEventListener('resize', (e) =>{
       blur.set();
@@ -444,7 +589,6 @@
       blogSwipeMenu.init();
     });
   }
-  function DOMReady () {
     var preloader = (function() {
       var preloads = document.querySelectorAll('.preload');
       var preloader = null;
@@ -529,12 +673,12 @@
         e.preventDefault();
         let offsetHeight = document.body.clientHeight - window.innerHeight;
         if (offsetHeight > 0) {
-          window.scrollTo(0, offsetHeight);
+          scrollTo(document.body, offsetHeight, 500);
         }
       }
       var scrollWindowUp = (e) => {
         e.preventDefault();
-        window.scrollTo(0, 0);
+        scrollTo(document.body, 0, 500);
       }
       return {
         init:() => {
@@ -550,380 +694,429 @@
       }
     })();
 
-    
+     var flip = (function () {
+      var flipper = document.querySelector('.flipper');
+
+      var setFlipperDimentions = () => {
+        var 
+          front = getComputedStyle(flipper.querySelector('.flipper__side').firstElementChild),
+          back = getComputedStyle(flipper.querySelector('.flipper__side').lastElementChild);
+
+          flipper.style.width = Math.max(parseInt(front.width, 10), parseInt(back.width, 10)) + 'px';
+          console.log( Math.max(parseInt(front.width, 10), parseInt(back.width, 10)) + " "+ Math.max(parseInt(front.height, 10), parseInt(back.height, 10)));
+          flipper.style.height = Math.max(parseInt(front.height, 10), parseInt(back.height, 10))+ 'px';
+      };
+      var doFlip = () => {
+        flipper.classList.toggle('flipper_flip');
+      }
+      
+      return {
+        init: () => {
+          if (flipper != null) {
+            setFlipperDimentions();
+            document.querySelector('.button__link_flipper').onclick = function(e) {
+              doFlip();
+              this.classList.toggle('button__link_active');
+            };
+            document.querySelector('.form__button_flip').onclick = function(e) {
+              doFlip();
+              document.querySelector('.button__link_flipper').classList.toggle('button__link_active');
+            };
+          }
+        }
+      }
+    })();
 
     preloader.init();
     arrowLinksInit.init();
-    
-
+    flip.init();
+    window.addEventListener("load", ready);
   }
-  window.addEventListener("load", ready);
+
   window.addEventListener("DOMContentLoaded", DOMReady);  
 })();
-      function initMap() {
+
+function scrollTo (element, to, duration) {
+  if (duration <= 0) return;
+  let diff = to - element.scrollTop;
+  let tick = diff / duration * 10;
+
+  setTimeout(()=>{
+    element.scrollTop = element.scrollTop + tick;
+    if (element.scrollTop === to) return;
+    scrollTo(element, to, duration - 10);
+  }, 10);
+}
+
+function initMap() {
         var belgorod = {lat: 50.59460565204478, lng: 36.599270610589656};
         var marker = {lat: 50.6, lng: 36.5992};
         var mapOptions = 
-[
-  {
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#373e42"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#f5f1e6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#c9b2a6"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#dcd2be"
-      }
-    ]
-  },
-  {
-    "featureType": "administrative.land_parcel",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#ae9e90"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape",
-    "stylers": [
-      {
-        "color": "#eff0ea"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.man_made",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#efeee9"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "landscape.natural",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#efeee9"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "stylers": [
-      {
-        "visibility": "simplified"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "poi",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#373e42"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.attraction",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.business",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.government",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.medical",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#479686"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.park",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#447530"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.place_of_worship",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.school",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "poi.sports_complex",
-    "stylers": [
-      {
-        "visibility": "off"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#455a64"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#fdfcf8"
-      }
-    ]
-  },
-  {
-    "featureType": "road.arterial",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#d6d6d6"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#f8c967"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#009688"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#e9bc62"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#e98d58"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#009688"
-      }
-    ]
-  },
-  {
-    "featureType": "road.highway.controlled_access",
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#db8555"
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#d5d6d7"
-      },
-      {
-        "lightness": 5
-      }
-    ]
-  },
-  {
-    "featureType": "road.local",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#373e42"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#8f7d77"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#ebe3cd"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.station",
-    "elementType": "geometry",
-    "stylers": [
-      {
-        "color": "#dfd2ae"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "geometry.fill",
-    "stylers": [
-      {
-        "color": "#00bfa5"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#ffffff"
-      }
-    ]
-  }
-]
-      if ((google!= null) && (document.querySelector('.googlemap')!=null)) {
-        var map = new google.maps.Map(document.querySelector('.googlemap'), {
-          center: belgorod,
-          zoom: 15,
-          styles: mapOptions,
-          mapTypeControl: false,
-          scaleControl: false,
-          streetViewControl: false,
-          rotateControl: false,
-          fullscreenControl: false
-        });
-        var image = '/assets/img/map-marker.png';
-        var marker = new google.maps.Marker({
-          position: marker,
-          map: map,
-          icon: image
-        });
+  [
+    {
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#ebe3cd"
         }
-      }
+      ]
+    },
+    {
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#373e42"
+        }
+      ]
+    },
+    {
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#f5f1e6"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#c9b2a6"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.land_parcel",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#dcd2be"
+        }
+      ]
+    },
+    {
+      "featureType": "administrative.land_parcel",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#ae9e90"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape",
+      "stylers": [
+        {
+          "color": "#eff0ea"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.man_made",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#efeee9"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#dfd2ae"
+        }
+      ]
+    },
+    {
+      "featureType": "landscape.natural",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#efeee9"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "stylers": [
+        {
+          "visibility": "simplified"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#dfd2ae"
+        }
+      ]
+    },
+    {
+      "featureType": "poi",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#373e42"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.attraction",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.business",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.government",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.medical",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#479686"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.park",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#447530"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.place_of_worship",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.school",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "poi.sports_complex",
+      "stylers": [
+        {
+          "visibility": "off"
+        }
+      ]
+    },
+    {
+      "featureType": "road",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#455a64"
+        }
+      ]
+    },
+    {
+      "featureType": "road.arterial",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#fdfcf8"
+        }
+      ]
+    },
+    {
+      "featureType": "road.arterial",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#d6d6d6"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#f8c967"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#009688"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#e9bc62"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway.controlled_access",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#e98d58"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway.controlled_access",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#009688"
+        }
+      ]
+    },
+    {
+      "featureType": "road.highway.controlled_access",
+      "elementType": "geometry.stroke",
+      "stylers": [
+        {
+          "color": "#db8555"
+        }
+      ]
+    },
+    {
+      "featureType": "road.local",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#d5d6d7"
+        },
+        {
+          "lightness": 5
+        }
+      ]
+    },
+    {
+      "featureType": "road.local",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#373e42"
+        }
+      ]
+    },
+    {
+      "featureType": "transit.line",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#dfd2ae"
+        }
+      ]
+    },
+    {
+      "featureType": "transit.line",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#8f7d77"
+        }
+      ]
+    },
+    {
+      "featureType": "transit.line",
+      "elementType": "labels.text.stroke",
+      "stylers": [
+        {
+          "color": "#ebe3cd"
+        }
+      ]
+    },
+    {
+      "featureType": "transit.station",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#dfd2ae"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
+      "elementType": "geometry.fill",
+      "stylers": [
+        {
+          "color": "#00bfa5"
+        }
+      ]
+    },
+    {
+      "featureType": "water",
+      "elementType": "labels.text.fill",
+      "stylers": [
+        {
+          "color": "#ffffff"
+        }
+      ]
+    }
+  ]
+  if ((google!= null) && (document.querySelector('.googlemap')!=null)) {
+    var map = new google.maps.Map(document.querySelector('.googlemap'), {
+      center: belgorod,
+      zoom: 15,
+      styles: mapOptions,
+      mapTypeControl: false,
+      scaleControl: false,
+      streetViewControl: false,
+      rotateControl: false,
+      fullscreenControl: false,
+      gestureHandling: 'auto',
+      zoomControl: true,
+      scrollwheel: false,
+      draggable : true,
+      clickableIcons: false,
+    });
+    var image = '/assets/img/map-marker.png';
+    var marker = new google.maps.Marker({
+      position: marker,
+      map: map,
+      icon: image
+    });
+    }
+}

@@ -12,6 +12,9 @@ mixin svgSkill (title, value, rad, strokeWidth)
   - var cXY = Math.round(svgWH/2)
   //- p= fillValue
   //- p= circleLen
+  - var styleName = title.slice(0,3).toLowerCase();
+  - var style = `<style>.circle__animation_${styleName}{animation: ${styleName} 3s 1s linear;} @keyframes ${styleName} {from {stroke-dasharray:0 ${circleLen}} to {stroke-dasharray: ${fillValue} ${circleLen}}}</style>`
+  !=style
   svg(
     width=svgWH 
     height=svgWH 
@@ -32,8 +35,9 @@ mixin svgSkill (title, value, rad, strokeWidth)
         cy=cXY 
         transform="rotate(-90 "+cXY+" "+cXY+")" 
         stroke-dasharray=fillValue+" "+circleLen 
-        class="circle__fill" 
+        class=`circle__fill circle__animation_${styleName}`
         stroke-width=strokeWidth)
+
 
   .data-circles__text
     .text.text_color-theme.text_fz-14.text_fw-medium.text_ta-center= title 

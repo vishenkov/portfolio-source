@@ -10,7 +10,7 @@
 
 .blog-menu__link {
   text-decoration: none;
-  color: rgba(69, 90, 100, 1);
+  color: $main-font-color;
   font-size: 16px;
   
   display: block;
@@ -26,13 +26,31 @@
     @extend .blog-menu__link_selected;
   }
 
+  &:visited {
+    color: $main-font-color;
+  }
+
   @include tablets {
+    color: #fff;
+  border: none;
+  &:hover {
     color: #fff;
     border: none;
   }
+   &:visited {
+    color: #fff;
+  }
+  }
   @include phones {
+   color: #fff;
+  border: none;
+  &:hover {
     color: #fff;
     border: none;
+  }
+   &:visited {
+    color: #fff;
+  }
   }
 }
 
@@ -40,12 +58,42 @@
   color: rgba(0, 191, 165, 1);
   font-weight: 500;
   border-right: 3px solid rgba(0, 191, 165, 1); 
+  text-decoration: none;
+  &:visited {
+    color: rgba(0, 191, 165, 1);
+  }
   @include tablets {
+    color: #fff;
+  border: none;
+  &:hover {
+    color: #fff;
     border: none;
+  }
+   &:visited {
     color: #fff;
   }
+  }
   @include phones {
+   color: #fff;
+  border: none;
+  &:hover {
+    color: #fff;
     border: none;
+  }
+   &:visited {
+    color: #fff;
+  }
+  }
+}
+
+.block-menu__link_mobile {
+  color: #fff;
+  border: none;
+  &:hover {
+    color: #fff;
+    border: none;
+  }
+   &:visited {
     color: #fff;
   }
 }

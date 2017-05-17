@@ -6,6 +6,10 @@
   min-width: 50%;
 }
 
+.user_welcome {
+  position: static;
+}
+
 .user__info {
   display: flex;
   flex-flow: column nowrap;

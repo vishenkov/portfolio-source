@@ -3,6 +3,7 @@
   width: 100%;
   position: absolute;
   bottom: 100%;
+  z-index: 1;
 
   &_fill {
 
@@ -23,7 +24,9 @@
       fill: #fff;
     }
   }
-
+  @include fullhd {
+    height: 155px;
+  }
   @include tablets {
     height: 70px;
   }
@@ -36,6 +39,7 @@
   display: flex;
   flex-flow: row nowrap;
   flex-grow: 0;
+  justify-content: center;
 }
 .traingle__left, .traingle__right {
   flex: 0 0 50%;

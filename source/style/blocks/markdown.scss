@@ -1,11 +1,13 @@
 .markdown-body {
-  font-size: 15px;
-  line-height: 1.7;
+  // font-size: 15px;
+  // line-height: 1.7;
+  @extend .text;
   overflow: hidden; }
   .markdown-body > *:first-child {
     margin-top: 0 !important; }
   .markdown-body > *:last-child {
     margin-bottom: 0 !important; }
+
   .markdown-body a.absent {
     color: #c00; }
   .markdown-body a.anchor {
@@ -38,15 +40,15 @@
     .markdown-body h1 tt, .markdown-body h1 code, .markdown-body h2 tt, .markdown-body h2 code, .markdown-body h3 tt, .markdown-body h3 code, .markdown-body h4 tt, .markdown-body h4 code, .markdown-body h5 tt, .markdown-body h5 code, .markdown-body h6 tt, .markdown-body h6 code {
       font-size: inherit; }
   .markdown-body h1 {
-    font-size: 2.5em;
+    font-size: 2em;
     border-bottom: 1px solid #ddd; }
   .markdown-body h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     border-bottom: 1px solid #eee; }
   .markdown-body h3 {
-    font-size: 1.5em; }
-  .markdown-body h4 {
     font-size: 1.2em; }
+  .markdown-body h4 {
+    font-size: 1.1em; }
   .markdown-body h5 {
     font-size: 1em; }
   .markdown-body h6 {

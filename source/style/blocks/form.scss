@@ -17,7 +17,7 @@
   font-size: 16px;
   border: 2px solid rgba(139, 141, 141, .1);
   padding: 15px 20px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   resize: none;
   
   
@@ -33,7 +33,7 @@
   &:focus {
     outline: none;
     border-radius: 5px;
-    border: 2px solid $theme-color1;
+    border: 2px solid rgba($theme-color1, 0.6);
   }
 }
 
@@ -82,8 +82,11 @@
   align-items: center;
   margin-bottom: 20px;
   &:last-child {
-    margin-bottom: 0;
+    margin-bottom: 20px;
   }
+}
+.form__section_pad-10 {
+  margin-bottom: 10px;
 }
 
 .form__section_row {
@@ -92,6 +95,81 @@
   align-items: flex-start;
   justify-content: center;
 }
+
+.form__section_row-inputerror {
+  position: relative;
+  & svg{
+    fill: $theme-error;
+    opacity: 0.9;
+  }
+  & .form__input {
+    border: 2px solid $theme-error;
+  }
+}
+.form__section_row-inputsuccess {
+  position: relative;
+  & svg{
+    fill: $theme-color1;
+    opacity: 0.9;
+  }
+  & .form__input {
+    border: 2px solid $theme-color1;
+  }
+}
+.form__success {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $theme-color1;
+  color: #fff;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px 5px 0;
+
+  animation-name: showMsg;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+}
+@keyframes showMsg {
+  0% {opacity: 0;}
+  20% {opacity: 1;}
+  80% {opacity: 1;}
+  100% {opacity: 0;}
+}
+.form__error {
+  position: absolute;
+  border-radius: 5px;
+  padding: 5px 15px;
+  background-color: $theme-error;
+  color: #fff;
+  top: 100%;
+  transform: translateY(5px);
+  text-align: center;
+  z-index: 100;
+  transition: all 0.3;
+  &:before {
+    content: "";
+    $size: 12px;
+    display: block;
+    position: absolute;
+    width: $size;
+    height: $size;
+    background-color: $theme-error;
+    
+    top: 0;
+    left: 50%;
+    // z-index: 100;
+    transform: rotateZ(45deg) translateX(-$size/2);
+  }
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
 .form__icon-container {
   height: 52px;
   width: 52px;
@@ -140,6 +218,9 @@
   &:before {
     border-radius: 2px;
   }
+}
+.form__label_checkboxerror, .form__label_radioerror {
+  position: relative;
 }
 
 .form__label_radio {

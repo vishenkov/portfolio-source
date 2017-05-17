@@ -4,7 +4,7 @@ block var-user
 - var name = 'Кирилл Вишенков'
 - var subtitle = 'Личный сайт веб-разработчика'
 
-.user.parallax-scroll.parallax-scroll_3
+div(class="user parallax-scroll parallax-scroll_3"+ (user_mod==""?"":" user_"+user_mod))
   div(class="user__info"+(user_mod==""?"":" user__info_"+user_mod))
     div(class="user__photo"+(user_mod==""?"":" user__photo_"+user_mod))
       block user-photo

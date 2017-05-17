@@ -193,6 +193,7 @@ $title-line-height: 1.05;
   transition: all 0.4;
   &:hover {
     opacity: 1;
+    text-decoration: none;
     &:after,&:before {
       opacity: 1;
     }

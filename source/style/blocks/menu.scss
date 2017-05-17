@@ -11,9 +11,13 @@
   padding: 20px;
   transition: all 0.3s;
   
+  &:visited {
+    color: #ffffff;
+  }
   &:hover {
     background: rgba(55, 62, 66, 1);
     color: $theme-color1;
+    text-decoration: none;
   }
   @include tablets {
     padding: 10px;
@@ -29,6 +33,9 @@
 }
 .menu__link_current {
   color: $theme-color2;
+  &:visited {
+    color: $theme-color2;
+  }
 }
 
 .menu__list_welcome {

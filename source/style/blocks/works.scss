@@ -113,10 +113,14 @@
   text-decoration: none;
   color: #fff;
   transition: all 0.4s;
-
+  &:visited {
+    color: #fff;
+  }
   &:hover {
     background: $theme-color2;
+    text-decoration: none;
   }
+
 }
 
 .works__icon {
@@ -153,6 +157,7 @@
   flex: 0 1 50%;
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .works__control {
@@ -164,26 +169,41 @@
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.5;
-}
-
-.works__control_up {
-  // background: url('/assets/img/works/work-2.png') center/contain no-repeat;
-  // animation-name: backgroundSlide;
-  // animation-duration: 0.5s;
-  // animation-timing-function: ease;
-  // animation-iteration-count: infinite;
-}
-
-.works__control_down {
-  // background: url('/assets/img/works/work-4.png') center/contain no-repeat;
+  // opacity: 0.5;
 }
 
 .works__arrow {
-  @include centered();
-  padding: 25px;
-  &:hover svg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  &:hover {
+    animation: workpulse 2s linear infinite;
+    &:after {
+     background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+  }
+  svg {
+    width: 30px;
+    height: 30px;
     fill-opacity: 1;
+    fill: #fff;
   }
 }
 
@@ -191,6 +211,13 @@
   position: absolute;
   left: -9999px;
   
+}
+@keyframes workpulse {
+  0% {transform: scale(1);}
+  20% {transform: scale(1.1);}
+  60% {transform: scale(1.25);}
+  80% {transform: scale(1.3);}
+  100% {transform: scale(1.5);}
 }
 
 

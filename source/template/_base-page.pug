@@ -17,6 +17,9 @@ block content
 
   section(class="section content" + ((content_mod==null)?"":(" content_"+content_mod)))
     section.section.triangle__wrapper
+      a(href="#").arrow.arrow_animate.arrow_header
+        svg.arrow__icon.arrow__down
+          use(xlink:href="/assets/img/sprite.svg#arrow_down")
       .traingle__left
         block traingle-left
       .traingle__right

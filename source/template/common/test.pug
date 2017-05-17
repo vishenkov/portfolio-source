@@ -1,0 +1,27 @@
+section.section.hero
+	.hero__bg
+		img(src="./assets/img/bg/portfolio.jpg", alt="")
+	header.header
+		ul.socials
+			each item in ['vk','gh','in']
+				li.socials__item.social__item_hero
+					a(href="" class=`social__link social__link_${item}`)
+						svg.socials__icon.socials__icon_fill_white
+							use(xlink:href=`./assets/img/sprite/sprite.svg#${item}`)
+		.some-block
+	.hero__section
+		a(href="").down-arrow
+			svg.down-arrow__icon
+				use(xlink:href=`./assets/img/sprite/sprite.svg#arrow_down`)
+		.hero__title
+			.user.hero__user-block
+				.user__photo
+					img(src="./assets/img/content/user.jpg", alt="").user__photo-img
+				.user__name
+					| Артур Кармов
+				.user__desc
+					| Личный сайт разработчика
+					svg(viewbox="0 0 1000 100" preserveAspectRatio="none").triangles.about__triangles.about__triangles-left
+						polygon(points="0,0 0,100 1000,100")
+					svg(viewbox="0 0 1000 100" preserveAspectRatio="none").triangles.about__triangles.about__triangles-right
+						polygon(points="0,100 1000,100 1000,0")
