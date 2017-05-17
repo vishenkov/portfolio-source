@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   height: auto;
+  position: relative;
 }
 
 .columns_about {
@@ -12,6 +13,10 @@
   @include phones {
     flex-flow: column nowrap;
   }
+}
+
+.columns_blog {
+  position: static;
 }
 
 .columns__left, .columns__right {
@@ -54,16 +59,34 @@
   width: 30%;
   align-items: flex-end;
   background: #fff;
+  position: static;
   @include tablets {
-    display: none;
+    width: 70%;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    background-color: rgba($theme-color1, 0.9);
+    z-index: 99;
   }
   @include phones {
-    display: none;
+     width: 70%;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    background-color: $theme-color1;
+    z-index: 99;
   }
+}
+
+.columns__left_blog-swiped {
+  left: 0;
 }
 
 .columns__right_blog {
   width: 70%;
+  position: static;
   background: #fff;
   @include tablets {
     width: 100%;

@@ -1,12 +1,12 @@
+.blog-menu {
+
+  max-width: 70%;
+}
+
 .blog-menu__item {
   text-align: right;
 }
 
-.blog-menu__link_selected {
-  color: rgba(0, 191, 165, 1);
-  font-weight: 500;
-  border-right: 3px solid rgba(0, 191, 165, 1); 
-}
 
 .blog-menu__link {
   text-decoration: none;
@@ -16,7 +16,7 @@
   display: block;
   
   border-right: 3px solid transparent; 
-  padding: 15px 0;
+  padding: 15px 5px;
   padding-right: 20px;
 
   transition: all 0.1s;
@@ -25,10 +25,27 @@
   &:hover {
     @extend .blog-menu__link_selected;
   }
+
+  @include tablets {
+    color: #fff;
+    border: none;
+  }
+  @include phones {
+    color: #fff;
+    border: none;
+  }
 }
 
 .blog-menu__link_selected {
   color: rgba(0, 191, 165, 1);
   font-weight: 500;
   border-right: 3px solid rgba(0, 191, 165, 1); 
+  @include tablets {
+    border: none;
+    color: #fff;
+  }
+  @include phones {
+    border: none;
+    color: #fff;
+  }
 }

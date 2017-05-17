@@ -14,8 +14,8 @@ block content
             li.hamburger__item
               a(href=key+".html").hamburger__link.title
                 .title__text.title__text_main.title__text_dash-white.title__text_color-white.title__text_pad-0.title__text_link= value
-                
-  section.section.content
+
+  section(class="section content" + ((content_mod==null)?"":(" content_"+content_mod)))
     section.section.triangle__wrapper
       .traingle__left
         block traingle-left

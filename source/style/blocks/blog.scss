@@ -13,8 +13,36 @@
 .blog__menu {
   padding: 60px 5px 0 0; 
   max-width: $content-width*0.3;
+  position: fixed;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  // width: 90%;
 }
+
 .blog__menu_sticky {
   position: fixed;
   top: 0px;
+}
+
+
+.blog__swipe {
+  @include tablets {
+    $size: 25px;
+    width: $size;
+    height: $size;
+    left: -$size/2;
+  }
+  @include phones {
+    $size: 30px;
+    width: $size;
+    height: $size;
+    left: -$size/2;
+  }
+  cursor: pointer;
+  position: fixed;
+  border-left: 2px solid #fff;
+  border-radius: 50%;
+  top: 50%;
+  background: $theme-color2;
 }

@@ -3,6 +3,11 @@ extends _modal
 block var-modal
   - var modal_mod = 'map'
 
+block modal-bg
+  //- div.mapkit
+  //-   iframe(src="//mapkit.io/embed/74k3f6" frameborder="0").mapkit__content
+  .googlemap
+
 block modal-center
   .contacts
     .contacts__title

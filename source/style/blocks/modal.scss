@@ -35,9 +35,6 @@
 
 
 .modal_map {
-  background: url('/assets/img/map.png');
-  background-size: cover;
-  background-repeat: no-repeat;
   height: 974px;
   @include phones {
     justify-content: flex-start;
