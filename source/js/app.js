@@ -13,7 +13,6 @@
           maxOffsetY = 0;
 
       var mouseMove = (e) => {
-
         for (var i = 0; i < layers.length; i++) {
           var
             layer = layers[i],
@@ -575,6 +574,7 @@
     mouseParallax.init();
     scrollParallax.init();
     gallery.init();
+    flip.init();
  
     blur.set();
     blogToC.init();
