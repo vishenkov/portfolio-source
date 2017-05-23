@@ -18,9 +18,14 @@
             layer = layers[i],
             depth = layer.dataset.depth,
             translateX = -(e.clientX-width/2)/(width/2)*maxOffsetX*depth,
-            translateY = -(e.clientY-height/2)/(height/2)*maxOffsetY*depth;
-
-          var transform = "translate3d("+translateX + "px,"+translateY+"px,"+ "0)";
+            translateY = -(e.clientY-height/2)/(height/2)*maxOffsetY*depth,
+            transform  = 0;
+          
+          if (document.body.clientWidth < 3000) {
+            transform = "translate3d("+translateX + "px,"+translateY+"px,"+ "0)";
+          } else {
+             transform = "translate("+translateX + "px,"+translateY+"px)";
+          }
           layer.style.transform = transform;
           layer.style.webkitTransform = transform;
         }
