@@ -8,16 +8,20 @@
 
 
 .modal__center {
-  flex: 1 1 auto;
+  flex: 1 1 70%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   max-width: $content-width;
 }
-
+.modal__center_wrapper {
+  position: absolute;
+  z-index: 2;
+  @include centered('both');
+}
 .modal__header, .modal__footer {
-  flex: 1 1 auto;
+  flex: 1 1 15%;
   display: flex;
   flex-flow: row nowrap;
   align-items: flex-start;
@@ -64,6 +68,7 @@
 }
 
 .modal_hero {
+  background-color: #E3EFED;
   height: 620px;
   position: relative;
   @include tablets {
@@ -76,6 +81,7 @@
 
 
 .modal__header_hero {
+  z-index: 10;
   padding: 28px 30px 0;
   @include tablets {
     padding: 24px 24px 0;

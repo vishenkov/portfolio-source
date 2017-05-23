@@ -6,6 +6,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var config = require('./config');
 
 var index = require('./routes/index');
 var blog = require('./routes/blog');
@@ -17,6 +18,24 @@ var server = http.createServer(app);
 
 var uploadDir = path.join(__dirname, 'upload');
 
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
+mongoose
+  .connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, {
+    user: config.db.user,
+    pass: config.db.password
+  })
+  .catch(e => {
+    console.error(e);
+    throw e;
+  });
+
+require('./models/db');
+//подключаем модели(сущности, описывающие коллекции базы данных)
+require('./models/blog');
+require('./models/works');
+require('./models/skills');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

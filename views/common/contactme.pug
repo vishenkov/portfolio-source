@@ -13,7 +13,7 @@ block modal-center
       .contactme__title
         +title("Связаться со мной", "width-100", ["sub"])
       .contactme__content
-        form.form.form_contactme
+        form(action="works" method="POST").form.form_contactme
           .form__data
             .form__section.form__section_row.form__section_row-input
               input(type="name" name="name" placeholder="Имя").form__input.text

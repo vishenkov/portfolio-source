@@ -48,7 +48,7 @@
       var scrollFunction = (e) => {
         if (bg.length>0) {
           for (var i = 0; i < bg.length; i++) {
-            bg[i].style.transform = "translate3d(0,"+(window.scrollY/((i+1)*1.5))+"px,"+ "0)";
+            bg[i].style.transform = "translate3d("+bg[i].offsetLeft+","+(window.scrollY/((i+1)*1.5))+"px,"+ "0)";
           }
         }
       }
@@ -535,6 +535,12 @@
 
         if (!errors) {
           successMsg(formContactme.parentNode.parentNode, "Спасибо!\nВаше сообщение отправлено.");
+          var data = {
+            name: formContactme.name.value,
+            email: formContactme.email.value,
+            text: formContactme.message.value
+          };
+          prepareSend('/works', formContactme, data);
         }
       }
 
@@ -544,6 +550,16 @@
           resetMsg(elements[i].parentNode);
           elements[i].value = '';
         }
+      }
+
+      var prepareSend = function (url, form, data, cb) {
+        sendAjaxJson(url, data, function (data) {
+          form.reset();
+          resultContainer.innerHTML = data;
+          if (cb) {
+            cb(data);
+          }
+        });
       }
 
       function validateEmail(email) {
@@ -735,6 +751,22 @@
 
   window.addEventListener("DOMContentLoaded", DOMReady);  
 })();
+
+function sendAjaxJson(url, data, cb) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onload = function (e) {
+    let result;
+    try {
+      result = JSON.parse(xhr.responseText);
+    } catch (e) {
+      cb('Извините в данных ошибка');
+    }
+    cb(result.status);
+  };
+  xhr.send(JSON.stringify(data));
+}
 
 function scrollTo (element, to, duration) {
   if (duration <= 0) return;

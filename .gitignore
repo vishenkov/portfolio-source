@@ -40,3 +40,6 @@ upload
 # Node.JS
 node_modules
 npm-debug.log
+
+# my settings (login/pasw)
+config.json
