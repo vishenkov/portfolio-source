@@ -560,7 +560,7 @@
       var prepareSend = function (url, form, data, cb) {
         sendAjaxJson(url, data, function (data) {
           form.reset();
-          resultContainer.innerHTML = data;
+          //resultContainer.innerHTML = data;
           if (cb) {
             cb(data);
           }
