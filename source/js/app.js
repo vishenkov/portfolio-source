@@ -613,50 +613,51 @@
         var formWorks = document
           .querySelector('.admin__form_works');
         if (!formWorks) return;
-        console.log('uploadworks - clcik');
 
-        // let resultContainer = formUpload.querySelector('.status');
+        let resultContainer = document.querySelector('.admin__status_works');
         let formData = new FormData();
         let file = document
           .querySelector('.form__upload')
           .files[0];
-        console.log(file+" "+file.name);
         let name = formWorks.name.value;
         let tech = formWorks.tech.value;
         let href = formWorks.href.value;
-        // console.log(name+" "+tech +" "+href);
 
         formData.append('photo', file, file.name);
         formData.append('name', name);
         formData.append('tech', tech);
         formData.append('href', href);
-        // resultContainer.innerHTML = 'Uploading...';
+
         uploadFile('/admin/works', formData, function (data) {
-          // formUpload.reset();
+          resultContainer.innerHTML = data;
         });
       }
 
       var uploadBlogClick = (e) => {
         e.preventDefault();
+
         let formBlog = document.querySelector('.admin__form_blog');
         if (!formBlog) return;
+        let resultContainer = document.querySelector('.admin__status_blog');
+
         var data = {
             header: formBlog.header.value,
             href: formBlog.href.value,
             content: formBlog.content.value,
             date: formBlog.date.value
           };
-        console.log(data);
         // prepareSend('/admin/blog', formBlog, data);
         sendAjaxJson('/admin/blog', data, (data)=>{
-          console.log(data);
+          resultContainer.innerHTML = data;
         });
       }
 
       var uploadAboutClick = (e) => {
         e.preventDefault();
+        let resultContainer = document.querySelector('.admin__status_about');
         let formAbout = document.querySelector('.admin__form_about');
         if (!formAbout) return;
+
         var data = {
             backend: {
               php: formAbout.php.value,
@@ -678,7 +679,7 @@
         console.log(data);
         // prepareSend('/admin/blog', formBlog, data);
         sendAjaxJson('/admin/about', data, (data)=>{
-          console.log(data);
+          resultContainer.innerHTML = data;
         });
       }
 

@@ -1,0 +1,75 @@
+.tabs {
+  min-width: 320px;
+  width: 100%;
+  padding: 0px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.tabs>section {
+  position: static;
+  display: none;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-bottom: none;
+}
+.tabs>section>div {
+  margin: 5px;
+  line-height: 1.5;
+  color: #383838;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Прячем чекбоксы */
+.tabs>input {
+  display: none;
+  position: absolute;
+}
+
+.tabs>label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #aaa;
+  border: 0px solid #ddd;
+  border-width: 1px 1px 1px 1px;
+  background: #f1f1f1;
+  border-radius: 3px 3px 0 0;
+}
+
+.tabs>label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+.tabs>input:checked+label {
+  color: #555;
+  border-top: 2px solid $theme-color1;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+}
+
+#tab1:checked~#content-tab1, #tab2:checked~#content-tab2, #tab3:checked~#content-tab3, #tab4:checked~#content-tab4 {
+  display: block;
+}

@@ -11,18 +11,25 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 5px;
+}
+.admin__body {
+  flex: 1 1 auto;
 }
 
 .admin__title {
   color: #fff;
-  font-size: 48px;
+  font-size: 2.5rem;
   padding: 15px;
+  padding-left: 0;
+  margin-left: 30px;
 }
 
 .admin__link {
   color: #fff;
   text-decoration: underline;
   padding: 5px;
+  margin-right: 25px;
   &:hover {
     text-decoration: none;
   }
@@ -31,3 +38,23 @@
   }
 }
 
+.admin__content-header {
+  margin-bottom: 20px;
+}
+
+.admin__row {
+  display: flex;
+  flex-flow: row nowrap;
+  margin-bottom: 15px;
+  &:last-child {
+    margin-bottom: 30px;
+  }
+}
+
+.admin__col {
+  min-width: 140px;
+  // flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}

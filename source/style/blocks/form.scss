@@ -37,6 +37,10 @@
   }
 }
 
+.form__input_skill {
+  width: 80px;
+}
+
 .form__buttons {
   display: flex;
   flex-flow: row nowrap;
@@ -73,6 +77,13 @@
 
   &:focus {
     outline-color: $theme-color1;
+  }
+}
+.form__button_admin {
+  border-radius: 5px;
+  padding: 15px 30px;
+  &:hover {
+    background-color: $theme-color2;
   }
 }
 

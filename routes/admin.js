@@ -23,7 +23,6 @@ router.get('/', isAdmin, function (req, res) {
   };
   Object.assign(obj, req.app.locals.settings);
   const Model = mongoose.model('skills');
-  //получаем список записей в блоге из базы
   Model
     .find()
     .then(items => {
@@ -35,17 +34,13 @@ router.get('/', isAdmin, function (req, res) {
 
         return prev;
       }, {});
-      console.log(form);
-      console.log(tech);
-      // обрабатываем шаблон и отправляем его в браузер передаем в шаблон список
       Object.assign(obj, { tech: tech, form: form });
       res.render('pages/admin', obj);
     });
-  // res.render('pages/admin', obj);
 });
 
 router.post('/works', isAdmin, function (req, res) {
-  console.log("works upload");
+
   let form = new formidable.IncomingForm();
   form.parse(req, function(err, fields, files) {
     if (err) {
@@ -73,8 +68,7 @@ router.post('/works', isAdmin, function (req, res) {
 });
 
 router.post('/blog', isAdmin, (req, res) => {
-  console.log("blog upload");
-  
+
   if (!req.body.header || !req.body.date || !req.body.content || !req.body.href) {
     return res.json({status: 'Укажите данные!'});
   }
