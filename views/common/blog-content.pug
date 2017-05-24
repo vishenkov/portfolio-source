@@ -18,5 +18,6 @@ section.section.columns.columns_blog
                 h1
                   a(name=blog["href"] href="#"+blog["href"]).title__text.title__text_sub.title__text_dashed-false.title__text_padbot-0.title__text_ta-left.title__text_link-article=blog["header"]
             .articles__date
-              .text.text_color-theme.text_opacity-70= blog["date"]
+             - var date = new Date(blog["date"]).toLocaleDateString('ru', { year: 'numeric', month: '2-digit', day: '2-digit'})
+              .text.text_color-theme.text_opacity-70= date
             .articles__text.markdown-body!= blog["content"]

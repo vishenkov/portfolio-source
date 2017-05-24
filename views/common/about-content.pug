@@ -21,13 +21,13 @@ section.section.columns.columns_about
       .about__block.about__block_right
         .skills
           ul.skills__list
-            each skill, key in skills
+            each skill, key in tech
               li.skills__item
                 .skills__title
-                  .text.text_fz-29.text_fw-medium= key
+                  .text.text_fz-29.text_fw-medium= tech[key]["name"]
                 .data-circles
                   ul.data-circles__list
-                    each level, name in skill
+                    each item, iter in tech[key]["items"]
                       li.data-circles__item
                         .data-circles__circle
-                          +svgSkill (name, level, 55, 20)
+                          +svgSkill (item, form[tech[key]["id"]][iter], 55, 20)

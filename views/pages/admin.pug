@@ -1,0 +1,61 @@
+extends ../_template
+
+block content
+  .admin
+    .admin__content
+      .admin__header
+        .admin__title
+          | Панель администрирования
+        a.admin__link
+          | Вернуться на сайт
+      .admin__body
+        .admin__tabs
+          .admin__tab
+            a.admin__tablink
+              | Работы
+        .admin__tabcontent
+          h2
+            | Страница "Мои работы"
+          form(name="works" action="/works" method="POST" enctype="multipart/form-data").admin__form.admin__form_works
+            | Добавить работу
+            .form__section.form__section_row.form__section_row-input
+              input(type="text" name="name" placeholder="Название проекта" value="первый").form__input.text
+            .form__section.form__section_row.form__section_row-input
+              input(type="text" name="tech" placeholder="Технологии" value="all").form__input.text
+            .form__section.form__section_row.form__section_row-input
+              input(type="text" name="href" placeholder="Ссылка" value="#").form__input.text
+            .form__section.form__section_row.form__section_row-input
+              input(name="photo" type="file" required accept="image/*").form__upload
+              svg.form__buttonicon
+                use(xlink:href="/assets/img/sprite.svg#login")
+              .text
+                | Загрузить картинку
+              .status
+            .form__section.form__section_row.form__section_row-input
+              input(name="" type="submit" value="Добавить").form__button.form__button_submit-works
+        .admin__tabcontent
+          h2
+            | Страница "Блог"
+          form(name="blog" action="/blog" method="POST").admin__form.admin__form_blog
+            | Добавить запись в блог
+            .form__section.form__section_row.form__section_row-input
+              input(type="text" name="header" placeholder="Название записи" value="Моя статья").form__input.text
+            .form__section.form__section_row.form__section_row-input
+              input(name="date" type="date" value="").form__input.text
+            .form__section.form__section_row.form__section_row-input
+              input(type="text" name="href" placeholder="Ссылка" value="#mybloglink").form__input.text
+            .form__section.form__section_row.form__section_row-input
+              textarea(placeholder="Ваша запись" name="content").form__input.text
+            .form__section.form__section_row.form__section_row-input
+              input(name="" type="submit" value="Добавить").form__button.form__button_submit-blog
+        .admin__tabcontent
+          h2
+            | Страница "Обо мне"
+          form(name="about" action="/about" method="POST").admin__form.admin__form_about
+            | Изменить навыки
+            each skill, key in tech
+              .text.text_fz-29.text_fw-medium= tech[key]["name"]
+              each item, iter in tech[key]["items"]
+                label(for=iter)=item
+                input(name=iter type="number" value=form[tech[key]["id"]][iter]).form__input.text
+            input(name="" type="submit" value="Добавить").form__button.form__button_submit-about

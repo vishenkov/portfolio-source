@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
   Model
     .find()
     .then(works => {
+      console.log(works);
       // обрабатываем шаблон и отправляем его в браузер передаем в шаблон список
       // записей в блоге
       Object.assign(obj, {works: works});

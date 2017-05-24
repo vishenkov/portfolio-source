@@ -6,6 +6,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const session = require('express-session');
+const jsonfile = require('jsonfile');
+const MongoStore = require('connect-mongo')(session);
 var config = require('./config');
 
 var index = require('./routes/index');
@@ -36,6 +39,7 @@ require('./models/db');
 require('./models/blog');
 require('./models/works');
 require('./models/skills');
+require('./models/user');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -49,10 +53,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'secret',
+  key: 'keys',
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    maxAge: null
+  },
+  saveUninitialized: false,
+  resave: false,
+  store: new MongoStore({mongooseConnection: mongoose.connection})
+}));
+
 app.use('/', index);
 app.use('/blog', blog);
 app.use('/works', works);
 app.use('/about', about);
+app.use('/admin', require('./routes/admin'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -116,7 +116,7 @@
     border: 2px solid $theme-color1;
   }
 }
-.form__success {
+.form__success, .form__errormsg {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -131,8 +131,11 @@
   border-radius: 5px 5px 0;
 
   animation-name: showMsg;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-timing-function: ease-in-out;
+}
+.form__errormsg {
+  background-color: $theme-error;
 }
 @keyframes showMsg {
   0% {opacity: 0;}
@@ -192,6 +195,15 @@
   fill: $main-font-color;
   opacity: 0.4;
 
+}
+.form__upload {
+  
+}
+.form__buttonicon {
+  height: 18px;
+  width: 25px;
+  fill: #fff;
+  fill-opacity: 0.7;
 }
 
 .form__label {

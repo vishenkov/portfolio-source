@@ -3,7 +3,7 @@
     .welcome__title
       +title("Авторизуйтесь", "", ["sub"])
     .welcome__content
-      form.form.form_login
+      form(action="/" method="POST").form.form_login
         .form__data
           .form__section.form__section_row.form__section_row-input
             .form__icon-container

@@ -439,6 +439,16 @@
         },2000);
       }
 
+      var errorMsg= (container, msg) => {
+        let errormsg = document.createElement('div');
+        errormsg.className = 'form__errormsg';
+        errormsg.innerText=msg;
+        container.appendChild(errormsg);
+        setTimeout(()=>{
+          container.removeChild(errormsg);
+        },3000);
+      }
+
       var validateLogin = (e) => {
         let elements = formLogin.elements;
         let errors = 0;
@@ -488,7 +498,18 @@
         }
 
         if (!errors) {
-          successMsg(formLogin.parentNode, "Добро пожаловать!");
+           let data = {
+              login: String(formLogin.login.value),
+              password: String(formLogin.password.value)
+            };
+            prepareSend('/', formLogin, data, function(data) {
+              if (data === 'Авторизация успешна!') {
+                successMsg(formLogin.parentNode, data);
+                location.href = '/admin';
+              } else {
+                errorMsg(formLogin.parentNode, data);
+              }
+            });
         }
 
       }
@@ -539,15 +560,18 @@
         }
 
         if (!errors) {
-          successMsg(formContactme.parentNode.parentNode, "Спасибо!\nВаше сообщение отправлено.");
+          //successMsg(formContactme.parentNode.parentNode, "Спасибо!\nВаше сообщение отправлено.");
           var data = {
             name: formContactme.name.value,
             email: formContactme.email.value,
             text: formContactme.message.value
           };
-          prepareSend('/works', formContactme, data);
+          prepareSend('/works', formContactme, data, function(data) {
+            successMsg(formContactme.parentNode, data);
+          });
         }
       }
+      
 
       var resetForm = () => {
         let elements = formContactme.elements;
@@ -557,15 +581,6 @@
         }
       }
 
-      var prepareSend = function (url, form, data, cb) {
-        sendAjaxJson(url, data, function (data) {
-          form.reset();
-          //resultContainer.innerHTML = data;
-          if (cb) {
-            cb(data);
-          }
-        });
-      }
 
       function validateEmail(email) {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -591,11 +606,118 @@
       }
     })();
 
+    var admin = (function () {
+
+      var uploadWorksClick = (e) => {
+        e.preventDefault();
+        var formWorks = document
+          .querySelector('.admin__form_works');
+        if (!formWorks) return;
+        console.log('uploadworks - clcik');
+
+        // let resultContainer = formUpload.querySelector('.status');
+        let formData = new FormData();
+        let file = document
+          .querySelector('.form__upload')
+          .files[0];
+        console.log(file+" "+file.name);
+        let name = formWorks.name.value;
+        let tech = formWorks.tech.value;
+        let href = formWorks.href.value;
+        // console.log(name+" "+tech +" "+href);
+
+        formData.append('photo', file, file.name);
+        formData.append('name', name);
+        formData.append('tech', tech);
+        formData.append('href', href);
+        // resultContainer.innerHTML = 'Uploading...';
+        uploadFile('/admin/works', formData, function (data) {
+          // formUpload.reset();
+        });
+      }
+
+      var uploadBlogClick = (e) => {
+        e.preventDefault();
+        let formBlog = document.querySelector('.admin__form_blog');
+        if (!formBlog) return;
+        var data = {
+            header: formBlog.header.value,
+            href: formBlog.href.value,
+            content: formBlog.content.value,
+            date: formBlog.date.value
+          };
+        console.log(data);
+        // prepareSend('/admin/blog', formBlog, data);
+        sendAjaxJson('/admin/blog', data, (data)=>{
+          console.log(data);
+        });
+      }
+
+      var uploadAboutClick = (e) => {
+        e.preventDefault();
+        let formAbout = document.querySelector('.admin__form_about');
+        if (!formAbout) return;
+        var data = {
+            backend: {
+              php: formAbout.php.value,
+              mysql: formAbout.mysql.value,
+              node: formAbout.node.value,
+              mongo: formAbout.mongo.value
+            },
+            frontend: {
+              html: formAbout.html.value,
+              css: formAbout.css.value,
+              js: formAbout.js.value
+            },
+            workflow: {
+              git: formAbout.git.value,
+              gulp: formAbout.gulp.value,
+              bower: formAbout.bower.value
+            }
+          };
+        console.log(data);
+        // prepareSend('/admin/blog', formBlog, data);
+        sendAjaxJson('/admin/about', data, (data)=>{
+          console.log(data);
+        });
+      }
+
+
+      return {
+        init: () => {
+          if (!document.querySelector('.admin')) {
+            return;
+          }
+          console.log('====ADMIN====');
+
+          var uploadWorksButton = document
+          .querySelector('.form__button_submit-works');
+          if (uploadWorksButton) {
+            console.log('uploadworks - check');
+            uploadWorksButton.addEventListener('click', uploadWorksClick);
+          }
+          var uploadBlogButton = document
+          .querySelector('.form__button_submit-blog');
+          if (uploadBlogButton) {
+            console.log('uploadblog - check');
+            uploadBlogButton.addEventListener('click', uploadBlogClick);
+          }
+          var uploadAboutButton = document
+          .querySelector('.form__button_submit-about');
+          if (uploadAboutButton) {
+            console.log('uploadabout - check');
+            uploadAboutButton.addEventListener('click', uploadAboutClick);
+          }
+        }
+      }
+    })();
+
     initMap();
     mouseParallax.init();
     scrollParallax.init();
     gallery.init();
     flip.init();
+    admin.init();
  
     blur.set();
     blogToC.init();
@@ -765,12 +887,36 @@ function sendAjaxJson(url, data, cb) {
     let result;
     try {
       result = JSON.parse(xhr.responseText);
+      console.log(xhr.responseText);
     } catch (e) {
       cb('Извините в данных ошибка');
     }
+    console.log(result);
     cb(result.status);
   };
   xhr.send(JSON.stringify(data));
+}
+
+function prepareSend (url, form, data, cb) {
+        sendAjaxJson(url, data, function (data) {
+          form.reset();
+          console.log(data);
+          if (cb) {
+            cb(data);
+          }
+        });
+      }
+
+function uploadFile(url, data, cb) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', url, true);
+
+  xhr.onload = function (e) {
+    let result = JSON.parse(xhr.responseText);
+    cb(result.status);
+  };
+
+  xhr.send(data);
 }
 
 function scrollTo (element, to, duration) {

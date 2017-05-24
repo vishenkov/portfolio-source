@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const mongoose = require('mongoose');
+let tech = require('../models/tech.json');
 
 
 router.get('/', function(req, res, next) {
@@ -12,9 +13,19 @@ router.get('/', function(req, res, next) {
   //получаем список записей в блоге из базы
   Model
     .find()
-    .then(skills => {
+    .then(items => {
+      let form = items.reduce((prev, cur) => {
+        prev[cur.section] = cur.items.reduce((prev, cur) => {
+          prev[cur.name] = cur.value;
+          return prev;
+        }, {});
+
+        return prev;
+      }, {});
+      console.log(form);
+      console.log(tech);
       // обрабатываем шаблон и отправляем его в браузер передаем в шаблон список
-      Object.assign(obj, {skills: skills});
+      Object.assign(obj, { tech: tech, form: form });
       res.render('pages/about', obj);
     });
 });

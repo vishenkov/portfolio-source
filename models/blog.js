@@ -16,11 +16,9 @@ const mongoose = require('mongoose'),
       required: [true, 'Укажите содержимое статьи']
     },
     date: {
-      type: String, 
-      // default: Date.now,
+      type: String,
       required: [true, 'Укажите дату публикации']
     }
   });
 
-//просим mongoose сохранить модель для ее дальнейшего использования
 mongoose.model('blogs', BlogSchema);
